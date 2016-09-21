@@ -6,4 +6,4 @@ title: CCT Programming Guide 4.1
 HPE CCT Project can be found at [here.](https://github.com/hpe-cct/)
 
 
-{% include programmingGuide.md %}
+{% include GettingStarted.md %}

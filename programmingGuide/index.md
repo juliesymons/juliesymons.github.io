@@ -857,7 +857,6 @@ Finally note that the border policies associated with expand, namely
 `BorderZero`, `BorderClamp` and `BorderCyclic`, are supported.
 
 ### Subfield and apply(Range)
------------------------------
 
 While the `shift` operator performs only shifting, and the `trim` operator
 performs only trimming, there are additional operators that allow you to
@@ -1592,6 +1591,7 @@ The documentation of Cog operators and functions are available in Scaladocs, a t
 (https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#cogx.api.ImplicitConversions).
 
 The full set of Scaladocs for CCT are available here:
+
   * [cct-core](https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#package)
   * [cct-io](https://hpe-cct.github.io/scaladoc/cct-io_2.11-0.8.7/#cogio.package)
   * [cct-nn](https://hpe-cct.github.io/scaladoc/cct-nn_2.11-2.0.0-alpha.2/#toolkit.neuralnetwork.package)

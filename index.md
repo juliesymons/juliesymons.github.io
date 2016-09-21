@@ -4,8 +4,7 @@ title: Getting Started with CCT
 ---
 <h1>{{ page.title }}</h1>
 
-
-The [HPE Cognitive Computing Toolkit](https://github.com/hpe-cct) (CCT) is a GPU-accelerated platform for deep learning and other advanced analytics. The **cct-tutorial** contains a number of examples from each of the repositories that comprise the Cognitive Computing Toolkit. This guide along with the examples in this tutorial can be used to get an introduction to the CCT platform.
+The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep learning and other advanced analytics. The [cct-tutorial](https://github.com/hpe-cct/cct-tutorial] contains a number of examples from each of the repositories that comprise the [Cognitive Computing Toolkit]((https://github.com/hpe-cct). This guide along with the examples in the [cct-tutorial](https://github.com/hpe-cct/cct-tutorial> can be used to get an introduction to the CCT platform. 
 
 ## Table of Contents
 
@@ -44,13 +43,13 @@ The CCT platform consists of several libraries, each contained in separate githu
 
 **cct-core** - This is the core library and API. It contains the compiler and runtime system necessary to optimize and distribute a CCT application. This package is currently imported as `libcog`. The [cct-core](https://github.com/hpe-cct/cct-core) repository also contains the visual debugger, `cogdebugger`, though it is in a separate package. 
 
-**cct-io** - This library provides a set of objects which can be used for getting data into and out of a running CCT application using the field initialization, *sensor*, and *actuator* primatives that are part of the cct-core API. For example, it has APIs to read an image file or movie file. It is package is currently imported into some of the tutorial examples as `cogio`. Here is the link to the [cct-io](https://github.com/hpe-cct/cct-io) repository. 
+**cct-io** - This library provides a set of objects which can be used for getting data into and out of a running CCT application using the field initialization, *sensor*, and *actuator* primatives that are part of the cct-core API. For example, it has APIs to read an image file or movie file. It is package is currently imported into some of the tutorial examples as `cogio`. The  [cct-io](https://github.com/hpe-cct/cct-io) repository contains the source for this library. 
 
-**cct-nn** - This library provides APIs to support deep learning and neural networks. This package is currently imported into some of the tutorial examples as `toolkit.neuralnetwork`.
+**cct-nn** - This library provides APIs to support deep learning and neural networks. This package is currently imported into some of the tutorial examples as `toolkit.neuralnetwork`. The  [cct-nn](https://github.com/hpe-cct/cct-nn) repository contains the source for this library. 
 
-**cct-sandbox** - This library contains unstable CCT libraries for applications including signal processing and computer vision.
+**cct-sandbox** - This library contains unstable CCT libraries for applications including signal processing and computer vision. The  [cct-sandbox](https://github.com/hpe-cct/cct-sandbox) repository contains the source for this library. 
 
-**cogdebugger** - This is a UI Wrapper for debugging CCT applications. It allows developers to visualize the *compute graph*, inspect the *fields*, and step through the *compute graph*. The visual debugger is part of the **cct-core** library, but the package is imported separately as `cogdebugger`.
+**cogdebugger** - This is a UI Wrapper for debugging CCT applications. It allows developers to visualize the *compute graph*, inspect the *fields*, and step through the *compute graph*. The visual debugger is part of the **cct-core** library, but the package is imported separately as `cogdebugger`.  The  [cct-core](https://github.com/hpe-cct/cct-core) repository contains the source for this library. 
 
 ## Abstractions
 

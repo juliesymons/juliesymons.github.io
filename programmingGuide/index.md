@@ -5,7 +5,7 @@ title: "CCT Programming Guide"
 
 <h1>{{ page.title }}</h1>
 
-Massively scalable computing made easy
+*Massively scalable computing made easy*
 
 
 ## Table of Contents
@@ -204,7 +204,7 @@ two real or complex tensor fields with the same shape and tensor order
 into a new field with the same shape and order, where each tensor
 element is the sum of the corresponding tensor elements in the operands:
 
-![](./media/diagram3.png)
+![](./img/diagram3.png)
 
 Cog supports the usual arithmetic operators on real and complex fields
 which operate on the corresponding tensor elements of the two input
@@ -230,7 +230,7 @@ for learning and adaptation.
 Tensors fields and operators are combined to create a computation unit
 called a *compute graph*:
 
-![](./media/diagram4.png)
+![](./img/diagram4.png)
 
 The compute graph brings in information from the outside world into the
 computation with *sensors*, which are tensor fields that are sourced by
@@ -292,7 +292,7 @@ This application contains a two-dimensional `ScalarField` named
 `counter`. If you compile and run the above application, you will see a
 window that looks like this:
 
-![](./media/image3.png)
+![](./img/image3.png)
 
 The blue box in the upper left labeled “counter” is the graphical
 representation of the field named `counter` in the code. The box label
@@ -300,7 +300,7 @@ text “counter” is taken from the variable name of the field in the code.
 Clicking on the blue box will cause a window to open which displays the
 current state of that field as a grayscale image:
 
-![](./media/image4.png)
+![](./img/image4.png)
 
 The black box above is a 200 x 200 image, with each pixel displaying the
 corresponding value of a real scalar within the dynamic field. The color
@@ -320,7 +320,7 @@ every point in the field. Since there are 40,000 points in the field,
 this statement is describing 40,000 additions. Here’s what you’ll see in
 the debugger after stepping once:
 
-![](./media/image5.png)
+![](./img/image5.png)
 
 Since every point in the field is now equal to one, the image
 representing that field uses 40,000 white pixels to represent the field
@@ -329,7 +329,7 @@ that they each have the value 2. Placing the cursor over a point in a
 field will momentarily bring up a tooltip describing the coordinates and
 precise value at that point.
 
-![](./media/image6.png)
+![](./img/image6.png)
 
 ### Operators
 
@@ -357,7 +357,7 @@ scalar field with data from an image file. In this example, two fields
 named `grass` and `leaves`, which are necessarily the same size, are
 averaged to create the field `average`. Here’s what you should see:
 
-![](./media/image7.png)
+![](./img/image7.png)
 
 ### Sensors
 
@@ -387,7 +387,7 @@ id="_Toc361056916" class="anchor"><span id="_Toc361057339"
 class="anchor"><span id="_Toc361057380" class="anchor"><span
 id="_Toc361067518" class="anchor"></span></span></span></span>.
 
-![](./media/image8.png)
+![](./img/image8.png)
 
 ### Actuators
 
@@ -551,7 +551,7 @@ operator. Note that the `convolve` operator requires a `BorderPolicy`, which
 defines how the border is handled during convolution. Here’s what you’ll
 see when you execute this program:
 
-![](./media/image9.png)
+![](./img/image9.png)
 
 ### Real unary operators
 
@@ -619,7 +619,7 @@ number of tricks, including data compression, steerable theory, and
 frequency domain convolution, to enable real-time completion of
 boundaries:
 
-![](./media/image11.png)
+![](./img/image11.png)
 
 ### Stacking and Slicing
 
@@ -1045,7 +1045,7 @@ operator:
 
 It produces the following result:
 
-![](./media/image12.jpeg)
+![](./img/image12.jpeg)
 
 The custom operator is implemented as follows:
 
@@ -1100,18 +1100,18 @@ computation. External data is brought in to the computation through
 sensors, transformed by field computations, then written back out
 through actuators.
 
-![](./media/diagram5.png)
+![](./img/diagram5.png)
 
 Each sensor or actuator contains two buffers, called the master and
 slave, and behaves much like a master-slave flip-flop. Computation uses
 a 2-phase clocking model, where each computational step consists of a
 phase 1 clock followed by a phase 2 clock.
 
-![](./media/diagram6.png)
+![](./img/diagram6.png)
 
 Thus a more detailed view of the computation looks like this:
 
-![](./media/diagram7.png)
+![](./img/diagram7.png)
 
 When the `ComputeGraph` is reset, each sensor fills its master buffer with
 initial data. It then executes a single computational step to “prime”
@@ -1151,7 +1151,7 @@ phase 1. The convolve operator depends on the result of the `+` operator,
 so it waits for that to complete, then performs the convolution of that
 sum with the data from Sensor C.
 
-![](./media/diagram8.png)
+![](./img/diagram8.png)
 
 Here’s a Cog program that implements the computation shown in the
 previous figure:
@@ -1178,7 +1178,7 @@ cycle. A “constant” field which its value changed each cycle by the
 Constant fields and recurrences alter the feed-forward compute model
 only slightly:
 
-![](./media/diagram9.png)
+![](./img/diagram9.png)
 
 Constant fields and recurrences are treated as inputs to the field
 computation just like sensors. Recurrences are initially declared as
@@ -1195,7 +1195,7 @@ The change of `x`'s value, though, is not immediate but delayed until the
 following cycle. This is because recurrences have the same master/slave
 buffer structure as sensors and actuators:
 
-![](./media/diagram10.png)
+![](./img/diagram10.png)
 
 During field computation, the *slave* buffer provides the field data
 used by the computation (this slave field data is the result of the
@@ -1215,7 +1215,7 @@ the following steps:
 2.  The input slave registers then flow through field computation to the inputs of the actuator master buffers.
 3.  Finally the master buffers latch their inputs from the field computation.
 
-![](./media/diagram11.png)
+![](./img/diagram11.png)
 
 When reset has completed, all input slave buffers, fields in the field
 computation, and master buffers in actuators hold valid field data. Each
@@ -1262,7 +1262,7 @@ The third is a ‘probe desktop’ where visualizations of a model’s various
 fields can be displayed. These individual parts are more thoroughly
 described later in this chapter.
 
-![](./media/image13.png)
+![](./img/image13.png)
 
 ### Launching the Debugger
 
@@ -1342,7 +1342,7 @@ update. It also displays the current cycle of a running computation and
 the rate at which it is advancing. An example of the toolbar (taken from
 a running app) is shown below.
 
-![](./media/image15.png)
+![](./img/image15.png)
 
 In order of their appearance on the toolbar (left to right), the
 provided controls and displays are:
@@ -1395,7 +1395,7 @@ clock phase 1 (see [Launching the Debugger](#launching-the-debugger)). Red edges
 passed along them in clock phase 2 ([Probing Fields](#probing-fields)). Note that a ‘step’ in
 the debugger consists of both clock phases.
 
-![](./media/image16.png)
+![](./img/image16.png)
 
 Any vertex in the graph can be clicked to launch the default
 visualization for the associated field. The visualization appears on the
@@ -1455,7 +1455,7 @@ To see the modules into which a compute graph can be divided, click the
 **Graph Options** button in the graph view’s toolbar, and then select
 **Show Modules**.
 
-![](./media/image17.png)
+![](./img/image17.png)
 
 In this mode, the view is focused on a single module at a time,
 indicated on the secondary toolbar (that only displays in this mode).
@@ -1482,7 +1482,7 @@ left-clicking a button opens the default visualization for the
 corresponding field, while right-clicking presents all available
 options.
 
-![](./media/image19.png)
+![](./img/image19.png)
 
 6.5 Visualizing Field Contents
 ------------------------------
@@ -1526,7 +1526,7 @@ out into a separate image). With 0 representing pure black, and 1
 representing pure white, the color mapping for a value *x* in the field
 is:
 
-![](./media/image21.png)
+![](./img/image21.png)
     
 The values *min* and *max* are determined by the state of the **Floating
 Max** toggle button on the visualization’s toolbar. If the button is

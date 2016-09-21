@@ -149,6 +149,7 @@ In CCT, fields (or *tensor fields*) are the primary data structures used for inp
 A *tensor field* is a multidimensional array of multidimensional arrays of numbers. A *tensor* is a multidimensional array. Thus, a *tensor field* is a multidimensional array of tensors. 
 
 Types of fields:
+
 * ScalarField
 * VectorField
 * MatrixField
@@ -163,6 +164,7 @@ Additional field types may be defined by the user.
 For example #1, `counter` is a `ScalarField`. Its field shape is `Shape(200 200)`, for 200 rows and 200 columns. Its `dimensions` is 2. The `tensorOrder` is 0.  
 
 In [BackgroundSubtraction](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/cogio/BackgroundSubtraction.scala), `movie` is a `ColorField( 720 480 )( 3 )` with the following:
+
 * `movie.fieldShape = Shape(270 480)`
 * `movie.fieldShape.dimensions = 2`
 * `movie.tensorShape = Shape(3)`
@@ -189,6 +191,7 @@ Here's the constructor of a new sensor:
 The `Sensor` constructor take a parameterless function, which returns an `Option[Iterator[Float]]`. In this example, the function is `getTime`.
 
 `Sensor` constructor parameters are:
+
 * `fieldShape`
 * `nextValue`  - Option Iterator, returns the next field in row-major order, can return `None`.
 * `resetHook` - function to reset to initial value, this can be empty.

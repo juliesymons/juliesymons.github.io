@@ -98,12 +98,7 @@ This program defines one *tensor field*, `counter`, which is a 2-dimensional sca
 
 This next figure shows `Counter` running in the visual debugger. 
 
-
-<center>
-![cogdebugger running Counter](img/cctVisualDebugger.png)
 ![img/cctVisualDebugger.png](img/cctVisualDebugger.png)
-
-</center>
 
 The visual debugger is a graphical tool that allows you to step, reset, and "peek inside" a `ComputeGraph` to visualize the computation while it executes. 
 

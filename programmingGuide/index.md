@@ -1,11 +1,12 @@
+---
+layout: default
+title: "CCT Programming Guide"
+---
+
 #Cog 4.1 Programming Tutorial
 
 Massively scalable computing made easy
 
-[//]: # (![](./media/image2.jpeg){width="8.35in" height="10.85in"})
-[//]: # (![](./media/image2.jpeg))
-
-[//]: # (Table of Content {#table-of-content .TOCHeading})
 
 ## Table of Contents
 

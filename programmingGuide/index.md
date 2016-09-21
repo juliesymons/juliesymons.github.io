@@ -3,6 +3,8 @@ layout: default
 title: "CCT Programming Guide"
 ---
 
+<h2>{{ page.title }}</h2>
+
 Massively scalable computing made easy
 
 

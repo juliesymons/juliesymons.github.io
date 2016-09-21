@@ -67,6 +67,7 @@ This figure shows a small *compute graph* consisting of one sensor supplying ext
 
 <center>
 ![CCT Compute Graph](img/cctComputeGraph.png)
+![img/cctComputeGraph.png](img/cctComputeGraph.png)
 </center>
 
 The next section shows two examples to introduce the basic abstractions. The sections that follow it drill down with more details on each of these abstractions.
@@ -100,6 +101,8 @@ This next figure shows `Counter` running in the visual debugger.
 
 <center>
 ![cogdebugger running Counter](img/cctVisualDebugger.png)
+![img/cctVisualDebugger.png](img/cctVisualDebugger.png)
+
 </center>
 
 The visual debugger is a graphical tool that allows you to step, reset, and "peek inside" a `ComputeGraph` to visualize the computation while it executes. 

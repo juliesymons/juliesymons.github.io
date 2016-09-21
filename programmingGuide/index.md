@@ -3,8 +3,6 @@ layout: default
 title: "CCT Programming Guide"
 ---
 
-#Cog 4.1 Programming Tutorial
-
 Massively scalable computing made easy
 
 

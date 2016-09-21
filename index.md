@@ -5,7 +5,9 @@ title: Getting Started with CCT
 <h2>{{ page.title }}</h2>
 
 
-The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep learning and other advanced analytics. The **cct-tutorial** contains a number of examples from each of the repositories that comprise the Cognitive Computing Toolkit. This guide along with the examples in this tutorial can be used to get an introduction to the CCT platform.
+The [HPE Cognitive Computing Toolkit](https://github.com/hpe-cct) (CCT) is a GPU-accelerated platform for deep learning and other advanced analytics. The **cct-tutorial** contains a number of examples from each of the repositories that comprise the Cognitive Computing Toolkit. This guide along with the examples in this tutorial can be used to get an introduction to the CCT platform.
+
+## Table of Contents
 
 *   [Introduction](#introduction)
 *   [Abstractions](#abstractions)
@@ -27,8 +29,6 @@ The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep
 
 The CCT platform is software platform for developing-massively parallel applications that execute on multi-core processors such as GPUs. CCT differs from most other parallel programming paradigms (such as MPI, actors, transactional memory) by exposing the parallelism implicitly in the programming model rather than through explicit mechanisms and data structures. The model contains no threads, locks, message queues, critical sections, or races. It is a deterministic, massively-parallel programming model. It is also a declarative dataflow programming model, meaning that a CCT application describes the structure of the computation, not sequential actions.
 
-HPE CCT Project can be found at [here.](https://github.com/hpe-cct/)
-
 For more detailed information, a draft of the CCT programming guide is available
 [here](http://hpe-cct.github.io/docs/CogProgrammingTutorial_4_1.pdf). Note that
 this is an early document, and still refers to CCT by its original internal
@@ -40,11 +40,11 @@ CCT is written in the Scala programming language which runs on the Java Virtual 
 
 ### Libraries 
 
-The CCT platform consists of several libraries, each contained in separate github repositories, under the `hpe-cct` root directory. The **cct-tutorial** has dependencies on these libraries.
+The CCT platform consists of several libraries, each contained in separate github repositories, under the `hpe-cct` root directory. The [cct-tutorial](https://github.com/hpe-cct/cct-tutorial) has dependencies on these libraries. 
 
-**cct-core** - This is the core library and API. It contains the compiler and runtime system necessary to optimize and distribute a CCT application. This package is currently imported as `libcog`. The **cct-core** repository also contains the visual debugger, `cogdebugger`, though it is in a separate package. 
+**cct-core** - This is the core library and API. It contains the compiler and runtime system necessary to optimize and distribute a CCT application. This package is currently imported as `libcog`. The [cct-core](https://github.com/hpe-cct/cct-core) repository also contains the visual debugger, `cogdebugger`, though it is in a separate package. 
 
-**cct-io** - This library provides a set of objects which can be used for getting data into and out of a running CCT application using the field initialization, *sensor*, and *actuator* primatives that are part of the cct-core API. For example, it has APIs to read an image file or movie file. This package is currently imported into some of the tutorial examples as `cogio`.
+**cct-io** - This library provides a set of objects which can be used for getting data into and out of a running CCT application using the field initialization, *sensor*, and *actuator* primatives that are part of the cct-core API. For example, it has APIs to read an image file or movie file. It is package is currently imported into some of the tutorial examples as `cogio`. Here is the link to the [cct-io](https://github.com/hpe-cct/cct-io) repository. 
 
 **cct-nn** - This library provides APIs to support deep learning and neural networks. This package is currently imported into some of the tutorial examples as `toolkit.neuralnetwork`.
 

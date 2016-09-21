@@ -165,14 +165,14 @@ order tensor supported in Cog, though this can easily be extended. Here
 are some graphical examples, where each red dot denotes a number /
 element:
 
-![](./media/diagram1.png)
+![](./img/diagram1.png)
 
 A *tensor field* is a multidimensional array of tensors, with all
 tensors in the field having exactly the same order and shape. A field
 may have zero, one, two or three dimensions. A zero-dimensional field
 holds a single tensor.
 
-![](./media/diagram2.png)
+![](./img/diagram2.png)
 
 The following field types are supported by the Cog core, and additional
 field types may be defined by the user:

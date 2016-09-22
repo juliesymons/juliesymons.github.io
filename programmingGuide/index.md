@@ -1580,15 +1580,14 @@ The documentation of Cog operators and functions are available in Scaladocs, a t
 
 1.  A `CogOperatorAPI` that includes methods on the Field class, such as
     the arithmetic operators than can appear in an infix notation like
-    `field1 + field2`.  See [Scaladoc for CogOperatorAPI]
-(https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#cogx.api.CogOperatorAPI).
+    `field1 + field2`.  See 
+[Scaladoc for CogOperatorAPI](https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#cogx.api.CogOperatorAPI).
 
 2.  A `CogFunctionAPI` that includes keyword-based functions that operate
-    on Fields, like `convolve(image, filter)`. See [Scaladoc for CogFunctionAPI]
-(https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#cogx.api.CogFunctionAPI).
+    on Fields, like `convolve(image, filter)`. See [Scaladoc for CogFunctionAPI](https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#cogx.api.CogFunctionAPI).
 
-3.  Implicit conversions that can occur within Field expressions.  See [Scaladoc for ImplicitConversions]
-(https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#cogx.api.ImplicitConversions).
+3.  Implicit conversions that can occur within Field expressions.  See
+[Scaladoc for ImplicitConversions](https://hpe-cct.github.io/scaladoc/cct-core_2.11-5.0.0-alpha.3/#cogx.api.ImplicitConversions).
 
 The full set of Scaladocs for CCT are available here:
 

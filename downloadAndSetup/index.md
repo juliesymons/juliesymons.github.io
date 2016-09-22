@@ -1,4 +1,9 @@
-#Download and Set up Instructions
+---
+layout: default
+title: "Download and Set up Instructions"
+---
+
+<h1>{{ page.title }}</h1>
 
 *   [System Requirements](#sysreq)
 *   [Programming Environment](#lang)

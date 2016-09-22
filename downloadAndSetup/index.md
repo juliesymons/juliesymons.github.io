@@ -26,7 +26,9 @@ title: "Download and Set up Instructions"
 Note: These instructions are based on the preferred IDE, IntelliJ IDEA. 
 
 1.  Download and install the lastest 64-bit JDK (JDK8).
+
 2.  Download and install the latest [IntelliJ IDEA IDE](https://www.jetbrains.com/idea/download). (The Community Edition works fine.) 
+
 3.  Download and install the Scala Plugin in IntelliJ. This plugin includes SBT. 
 
      From the *Welcome to IntelliJ IDEA* window, select *Configure*, select *Install JetBrains Plugins* (or *Browse Repositories*), select *Scala*, click *Install*

@@ -64,9 +64,7 @@ Using these simple abstractions, the CCT compiler optimizes the computation acro
 
 This figure shows a small *compute graph* consisting of one sensor supplying external data to a *tensor field*. A second *tensor field* gets updated using the feedback *operator*. The two *tensor fields* are combined using an *operator* to produce a third *tensor field*, which has an actuator to feed the result to an external consumer.
 
-<center>
-![CCT Compute Graph](./img/cctComputeGraph.png)
-</center>
+![](./img/cctComputeGraph.png)
 
 The next section shows two examples to introduce the basic abstractions. The sections that follow it drill down with more details on each of these abstractions.
 
@@ -96,10 +94,7 @@ This program defines one *tensor field*, `counter`, which is a 2-dimensional sca
 
 This next figure shows `Counter` running in the visual debugger. 
 
-
-<center>
-![cogdebugger running Counter](./img/cctVisualDebugger.png)
-</center>
+![](./img/cctVisualDebugger.png)
 
 The visual debugger is a graphical tool that allows you to step, reset, and "peek inside" a `ComputeGraph` to visualize the computation while it executes. 
 

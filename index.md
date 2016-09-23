@@ -23,9 +23,11 @@ Intel GPUs as well, these are not regularly tested hardware configurations.
 development environment. For more detailed
 installation instructions go to [Download and Setup](./downloadAndSetup).
 
+The GitHub source code repositories can be found [here](https://github.com/hpe-cct).
+
 ## The CCT Tutorial
 
-The [Getting Started](GettingStarted.md) page provides an introduction to the CCT platform using examples from the `cct-tutorial`.
+To get started with CCT, there is a [cct-tutorial](https://github.com/hpe-cct/cct-tutorial) repository in GitHub with example code. There are two companion documents that go along with the tutorial.  The [Getting Started](./gettingStarted) page provides an introduction to the CCT platform using examples from the `cct-tutorial`.
 
 A draft of the CCT programming guide is available
 [here](http://hpe-cct.github.io/docs/CogProgrammingTutorial_4_1.pdf). Note that

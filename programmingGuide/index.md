@@ -83,7 +83,7 @@ This manual is an informal tutorial about programming on Cog using a
 series of simple examples, most of which can be obtained from the Cog
 project’s **cct-tutorial** Git repository. This manual also discusses the Cog
 programming API at a high level, but then also includes links to the Scaladoc of
-the complete API in an [appendix](#appendix-a-field-operator-and-function-api). The companion document, [Download and Setup](https://github.com/hpe-cct/cct-tutorial/blob/master/DownloadAndSetup.md), 
+the complete API in an [appendix](#appendix-a-field-operator-and-function-api). The companion document, [Download and Setup](../downloadAndSetup), 
 explains how to install Cog on a single machine.
 
 ### Language
@@ -1073,7 +1073,7 @@ existing Cog operators, it’s best to let the Cog compiler create
 optimized kernels for the GPU based on that description.
 
 Because of the intricacies of writing GPUOperators, their use is
-described in a separate document, [Cog GPU Operators](https://github.com/hpe-cct/cct-core/blob/master/doc/UserGPUOperators.docx).
+described in a separate document, [Cog GPU Operators](../userGPUOperators).
 
 ### Further operator documentation
 
@@ -1483,8 +1483,7 @@ options.
 
 ![](./img/image19.png)
 
-6.5 Visualizing Field Contents
-------------------------------
+Visualizing Field Contents
 
 The last pane of the debugger is the **Probe Desktop**. This is where the
 visualizations for fields will appear when a field vertex or button is

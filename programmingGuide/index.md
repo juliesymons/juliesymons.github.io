@@ -1045,6 +1045,7 @@ operator:
 It produces the following result:
 
 ![](./img/image12.jpeg) { width: 200px; }
+<img src="./img/image12.jpeg" width="200">
 
 The custom operator is implemented as follows:
 

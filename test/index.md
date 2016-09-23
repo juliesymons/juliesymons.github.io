@@ -12,7 +12,7 @@ for testing
 
 <img src="../programmingGuide/img/image12.jpeg" width="100">
 
-<img width="pixels">
+<img src="../programmingGuide" width="pixels">
 
 <img src="../programmingGuide/image12.jpg" style="width: 50%; height: 50%"/>
 
@@ -21,3 +21,10 @@ img[alt="minipic"] {
   max-width:  150px; 
   display: block;
 }
+
+img{
+    width:100%;
+    max-width:600px;
+}
+
+<img src="../programmingGuide/image12.jpg" alt="Drawing" style="width: 100px;"/>

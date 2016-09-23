@@ -12,9 +12,9 @@ for testing
 
 <img src="../programmingGuide/img/image12.jpeg" width="100">
 
-<img src="../programmingGuide" width="pixels">
+<img src="../programmingGuide/img/image12.jpeg" width="pixels">
 
-<img src="../programmingGuide/image12.jpg" style="width: 50%; height: 50%"/>
+<img src="../programmingGuide/img/image12.jpeg" style="width: 50%; height: 50%"/>
 
 ![minipic](../programmingGuide/img/image12.jpeg)
 img[alt="minipic"] { 
@@ -27,4 +27,4 @@ img{
     max-width:600px;
 }
 
-<img src="../programmingGuide/image12.jpg" alt="Drawing" style="width: 100px;"/>
+<img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 100px;"/>

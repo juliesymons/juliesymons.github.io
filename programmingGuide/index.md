@@ -1047,6 +1047,15 @@ It produces the following result:
 ![](./img/image12.jpeg) { width: 200px; }
 <img src="./img/image12.jpeg" width="200">
 
+<img src="./img/image12.jpeg" width="100">
+
+![minipic](./img/image12.jpeg)
+img[alt="minipic"] { 
+  max-width:  150px; 
+  display: block;
+}
+
+
 The custom operator is implemented as follows:
 
     /** Operator to flip a 2D scalar field upside down. */

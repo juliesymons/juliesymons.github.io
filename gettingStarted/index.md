@@ -28,8 +28,7 @@ The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep
 The CCT platform is software platform for developing-massively parallel applications that execute on multi-core processors such as GPUs. CCT differs from most other parallel programming paradigms (such as MPI, actors, transactional memory) by exposing the parallelism implicitly in the programming model rather than through explicit mechanisms and data structures. The model contains no threads, locks, message queues, critical sections, or races. It is a deterministic, massively-parallel programming model. It is also a declarative dataflow programming model, meaning that a CCT application describes the structure of the computation, not sequential actions.
 
 For more detailed information, a draft of the CCT programming guide is available
-[here](http://hpe-cct.github.io/docs/CogProgrammingTutorial_4_1.pdf). Note that
-this is an early document, and still refers to CCT by its original internal
+[here](../programmingGuide). Note that this is an early document, and still refers to CCT by its original internal
 working name (Cog ex Machina or Cog).
 
 ### Language
@@ -258,7 +257,7 @@ The following tutorial examples demonstrate the use of the feedback operator: [C
 
 The CCT Toolkit is optimized for writing massiely-parallel programming on GPUs without the need to write low-level GPU kernels in CUDA or OpenCL. While there are many built-in operators already provided, there may still be other computations required that cannot be expressed by combining existing operators. For this the CCT Toolkit provides the capability for user-defined GPU operators through its *GPUOperators* API. *GPUOperators* provides a high-level, domain-specific language (DSL) for writing GPU kernels. This facility is recommended for more advanced users who have some familiarity with GPU hardware architecture and perofrmance issues.  
 
-*GPUOperators* is described in a separate document, *User-defined GPU Operators* document available [here](https://github.com/hpe-cct/cct-core/tree/master/doc/UserGPUOperators.docx).
+*GPUOperators* is described in a separate document, *User-defined GPU Operators* document available [here](../userGPUOperators).
 
 ### User-defined CPU Operators
 
@@ -266,7 +265,7 @@ The operators covered so far are compiled to execute on GPUs or some other multi
 
 A CPU operator is a useful way to develop and test a new operator. These are easier to debug than GPU operators. Another case when a CPU operator is useful is if you have an operation in the middle of a compute graph that needs to get a value from a Java library. If the operation is at the beginning of the compute graph, then a sensor is recommended as the best wayto get the data into the compute graph.
 
-CPU operators are described in the "User-defined operators" section (4.17) of the [CCT programming guide](https://hpe-cct.github.com/docs/CogProgrammingTutorial_4_1.pdf).
+CPU operators are described in the "User-defined operators" section (4.17) of the [CCT programming guide](../programmingGuide).
 
 
 ## Coming Soon

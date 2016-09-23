@@ -1483,7 +1483,7 @@ options.
 
 ![](./img/image19.png)
 
-Visualizing Field Contents
+### Visualizing Field Contents
 
 The last pane of the debugger is the **Probe Desktop**. This is where the
 visualizations for fields will appear when a field vertex or button is

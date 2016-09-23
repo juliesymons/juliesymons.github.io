@@ -20,13 +20,10 @@ To get started, you’ll need a machine with a relatively current NVIDIA GPU and
 1.8 JDK installed. While CCT emits OpenCL GPU kernels and thus may run on AMD or
 Intel GPUs as well, these are not regularly tested hardware configurations.
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) is the recommended option for a
-development environment.
+development environment. For more detailed
+installation instructions go to [Download and Setup](./downloadAndSetup/index.md).
 
-The free Community Edition of IntelliJ is sufficient. Once you have IntelliJ
-installed, you just need to install the Scala plugin from the IntelliJ plugin
-manager. That will give you a full development environment for CCT applications.
-IntelliJ will pull in all necessary dependencies automatically.  For more detailed
-installation instructions go to [Download and Setup](https://github.com/hpe-cct/cct-tutorial/blob/master/DownloadAndSetup.md).
+## The CCT Tutorial
 
 The [Getting Started](GettingStarted.md) page provides an introduction to the CCT platform using examples from the `cct-tutorial`.
 
@@ -35,7 +32,7 @@ A draft of the CCT programming guide is available
 this is an early document, and still refers to CCT by its original internal
 working name (Cog ex Machina or Cog).
 
-## API Documentation
+## CCT API Documentation
 
 CCT includes four user-visible components. The core provides the compiler, runtime, visual debugger, and standard library. 
 The I/O library includes several useful sensors for standard data types. This is a separate module becuase it has significant

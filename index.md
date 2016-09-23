@@ -21,7 +21,7 @@ To run CCT, you’ll need a machine with a relatively current NVIDIA GPU and a
 Intel GPUs as well, these are not regularly tested hardware configurations.
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) is the recommended option for a
 development environment. For more detailed
-installation instructions go to [Download and Setup](./downloadAndSetup/index.md).
+installation instructions go to [Download and Setup](./downloadAndSetup).
 
 ## The CCT Tutorial
 

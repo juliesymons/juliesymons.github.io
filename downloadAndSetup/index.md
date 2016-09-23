@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Download and Set up Instructions"
+title: "CCT Download and Set up Instructions"
 ---
 
 <h1>{{ page.title }}</h1>

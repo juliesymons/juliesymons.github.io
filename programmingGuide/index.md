@@ -1044,21 +1044,7 @@ operator:
 
 It produces the following result:
 
-![](./img/image12.jpeg) { width: 200px; }
-<img src="./img/image12.jpeg" width="200">
-
-<img src="./img/image12.jpeg" width="100">
-
-<img width="pixels">
-
-<img src="image.jpg" style="width: 50%; height: 50%"/>
-
-![minipic](./img/image12.jpeg)
-img[alt="minipic"] { 
-  max-width:  150px; 
-  display: block;
-}
-
+![](./img/image12.jpeg) 
 
 The custom operator is implemented as follows:
 

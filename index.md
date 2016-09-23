@@ -6,7 +6,7 @@ title: HPE Cognitive Computing Toolkit
 
 GPU-accelerated cognitive computing and deep learning platform from Hewlett Packard Enterprise
 
-# CCT Tutorial
+# About
 
 The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep
 learning and other advanced analytics. It provides an embedded domain-specific

@@ -265,7 +265,7 @@ The operators covered so far are compiled to execute on GPUs or some other multi
 
 A CPU operator is a useful way to develop and test a new operator. These are easier to debug than GPU operators. Another case when a CPU operator is useful is if you have an operation in the middle of a compute graph that needs to get a value from a Java library. If the operation is at the beginning of the compute graph, then a sensor is recommended as the best wayto get the data into the compute graph.
 
-CPU operators are described in the "User-defined operators" section (4.17) of the [CCT programming guide](../programmingGuide).
+CPU operators are described in the [User-defined operators](../programmingGuide/#user-defined-operators) section *CCT Programming Guide.
 
 
 ## Coming Soon

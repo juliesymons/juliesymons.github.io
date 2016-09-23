@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Getting Started"
+title: "Getting Started With CCT"
 ---
 
 <h1>{{ page.title }}</h1>

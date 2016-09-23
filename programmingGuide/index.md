@@ -1049,6 +1049,10 @@ It produces the following result:
 
 <img src="./img/image12.jpeg" width="100">
 
+<img width="pixels">
+
+<img src="image.jpg" style="width: 50%; height: 50%"/>
+
 ![minipic](./img/image12.jpeg)
 img[alt="minipic"] { 
   max-width:  150px; 

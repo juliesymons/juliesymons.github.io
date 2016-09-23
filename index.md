@@ -6,7 +6,7 @@ title: HPE Cognitive Computing Toolkit
 
 GPU-accelerated cognitive computing and deep learning platform from Hewlett Packard Enterprise
 
-# About
+# About CCT
 
 The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep
 learning and other advanced analytics. It provides an embedded domain-specific
@@ -16,7 +16,7 @@ powerful for applications that require combining deep learning techniques with
 more conventional signal processing or computer vision algorithms. The CCT DSL
 lives inside the Scala language, on top of the Java Virtual Machine (JVM).
 
-To get started, you’ll need a machine with a relatively current NVIDIA GPU and a
+To run CCT, you’ll need a machine with a relatively current NVIDIA GPU and a
 1.8 JDK installed. While CCT emits OpenCL GPU kernels and thus may run on AMD or
 Intel GPUs as well, these are not regularly tested hardware configurations.
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) is the recommended option for a

@@ -1044,7 +1044,7 @@ operator:
 
 It produces the following result:
 
-![](./img/image12.jpeg = 200x)
+![](./img/image12.jpeg =200x)
 
 The custom operator is implemented as follows:
 

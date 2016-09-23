@@ -59,7 +59,7 @@ available
     *  You can then double click on any field in the left panel, such as "suspicious". 
     *  And then click *Run*.
 
-Now you are ready for the next step, [Getting Started](https://github.com/hpe-cct/cct-tutorial/blob/master/README.md). (Note: this is just a place holder link for now)
+Now you are ready for the next step, [Getting Started](../gettingStarted). (Note: this is just a place holder link for now)
 
 <h2 id="gotchas">Common Problems</h2>
 1.  **Problem:**  The BackgroundSubtraction application has an error loading the courtyard.mp4 file.

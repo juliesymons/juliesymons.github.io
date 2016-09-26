@@ -12,3 +12,7 @@ for testing
 
 
 <img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 100px;"/>
+
+<img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 200px;"/>
+<img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 300px;"/>
+

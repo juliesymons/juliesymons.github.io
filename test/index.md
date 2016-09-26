@@ -7,24 +7,8 @@ title: HPE Cognitive Computing Toolkit
 
 for testing
 
-![](../programmingGuide/img/image12.jpeg) { width: 200px; }
-<img src="../programmingGuide/img/image12.jpeg" width="200">
-
-<img src="../programmingGuide/img/image12.jpeg" width="100">
-
-<img src="../programmingGuide/img/image12.jpeg" width="pixels">
-
 <img src="../programmingGuide/img/image12.jpeg" style="width: 50%; height: 50%"/>
 
-![minipic](../programmingGuide/img/image12.jpeg)
-img[alt="minipic"] { 
-  max-width:  150px; 
-  display: block;
-}
 
-img{
-    width:100%;
-    max-width:600px;
-}
 
 <img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 100px;"/>

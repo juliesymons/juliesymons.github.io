@@ -8,6 +8,8 @@ title: HPE Cognitive Computing Toolkit
 for testing
 
 <img src="../programmingGuide/img/image12.jpeg" style="width: 50%; height: 50%"/>
+<img src="../programmingGuide/img/image12.jpeg" style="width: 50%; height: 75%"/>
+<img src="../programmingGuide/img/image12.jpeg" style="width: 50%; height: 85%"/>
 
 
 

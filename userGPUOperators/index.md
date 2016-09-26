@@ -46,7 +46,7 @@ describes *GPUOperators*, which provide that functionality.
 *   [Blocks](#blocks)
 *   [GPU Functions](#gpu-functions)
 *   [Reading and Writing Tensor Fields](#reading-and-writing-tensor-fields)
-*   [Cog Primitives](#cog-primatives)
+*   [Cog Primitives](#cog-primitives)
      * [Thread Allocation](#thread-allocation)
      * [Thread Organization Constants](#thread-organization-constants)
      * [Thread Identity Constants](#thread-identity-constants)

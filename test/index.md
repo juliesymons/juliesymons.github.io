@@ -11,10 +11,11 @@ for testing
 <img src="../programmingGuide/img/image12.jpeg" style="width: 75%; height: 75%"/>
 <img src="../programmingGuide/img/image12.jpeg" style="width: 85%; height: 85%"/>
 
+<img src="../programmingGuide/img/image12.jpeg" style="width: 90%"/>
+
 
 
 <img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 100px;"/>
-
 <img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 200px;"/>
 <img src="../programmingGuide/img/image12.jpeg" alt="Drawing" style="width: 300px;"/>
 

@@ -1045,6 +1045,7 @@ operator:
 It produces the following result:
 
 ![](./img/image12.jpeg) 
+<img src="./img/image12.jpeg" style="width: 80%"/>
 
 The custom operator is implemented as follows:
 
@@ -1111,6 +1112,7 @@ phase 1 clock followed by a phase 2 clock.
 Thus a more detailed view of the computation looks like this:
 
 ![](./img/diagram7.png)
+<img src="./img/diagram7.png" style="width: 80%"/>
 
 When the `ComputeGraph` is reset, each sensor fills its master buffer with
 initial data. It then executes a single computational step to “prime”
@@ -1395,6 +1397,7 @@ passed along them in clock phase 2 ([Probing Fields](#probing-fields)). Note tha
 the debugger consists of both clock phases.
 
 ![](./img/image16.png)
+<img src="./img/image16.png" style="width: 70%"/>
 
 Any vertex in the graph can be clicked to launch the default
 visualization for the associated field. The visualization appears on the
@@ -1455,6 +1458,7 @@ To see the modules into which a compute graph can be divided, click the
 **Show Modules**.
 
 ![](./img/image17.png)
+<img src="./img/image17.png" style="width: 70%"/>
 
 In this mode, the view is focused on a single module at a time,
 indicated on the secondary toolbar (that only displays in this mode).
@@ -1482,6 +1486,7 @@ corresponding field, while right-clicking presents all available
 options.
 
 ![](./img/image19.png)
+<img src="./img/image19.png" style="width: 50%"/>
 
 ### Visualizing Field Contents
 

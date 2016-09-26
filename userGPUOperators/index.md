@@ -26,7 +26,7 @@ describes *GPUOperators*, which provide that functionality.
      * [Single output, small tensor field operators](#single-output-small-tensor-field-operators)
      * [Multiple outputs, small tensor field operators](#multiple-outputs-small-tensor-field-operators)
      * [Big tensor field operator](#big-tensor-field-operator)
-     * [Big / small tensor field operator](#big-small)
+     * [Big / small tensor field operator](#big--small-tensor-field-operator)
      * [Rules for reading and writing](#rules-for-reading-and-writing)
      * [GPU threads and workgroups](#gpu-threads-and-workgroups)
 *   [Variable Declarations](#variable-declarations)

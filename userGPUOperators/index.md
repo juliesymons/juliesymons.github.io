@@ -82,18 +82,82 @@ handle both big and small tensor fields.
 Here’s an example of a user-written GPU kernel that divides every
 element of an input (small) tensor field by 2 and outputs the result:
 
+    def half(input: Field): Field =
+      GPUOperator(input.fieldType) { 
+      _writeTensor(_out0, _readTensor(input) / 2.0f)
+    }
+
 Once defined, it can be invoked like a function:
+
+    val s: ScalarField = ...
+    val sHalf = half(s)    // Scalar field with elements divided by 2
 
 The same function can be used on other small tensor field types as well,
 even color fields, as long as the tensors are small (no more than 4
 elements per tensor):
 
+    val s: ScalarField
+    val v: VectorField
+    val m: MatrixField
+    val c: ColorField
+
+    val sHalf = half(s)    // Scalar field result
+    val vHalf = half(v)    // Vector field result
+    val mHalf = half(m)    // Matrix field result
+    val cHalf = half(c)    // Color field result
+
 The synthesized OpenCL code for the half GPUOperator applied to a 512 x
 512 scalar field would look something like this:
+
+    // OpenCL code for half GPUOperator
+    __kernel void half_11(
+        __global const float *_in_field_0,
+        __global float *_out_field_0)
+    {
+        // Field parameters for _in_field_0 ScalarField( 512 512 )
+        const int _in_field_0_rows = 512;
+        const int _in_field_0_columns = 512;
+        const int _in_field_0_tensorElements = 1;
+        const int _in_field_0_layerStride  = 262144;
+        const int _in_field_0_rowStride  = 512;
+        const int _in_field_0_tensorStride = 0;
+
+        // Field parameters for _out_field_0 ScalarField( 512 512 )
+        const int _out_field_0_rows = 512;
+        const int _out_field_0_columns = 512;
+        const int _out_field_0_tensorElements = 1;
+        const int _out_field_0_layerStride  = 262144;
+        const int _out_field_0_rowStride  = 512;
+        const int _out_field_0_tensorStride = 0;
+
+        // Work-group-determining field parameters ScalarField( 512 512 )
+        const int _rows = 512;
+        const int _columns = 512;
+        const int _tensorElements = 1;
+
+        // Prolog
+        const int _column = get_global_id(0);
+        const int _row = get_global_id(1);
+        const int _tensorElement = 0;
+        int layer = 0, row = 0, column = 0, tensorElement = 0;
+        if (_row >= _rows || _column >= _columns)
+            return;
+
+        // Code fragment
+        float _temp_1;
+        {
+            _temp_1 = in_field_0[_row * _in_field_0_rowStride + _column] / 2.0f;
+        }
+
+        // Output fragment
+        _out_field_0[_row * _out_field_0_rowStride + _column] = _temp_1;
+    }
 
 As you can see, the GPUOperator code is simpler and more abstract, and
 hides the low-level boilerplate required by OpenCL. Note that this same
 function can be performed more simply using the existing API:
+
+    val sHalf = s / 2.0f
 
 The real value of GPUOperators comes with its flexibility to handle more
 complicated operations such as those requiring tiled processing.
@@ -110,6 +174,11 @@ The simplest GPUOperator works only with “small tensor” fields, and
 writes a single output tensor field. Let’s start with that by going back
 to the original half GPUOperator example and dissect it:
 
+    def half(input: Field): Field =
+      GPUOperator(input.fieldType) { 
+        _writeTensor(_out0, _readTensor(input) / 2.0f)
+    }
+
 The input parameter to the GPUOperator function is the type of the
 desired output field. Here the output field is defined to be of the same
 type as the input field, whatever that happens to be. This saves a lot
@@ -123,26 +192,26 @@ parallel. For example, if the output field is a 512 x 512 vector field,
 the GPUOperator will allocate 512 x 512 = 262,144 GPU threads to
 implement the function.
 
-The \_readTensor function reads a single tensor from the input field.
-When called with a single Field parameter like this, \_readTensor uses
+The `_readTensor` function reads a single tensor from the input field.
+When called with a single Field parameter like this, `_readTensor` uses
 implicit addressing to determine which tensor to read. In this case it
 reads the location in the input field corresponding to the location in
 the output field written by the current thread.
 
-The first argument of the \_writeTensor function is the output field to
+The first argument of the `_writeTensor` function is the output field to
 be written. In this case there is only one output field and the system
-gives it the name \_out0. The second argument is the tensor value to be
+gives it the name `_out0`. The second argument is the tensor value to be
 written. Since there are no explicit address arguments here,
-\_writeTensor also uses implicit addressing to determine where the
+`_writeTensor` also uses implicit addressing to determine where the
 tensor value is to be written. The implicit addresses are the same for
-both \_readTensor and \_writeTensor, so the half operator transforms
+both `_readTensor` and `_writeTensor`, so the half operator transforms
 each tensor from the input and writes it to the corresponding location
-in the output. The \_writeTensor statement must be the last statement in
+in the output. The `_writeTensor` statement must be the last statement in
 a code block; including another statement after it will generate a
-compile error. (However, it is possible to include \_write statements
+compile error. (However, it is possible to include `_write` statements
 within the code under certain circumstances. See section 2.5.)
 
-Note that a leading underscore, \_, appears on all supplied functions in
+Note that a leading underscore, `_`, appears on all supplied functions in
 GPU operators. This prevents collisions with similar Scala keywords and
 functions, and also reminds you that you are writing code that will run
 on a GPU.
@@ -154,13 +223,21 @@ operator that takes one input field and writes an output field where
 every element is half the input, and a second output field where every
 element is double the input:
 
+    def halfDouble(input: Field): Field =
+      GPUOperator(input.fieldType, input.fieldType) { 
+        val in = _tensorVar(input)
+        in := _readTensor(input)
+        _writeTensor(_out0, in / 2.0f)
+        _writeTensor(_out1, in * 2.0f)
+      }
+
 Since we’re writing two output fields, the GPUOperator function here
 requires two parameters specifying the types of the output fields. The
-output fields are named \_out0 and \_out1.
+output fields are named `_out0` and `_out1`.
 
-As before, \_writeTensor functions are used to write the output tensors.
+As before, `_writeTensor` functions are used to write the output tensors.
 They may be written in any order since the first parameter describes the
-field to be written. But the \_writeTensor statements must be the last
+field to be written. But the `_writeTensor` statements must be the last
 statements in the operator body; including another statement between
 them or after them will generate a compile error.
 
@@ -176,32 +253,43 @@ tensor has more than 4 elements. In that case we cannot deal with whole
 tensors (because of register pressure in the GPU). Let’s start off with
 an example of squaring every vector element in a “big” vector field:
 
-The \_forEachTensorElement statement takes a single argument: the Shape
+    // Square every element in a big vector field
+
+    def square(v: VectorField): VectorField =
+      GPUOperator(v.fieldType) {
+        _forEachTensorElement(v.tensorShape) {
+          val element = _tensorElementVar(v)
+          element := _readTensorElement(v)
+          _writeTensorElement(_out0, element * element, _tensorElement)
+        } 
+      } 
+
+The `_forEachTensorElement` statement takes a single argument: the Shape
 of the big tensors to be processed. This acts like a loop, iterating on
 the code within the curly braces, once for each element of the tensor.
-Each iteration of the loop body defines a constant, \_tensorElement,
+Each iteration of the loop body defines a constant, `_tensorElement`,
 which is the index of the tensor element for that iteration. Note that
-\_tensorElement is an integer; tensors are implicitly flattened in
-row-major order when indexed by \_tensorElement. The code body in this
+`_tensorElement` is an integer; tensors are implicitly flattened in
+row-major order when indexed by `_tensorElement`. The code body in this
 case reads a single tensor element into the element variable, squares it
 and writes the squared result to the output field. The
-\_writeTensorElement function writes to output field \_out0 with the
-value element \* element. Both functions, \_readTensorElement and
-\_writeTensorElement use implicit addressing for both the field location
+`_writeTensorElement` function writes to output field `_out0` with the
+value element `*` element. Both functions, `_readTensorElement` and
+`_writeTensorElement` use implicit addressing for both the field location
 and the tensor element being written or read. Since the loop implied by
-\_forEachTensorElement runs over all tensor elements of the input and
+`_forEachTensorElement` runs over all tensor elements of the input and
 output, the output tensor is fully specified.
 
 There are three rules that must be followed in writing such “big tensor”
 operators:
 
-1.  The \_forEachTensorElement statement must be the *first* statement
+1.  The `_forEachTensorElement` statement must be the *first* statement
     *executed* in any given instance of a GPUOperator.
 
-2.  No *executed* statement may follow a \_forEachTensorElement
+2.  No *executed* statement may follow a `_forEachTensorElement`
     code block.
 
-3.  The \_readTensor and \_writeTensor functions are not valid in this
+3.  The `_readTensor` and `_writeTensor` functions are not valid in this
     mode and will generate compile errors if used.
 
 ### Big / small tensor field operator
@@ -211,7 +299,26 @@ on all tensor fields, big or small, without a user having to worry about
 the tensor size. This can be done, while respecting the above three
 rules, like this:
 
-The “if (isBigTensor…)” code runs in Scala, not on the GPU, so it does
+    // Square every element in a BIG OR SMALL vector field
+
+    def square(v: VectorField): VectorField =
+      GPUOperator(v.fieldType) {
+        if (isBigTensor(v.fieldType.tensorShape)) {
+          // Big tensor kernel
+          _forEachTensorElement(v.tensorShape) {
+            val element = _tensorElementVar(v)
+            element := _readTensorElement(v, _tensorElement))
+            _writeTensorElement(_out0, element * element, _tensorElement)
+          }
+        } else {
+          // Small tensor kernel
+          val tensor = _tensorVar(v)
+          tensor := _readTensor(v)
+          _writeTensor(_out0, tensor * tensor)
+        } 
+      }
+
+The “`if (isBigTensor…)`” code runs in Scala, not on the GPU, so it does
 not count as an *executable* statement on the GPU. The square operator
 above will generate one of two very different GPU kernels, depending on
 the size of the tensors in the input field. This tactic allows you to
@@ -219,8 +326,10 @@ create general-purpose GPUOperators that work for all tensor sizes.
 
 ### Rules for reading and writing
 
-The following table summarizes the legal \_read and \_write operations
+The following table summarizes the legal `_read` and `_write` operations
 for both small tensor and big tensor addressing:
+
+*insert table here*
 
 Here are general guidelines for writing efficient GPU operators:
 
@@ -229,20 +338,17 @@ Here are general guidelines for writing efficient GPU operators:
 >
 > 2\. *Non-local* writes and reads of any kind preclude kernel fusion,
 > possibly resulting in lower performance. Avoid them if possible:
->
-> \_writeTensor(\_out0, value) // local, efficient
->
-> \_readTensor(field) // local, efficient
->
-> \_writeTensor(\_out0, value, row, column) // nonlocal, less efficient
->
-> \_readTensor(field, row, column) // nonlocal, less efficient
->
+
+   `_writeTensor(_out0, value)              // local, efficient`
+   `_readTensor(field)                      // local, efficient`
+   `_writeTensor(_out0, value, row, column) // nonlocal, less efficient`
+   `_readTensor(field, row, column)         // nonlocal, less efficient`
+
 > 3\. The most efficient operator is a small tensor operator with a single
-> \_writeTensor() function call as its final statement.
+> `_writeTensor()` function call as its final statement.
 >
 > 4\. It is legal to process big tensor fields in small tensor operators
-> using \_readTensorElement() and \_writeTensorElement() functions.
+> using `_readTensorElement()` and `_writeTensorElement()` functions.
 
 ### GPU threads and workgroups
 

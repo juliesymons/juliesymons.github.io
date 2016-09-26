@@ -1044,7 +1044,7 @@ operator:
 
 It produces the following result:
 
-<img src="./img/image12.jpeg" style="width: 75%"/>
+<img src="./img/image12.jpeg" style="width: 70%"/>
 
 The custom operator is implemented as follows:
 
@@ -1099,14 +1099,14 @@ computation. External data is brought in to the computation through
 sensors, transformed by field computations, then written back out
 through actuators.
 
-![](./img/diagram5.png)
+<img src="./img/diagram5.png" style="width: 75%"/>
 
 Each sensor or actuator contains two buffers, called the master and
 slave, and behaves much like a master-slave flip-flop. Computation uses
 a 2-phase clocking model, where each computational step consists of a
 phase 1 clock followed by a phase 2 clock.
 
-![](./img/diagram6.png)
+<img src="./img/diagram6.png" style="width: 75%"/>
 
 Thus a more detailed view of the computation looks like this:
 
@@ -1150,7 +1150,7 @@ phase 1. The convolve operator depends on the result of the `+` operator,
 so it waits for that to complete, then performs the convolution of that
 sum with the data from Sensor C.
 
-![](./img/diagram8.png)
+<img src="./img/diagram8.png" style="width: 75%"/>
 
 Here’s a Cog program that implements the computation shown in the
 previous figure:
@@ -1177,7 +1177,7 @@ cycle. A “constant” field which its value changed each cycle by the
 Constant fields and recurrences alter the feed-forward compute model
 only slightly:
 
-![](./img/diagram9.png)
+<img src="./img/diagram9.png" style="width: 75%"/>
 
 Constant fields and recurrences are treated as inputs to the field
 computation just like sensors. Recurrences are initially declared as
@@ -1194,7 +1194,7 @@ The change of `x`'s value, though, is not immediate but delayed until the
 following cycle. This is because recurrences have the same master/slave
 buffer structure as sensors and actuators:
 
-![](./img/diagram10.png)
+<img src="./img/diagram10.png" style="width: 75%"/>
 
 During field computation, the *slave* buffer provides the field data
 used by the computation (this slave field data is the result of the
@@ -1214,7 +1214,7 @@ the following steps:
 2.  The input slave registers then flow through field computation to the inputs of the actuator master buffers.
 3.  Finally the master buffers latch their inputs from the field computation.
 
-![](./img/diagram11.png)
+<img src="./img/diagram11.png" style="width: 75%"/>
 
 When reset has completed, all input slave buffers, fields in the field
 computation, and master buffers in actuators hold valid field data. Each
@@ -1394,7 +1394,7 @@ clock phase 1 (see [Launching the Debugger](#launching-the-debugger)). Red edges
 passed along them in clock phase 2 ([Probing Fields](#probing-fields)). Note that a ‘step’ in
 the debugger consists of both clock phases.
 
-<img src="./img/image16.png" style="width: 65%"/>
+<img src="./img/image16.png" style="width: 60%"/>
 
 Any vertex in the graph can be clicked to launch the default
 visualization for the associated field. The visualization appears on the
@@ -1454,7 +1454,7 @@ To see the modules into which a compute graph can be divided, click the
 **Graph Options** button in the graph view’s toolbar, and then select
 **Show Modules**.
 
-<img src="./img/image17.png" style="width: 70%"/>
+<img src="./img/image17.png" style="width: 65%"/>
 
 In this mode, the view is focused on a single module at a time,
 indicated on the secondary toolbar (that only displays in this mode).
@@ -1481,7 +1481,7 @@ left-clicking a button opens the default visualization for the
 corresponding field, while right-clicking presents all available
 options.
 
-<img src="./img/image19.png" style="width: 45%"/>
+<img src="./img/image19.png" style="width: 40%"/>
 
 ### Visualizing Field Contents
 

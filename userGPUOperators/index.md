@@ -22,9 +22,9 @@ describes *GPUOperators*, which provide that functionality.
 ## Table Of Contents
 
 *   [Overview](#overview)
-*   [Programming Model[(#programming-model)
-     * [Single output, small tensor field operators](#single-output)
-     * [Multiple outputs, small tensor field operators](#multiple-outputs)
+*   [Programming Model](#programming-model)
+     * [Single output, small tensor field operators](#single-output-small-tensor-field-operators)
+     * [Multiple outputs, small tensor field operators](#multiple-outputs-small-tensor-field-operators)
      * [Big tensor field operator](#big-tensor-field-operator)
      * [Big / small tensor field operator](#big-small)
      * [Rules for reading and writing](#rules-for-reading-and-writing)
@@ -33,12 +33,29 @@ describes *GPUOperators*, which provide that functionality.
 *   [Constants](#constants)
 *   [Vector Addressing](#vector-addressing)
 *   [Operators](#operators)
-*   [8. Built-in Functions](#8-built-in-functions)
-
-
-
-
-
+*   [Built-in Functions](#built-in-functions)
+     * [Integer Functions](#integer-functions)
+     * [Math Functions](#math-functions)
+     * [Geometric Functions](#geometric-functions)
+     * [Common Functions](#common-functions)
+     * [Relational Functions](#relational-functions)
+     * [Atomic Functions](#atomic-functions)
+     * [Vector Literal Functions](#vector-literal-functions)
+     * [Type Conversion and Reinterpreration Functions](#type-conversion-and-reinterpreration-functions)
+     * [Miscellaneous](#miscellaneous)
+ *   [Blocks](#blocks)
+ *   [GPU Functions](#gpu-functions)
+ *   [Reading and Writing Tensor Fields](#reading-and-writing-tensor-fields)
+ *   [Cog Primatives](#cog-primatives)
+      * [Thread Allocation](#thread-allocation)
+      * [Thread Organization Constants](#thread-organization-constants)
+      * [Thread Identity Constants](#thread-identity-constants)
+      * [Output Field Constants](#output-field-constants)
+ *   [Examples](#examples)
+      * [Upside-Down Operator](#upside-down-operator)
+      * [Local Memory Allocation](#local-memory-allocation)
+      * [Color Conversion](#color-conversion)
+    
 ## Overview
 
 GPUOperators provide a high-level, domain-specific language (DSL) for

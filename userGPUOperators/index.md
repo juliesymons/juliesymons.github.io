@@ -41,7 +41,7 @@ describes *GPUOperators*, which provide that functionality.
      * [Relational Functions](#relational-functions)
      * [Atomic Functions](#atomic-functions)
      * [Vector Literal Functions](#vector-literal-functions)
-     * [Type Conversion and Reinterpreration Functions](#type-conversion-and-reinterpreration-functions)
+     * [Type Conversion and Reinterpretation Functions](#type-conversion-and-reinterpretation-functions)
      * [Miscellaneous](#miscellaneous)
  *   [Blocks](#blocks)
  *   [GPU Functions](#gpu-functions)

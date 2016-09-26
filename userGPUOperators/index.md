@@ -5,6 +5,7 @@ title: User GPU Operators
 <h1>{{ page.title }}</h1>
 
 Version 12
+
 Written By: Greg Snider
 
 Cog simplifies writing massively-parallel programming by compiling
@@ -18,11 +19,27 @@ independent of intermediate GPU languages (such as OpenCL or CUDA); and
 (3) cleanly integrated with the rest of a Cog application. This document
 describes *GPUOperators*, which provide that functionality.
 
-**\
-**
+## Table Of Contents
 
-1. Overview
-===========
+*   [Overview](#overview)
+*   [Programming Model[(#programming-model)
+     * [Single output, small tensor field operators](#single-output)
+     * [Multiple outputs, small tensor field operators](#multiple-outputs)
+     * [Big tensor field operator](#big-tensor-field-operator)
+     * [Big / small tensor field operator](#big-small)
+     * [Rules for reading and writing](#rules-for-reading-and-writing)
+     * [GPU threads and workgroups](#gpu-threads-and-workgroups)
+*   [Variable Declarations](#variable-declarations)
+*   [Constants](#constants)
+*   [Vector Addressing](#vector-addressing)
+*   [Operators](#operators)
+*   [8. Built-in Functions](#8-built-in-functions)
+
+
+
+
+
+## Overview
 
 GPUOperators provide a high-level, domain-specific language (DSL) for
 writing GPU kernels. The DSL provides most of the expressiveness of both
@@ -64,15 +81,13 @@ function can be performed more simply using the existing API:
 The real value of GPUOperators comes with its flexibility to handle more
 complicated operations such as those requiring tiled processing.
 
-2. Programming Model
-====================
+## Programming Model
 
 The programming model matches OpenCL and CUDA quite closely, and it’s
 necessary to be familiar with at least one of those to be able to
 understand the rest of this document.
 
-2.1 Single output, small tensor field operators
------------------------------------------------
+### Single output, small tensor field operators
 
 The simplest GPUOperator works only with “small tensor” fields, and
 writes a single output tensor field. Let’s start with that by going back
@@ -115,8 +130,7 @@ GPU operators. This prevents collisions with similar Scala keywords and
 functions, and also reminds you that you are writing code that will run
 on a GPU.
 
-2.2 Multiple outputs, small tensor field operators
---------------------------------------------------
+### Multiple outputs, small tensor field operators
 
 A GPUOperator can also write multiple output fields. Here’s a simple
 operator that takes one input field and writes an output field where
@@ -137,8 +151,7 @@ Writing multiple output fields that differ in size or tensor shape can
 be done, but requires Cog primitives which have not yet been introduced.
 The Examples section will show some of the idioms for doing that.
 
-2.2 Big tensor field operator
------------------------------
+### Big tensor field operator
 
 Although small tensor fields are most common, sometimes you’ll need to
 process or generate tensor fields containing “big tensors,” where each
@@ -174,8 +187,7 @@ operators:
 3.  The \_readTensor and \_writeTensor functions are not valid in this
     mode and will generate compile errors if used.
 
-2.3 Big / small tensor field operator
--------------------------------------
+### Big / small tensor field operator
 
 Of course you would prefer to have a single square function that worked
 on all tensor fields, big or small, without a user having to worry about
@@ -188,8 +200,7 @@ above will generate one of two very different GPU kernels, depending on
 the size of the tensors in the input field. This tactic allows you to
 create general-purpose GPUOperators that work for all tensor sizes.
 
-2.4 Rules for reading and writing
----------------------------------
+### Rules for reading and writing
 
 The following table summarizes the legal \_read and \_write operations
 for both small tensor and big tensor addressing:
@@ -216,8 +227,7 @@ Here are general guidelines for writing efficient GPU operators:
 > 4\. It is legal to process big tensor fields in small tensor operators
 > using \_readTensorElement() and \_writeTensorElement() functions.
 
-2.5 GPU threads and workgroups
-------------------------------
+### GPU threads and workgroups
 
 Most of the time you will not have to worry about how threads and
 “workgroups” (collections of threads, called “blocks” in CUDA) are
@@ -226,8 +236,7 @@ sizes to maximize kernel fusion to improve performance. Some operations,
 though, such as reductions, require explicit thread allocation. This
 will be covered in a later section.
 
-3. Variable Declarations
-========================
+## Variable Declarations
 
 Variables in GPU kernels are created with functions and assigned to
 Scala vals. For example, the following code
@@ -281,15 +290,13 @@ Variables and arrays may also be declared to match the type of tensor
 supported, but this may be extended if and when CogX supports generic
 fields:
 
-4. Constants
-============
+## Constants
 
 Int and float constants are written using the Scala convention, e.g. “1”
 or “2.3f”. Other fundamental types, such double or short, are not yet
 supported.
 
-5. Vector Addressing
-====================
+## Vector Addressing
 
 OpenCL uses method “swizzling,” duplication and nesting to offer an
 enormous number of methods (not functions) for accessing vector
@@ -318,14 +325,12 @@ pixel.w alpha channel
 These vector methods can only be used for reading vector components, not
 writing them.
 
-6. Array Addressing
-===================
+## Array Addressing
 
 Arrays are read using Scala apply(indices). Arrays are written using the
 := operator:
 
-7. Operators
-============
+## Operators
 
 The usual C99 operators on scalars and vectors (where possible) are
 supported. To avoid conflicts with Scala, **the** = **operator is
@@ -342,15 +347,13 @@ Here’s an example of using the operators:
 
 The above would generate OpenCL code equivalent to:
 
-8. Built-in Functions
-=====================
+## Built-in Functions
 
 Most of the functions from the OpenCL 1.1 Quick Reference Card are
 supported (see
 http://www.khronos.org/files/opencl-1-1-quick-reference-card.pdf).
 
-8.1 Integer Functions
----------------------
+### Integer Functions
 
 T is type char, charn, uchar, ucharn, short, shortn, ushort, ushortn,
 int, intn, uint, uintn, long, longn, ulong, or ulongn, where n is 2, 3,
@@ -379,8 +382,7 @@ or 4. U is the unsigned version of T. S is the scalar version of T.
 
 Example:
 
-8.2 Math Functions
-------------------
+### Math Functions
 
 T is type float or floatn (or optionally double, doublen, or halfn).
 intn, uintn, and ulongn must be scalar when T is scalar.
@@ -455,8 +457,7 @@ intn, uintn, and ulongn must be scalar when T is scalar.
   T \_tgamma (T)                        Gamma function
   T \_trunc (T)                         Round to integer toward zero
 
-8.3 Geometric Functions
------------------------
+### Geometric Functions
 
 Vector types may have 2, 3, or 4 components. Optional extensions enable
 double, doublen types
@@ -511,8 +512,7 @@ double, doublen types
   floatn \_fast\_normalize (floatn p)                    
   -------------------------------------------------------------------------------
 
-8.4 Common Functions
---------------------
+### Common Functions
 
 T is type float or floatn:
 
@@ -540,8 +540,7 @@ T is type float or floatn:
   T sign(T x)                                      Sign of x
   -------------------------------------------------------------------------------------
 
-8.5 Relational Functions
-------------------------
+### Relational Functions
 
 T is type float, floatn, char, charn, uchar, ucharn, short, shortn,
 ushort, ushortn, int, intn, uint, uintn, long, longn, ulong, or ulongn
@@ -680,8 +679,7 @@ doublen.
   doublen \_select (doublen, doublen, ulongn)             
   ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-8.6 Atomic Functions
---------------------
+### Atomic Functions
 
 T is either int or uint. The first argument is a pointer to a volatile
 variable or volatile \_\_local variable or array element (Q = volatile
@@ -710,8 +708,7 @@ to the above functions:
 
 And here’s how to obtain the pointer for the first parameter:
 
-8.7 Vector Literal Functions
-----------------------------
+### Vector Literal Functions
 
 These functions create vector expressions from mixed scalar/vector
 expressions. The arguments can be a mixture of scalars and vectors, but
@@ -741,8 +738,7 @@ argument, it will be replicated as necessary to create the result.
 
 #### 
 
-8.8 Type Conversion and Reinterpretation Functions
---------------------------------------------------
+### Type Conversion and Reinterpretation Functions
 
 These functions convert or reinterpret expressions of one type to
 another type:
@@ -769,8 +765,7 @@ another type:
   float \_as\_uint3(e)          Reinterpret e as uint3
   float \_as\_uint4(e)          Reinterpret e as uint4
 
-8.9 Miscellaneous
------------------
+### Miscellaneous
 
   \_syncThreadsLocal      Barrier synchronization of work group with respect to local memory reads and writes. Note that no parentheses are used (this is a statement, not a function).
   ----------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -780,8 +775,7 @@ another type:
   \_pointerTo(variable)   Get pointer to a variable or array element. Useful only for the atomic functions.
   isBigTensor(Shape)      Returns true if the specified shape (assumed to be a tensor shape) is a “big tensor.”
 
-9. Blocks
-=========
+## Blocks
 
 Three types of blocks are supported: *for* loops, *while* loops, and
 *if* (*else*) blocks.
@@ -805,8 +799,7 @@ These can also be written more compactly:
 But the closing } must be followed by a newline (or comment) in every
 case.
 
-10. GPU Functions
-=================
+## GPU Functions
 
 GPUOperators can also be built using smaller, reusable *GPU functions*.
 Such functions are just Scala functions that return one of three GPU
@@ -829,8 +822,7 @@ offer any performance benefits. GPU compilers inline all functions
 anyway, so ultimately a GPUOperator gets compiled down to a single GPU
 kernel that makes no function calls.
 
-11. Reading and Writing Tensor Fields
-=====================================
+## Reading and Writing Tensor Fields
 
 Small tensors are read as float, float2, float3, or float4, regardless
 of the actual tensor shape. For example, a length 4 vector and a 2x2
@@ -935,8 +927,7 @@ but a complex tensor element is represented by a \_float2. The first
 element of the \_float2 is the real part, the second is the imaginary
 part. ComplexVectorFields are not yet supported.
 
-12. Cog Primitives
-==================
+## Cog Primitives
 
 Cog primitives in GPUOperators provide:
 
@@ -947,8 +938,7 @@ Cog primitives in GPUOperators provide:
 3.  Constants that describe thread grouping (work groups) and
     thread identity.
 
-12.1 Thread Allocation
-----------------------
+### Thread Allocation
 
 Cog will assign default thread work group sizes to any GPUOperator that
 you write, and most of the time they will be appropriate. However, some
@@ -1021,8 +1011,7 @@ of the actual global work group size is handled automatically.
 Any calls to these functions must be done in the GPUOperator before any
 *executable* code is programmed:
 
-12.2 Thread Organization Constants
-----------------------------------
+### Thread Organization Constants
 
 The following constants describe the shape of the work field:
 
@@ -1037,8 +1026,7 @@ The following constants describe the shape of the work field:
 
 #### 
 
-12.3 Thread Identity Constants
-------------------------------
+### Thread Identity Constants
 
 Each thread is assigned a single tensor location in the output field and
 is provided with the following thread-private constants:
@@ -1057,8 +1045,7 @@ is provided with the following thread-private constants:
 
 #### 
 
-12.4 Output Field Constants
----------------------------
+### Output Field Constants
 
 These constants name output fields, necessary for multi-output
 operators. The maximum number of output fields is 10.
@@ -1070,13 +1057,11 @@ operators. The maximum number of output fields is 10.
   ...      ...
   \_out9   Tenth output field
 
-13. Examples
-============
+## Examples
 
 This section shows a few examples of GPUOperator programming.
 
-13.1 Upside-Down Operator
--------------------------
+### Upside-Down Operator
 
 This first example shows how to flip a 2D field upside down. Here’s the
 GPUOperator code:
@@ -1100,8 +1085,7 @@ Here’s the result of running this operator:
 
 ![](./media/image3.png){width="6.4in" height="3.4612904636920385in"}
 
-13.2 Local Memory Allocation
-----------------------------
+### Local Memory Allocation
 
 The second example is more advanced and shows how to allocate local
 memory which is shared by all the threads in a work group. The core
@@ -1118,8 +1102,7 @@ calling this:
 The above GPUOperator, though doing nothing useful, illustrates the
 thread-local constants and idioms for handling local memory.
 
-13.3 Color Conversion
----------------------
+### Color Conversion
 
 This example actually does something useful: it converts an RGB image to
 the CIELab format. CIELab more closely models human vision than RGB and

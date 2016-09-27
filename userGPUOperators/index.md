@@ -489,12 +489,12 @@ supported (see http://www.khronos.org/files/opencl-1-1-quick-reference-card.pdf)
 
 ### Integer Functions
 
-T is type char, charn, uchar, ucharn, short, shortn, ushort, ushortn,
-int, intn, uint, uintn, long, longn, ulong, or ulongn, where n is 2, 3,
+T is type `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, `short`*n*, `ushort`, `ushort`*n*,
+`int`, `int`*n*, `uint`, `uint`*n*, `long`, `long`*n*, `ulong`, or `ulong`*n*, where n is 2, 3,
 or 4. U is the unsigned version of T. S is the scalar version of T.
 
-| Scalar type | Vector type (n = 2, 3, 4) | Description |
 
+| --- | --- |
 |  U \_abs (T x)  |                 \|x\|   |
 |  U \_abs\_diff (T x, T y)  |      \| x – y \| without modulo overflow |
 |  T \_add\_sat (T x, T y)  |       x + y and saturates the result  |

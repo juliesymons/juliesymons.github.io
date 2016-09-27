@@ -334,13 +334,12 @@ Here are general guidelines for writing efficient GPU operators:
 1. Small tensor operators are generally more efficient than big tensor operators.
 2. *Non-local* writes and reads of any kind preclude kernel fusion, possibly resulting in lower performance. Avoid them if possible:
 
-       _writeTensor(_out0, value)              // local, efficient
-       
+       ~~~~
+       _writeTensor(_out0, value)              // local, efficient 
        _readTensor(field)                      // local, efficient
-       
        _writeTensor(_out0, value, row, column) // nonlocal, less efficient
-       
        _readTensor(field, row, column)         // nonlocal, less efficient
+       ~~~~
 
 3. The most efficient operator is a small tensor operator with a single `_writeTensor()` function call as its final statement.
 4. It is legal to process big tensor fields in small tensor operators using `_readTensorElement()` and `_writeTensorElement()` functions.

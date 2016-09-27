@@ -436,18 +436,19 @@ where componentExpression is something like x or xy. Some examples:
 See the OpenCL 1.1 Specification for details. GPUOperators support the
 following vector component methods:
 
-![](./media/image1.emf){width="6.363888888888889in"
-height="1.5185356517935258in"}
-
+    x y z w
+    xx xy xz xw yx yy yz yw zx zy zz zw wx wy wz ww
+    xxx xxy xxz xxw yxx yxy yxz yxw zxx zxy zxz zxw wxx wxy wxz wxw
+    xyx xyy xyz xyw yyx yyy yyz yyw zyx zyy zyz zyw wyx wyy wyz wyw
+    xzx xzy xzz xzw yzx yzy yzz yzw zzx zzy zzz zzw wzx wzy wzz wzw
+    xwx xwy xwz xww ywx ywy ywz yww zwx zwy zwz zww wwx wwy wwz www
+    
 Cog uses an RGBA format for color fields, thus
 
-pixel.x red channel
-
-pixel.y green channel
-
-pixel.z blue channel
-
-pixel.w alpha channel
+    pixel.x red channel
+    pixel.y green channel
+    pixel.z blue channel
+    pixel.w alpha channel
 
 These vector methods can only be used for reading vector components, not
 writing them.

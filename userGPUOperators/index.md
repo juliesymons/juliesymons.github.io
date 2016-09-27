@@ -366,8 +366,8 @@ Scalars for other scalar types are declared in the same way. The following scala
 
 Scalar type | Vector type | Description
             | (n = 2, 3, 4) |
---- | --- | ---
-`boolVar()`  |  | true(1) or false(0) 
+-------- | -------- | --------
+`_boolVar()`  |  | true(1) or false(0) 
 `_charVar()` | `char`*n*`Var()` | 8-bit signed
 `_ucharVar()` | `_uchar`*n*`Var()` | 8-bit unsigned
 `_shortVar()` | `_short`*n*`Var()` | 16-bit signed

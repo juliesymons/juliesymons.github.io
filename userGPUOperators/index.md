@@ -445,41 +445,48 @@ following vector component methods:
     
 Cog uses an RGBA format for color fields, thus
 
-    pixel.x red channel
-    pixel.y green channel
-    pixel.z blue channel
-    pixel.w alpha channel
+    pixel.x -> red channel
+    pixel.y -> green channel
+    pixel.z -> blue channel
+    pixel.w -> alpha channel
 
 These vector methods can only be used for reading vector components, not
 writing them.
 
 ## Array Addressing
 
-Arrays are read using Scala apply(indices). Arrays are written using the
-:= operator:
+Arrays are read using Scala `apply(indices)`. Arrays are written using the
+`:=` operator:
+
+    val b = _local(_floatArray(4, 4)) // 2D array of floats, shared by work group
+    val c = b(0, 2) // Read ELEMENT [0][2] of b
+    b(0, 2) := 2.0f // Write element [0][2] of b with value 2.0f
 
 ## Operators
 
 The usual C99 operators on scalars and vectors (where possible) are
-supported. To avoid conflicts with Scala, **the** = **operator is
-replaced by the** := **operator, the** == **operator is replaced by
-the** === **operator, and the** != **operator is replaced by the** !==
+supported. To avoid conflicts with Scala, **the** `=` **operator is
+replaced by the** `:=` **operator, the** `==` **operator is replaced by
+the** `===` **operator, and the** `!=` **operator is replaced by the** `!==`
 **operator**. Here are the supported operators:
 
-  +          -          \*     %      /       op=     :=   ===   !==   &
-  ---------- ---------- ------ ------ ------- ------- ---- ----- ----- ----
-  \~         \^         &gt;   &lt;   &gt;=   &lt;=   |    !     &&    ||
-  &lt;&lt;   &gt;&gt;                                      
+    +      -      *      %      /      op=      :=      ===      !==      &
+    ~      ^      >      <      >=     <=       |        !       &&       ||
+    <<     >>                    
 
 Here’s an example of using the operators:
+
+    val a = _floatVar()
+    a := 3.4f
+    val b = _floatVar()
+    b := a + 1f
 
 The above would generate OpenCL code equivalent to:
 
 ## Built-in Functions
 
 Most of the functions from the OpenCL 1.1 Quick Reference Card are
-supported (see
-http://www.khronos.org/files/opencl-1-1-quick-reference-card.pdf).
+supported (see http://www.khronos.org/files/opencl-1-1-quick-reference-card.pdf).
 
 ### Integer Functions
 
@@ -487,28 +494,34 @@ T is type char, charn, uchar, ucharn, short, shortn, ushort, ushortn,
 int, intn, uint, uintn, long, longn, ulong, or ulongn, where n is 2, 3,
 or 4. U is the unsigned version of T. S is the scalar version of T.
 
-  U \_abs (T x)                   |x|
-  ------------------------------- ---------------------------------------------------------------------------
-  U \_abs\_diff (T x, T y)        | x – y | without modulo overflow
-  T \_add\_sat (T x, T y)         x + y and saturates the result
-  T \_hadd (T x, T y)             (x + y) &gt;&gt; 1 without mod. overflow
-  T \_rhadd (T x, T y)            (x + y + 1) &gt;&gt; 1
-  T \_clz (T x)                   Number of leading 0-bits in x
-  T \_clamp (T x, T min, T max)   min(max(x, minval), maxval)
-  T \_clamp (T x, S min, S max)   min(max(x, minval), maxval)
-  T \_mad\_hi (T a, T b, T c)     mul\_hi(a, b) + c
-  T \_mad\_sat (T a, T b, T c)    a \* b + c and saturates the result
-  T \_max (T x, T y)              y if x &lt; y, otherwise it returns x
-  T \_max (T x, S y)              y if x &lt; y, otherwise it returns x
-  T \_min (T x, T y)              y if y &lt; x, otherwise it returns x
-  T \_min (T x, S y)              y if y &lt; x, otherwise it returns x
-  T \_mul\_hi (T x, T y)          high half of the product of x and y
-  T \_rotate (T v, T i)           result\[index\] = v\[index\] &lt;&lt; i\[index\]
-  T \_sub\_sat (T x, T y)         x - y and saturates the result
-  T \_mad24 (T a, T b, T c)       Multiply 24-bit int. values a, b, add 32-bit int. result to 32-bit int. c
-  T \_mul24 (T a, T b)            Multiply 24-bit int. values a and b
+| Scalar type | Vector type (n = 2, 3, 4) | Description |
+
+|  U \_abs (T x)  |                 \|x\|   |
+|  U \_abs\_diff (T x, T y)  |      \| x – y \| without modulo overflow |
+|  T \_add\_sat (T x, T y)  |       x + y and saturates the result  |
+|  T \_hadd (T x, T y)  |           (x + y) >> 1 without mod. overflow |
+|  T \_rhadd (T x, T y)  |          (x + y + 1) >> 1 |
+|  T \_clz (T x)  |                 Number of leading 0-bits in x |
+|  T \_clamp (T x, T min, T max) |  min(max(x, minval), maxval) |
+|  T \_clamp (T x, S min, S max) |  min(max(x, minval), maxval) |
+|  T \_mad\_hi (T a, T b, T c)  |   mul_hi(a, b) + c |
+|  T \_mad\_sat (T a, T b, T c) |   a \* b + c and saturates the result |
+|  T \_max (T x, T y)  |            y if x < y, otherwise it returns x |
+|  T \_max (T x, S y)  |            y if x < y, otherwise it returns x |
+|  T \_min (T x, T y)  |            y if y < x, otherwise it returns x |
+|  T \_min (T x, S y)  |            y if y < x, otherwise it returns x |
+|  T \_mul\_hi (T x, T y)  |        high half of the product of x and y |
+|  T \_rotate (T v, T i)  |         result\[index\] = v\[index\] << i\[index\] |
+|  T \_sub\_sat (T x, T y)  |       x - y and saturates the result |
+|  T \_mad24 (T a, T b, T c)  |     Multiply 24-bit int. values a, b, add 32-bit int. result to 32-bit int. c |
+|  T \_mul24 (T a, T b)  |          Multiply 24-bit int. values a and b |
 
 Example:
+
+    val a = _intVar()
+    a := -5
+    val aAbs = _intVar()
+    aAbs := _abs(a) 
 
 ### Math Functions
 

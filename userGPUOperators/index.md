@@ -328,7 +328,7 @@ The following table summarizes the legal `_read` and `_write` operations
 for both small tensor and big tensor addressing:
 
 | Operation | small tensor | big tensor | comment |
-| --- | :---: | :---: | :---: |
+| --- | :---: | :---: | ---: |
 | `_readTensor(f, …)`  | OK  | ILLEGAL | |
 | `_readTensorElement(f, …)`  | OK  | OK | |
 | `_writeTensor(f, …)`  | OK  | ILLEGAL | Must be last executable statement. |

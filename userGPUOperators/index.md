@@ -363,6 +363,10 @@ declares a float variable, initialized to zero, in the GPU kernel. It will gener
 
 Scalars for other scalar types are declared in the same way. The following scalar and vector variable declarations are supported:
 
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
 
 Scalar type | Vector type | Description
             | (n = 2, 3, 4) |
@@ -378,7 +382,8 @@ Scalar type | Vector type | Description
 `_ulongVar()` | `_ulong`*n*`Var()` | 64-bit unsigned
 `_floatVar()` | `_float`*n*`Var()` | 32-bit floating point
 `_doubleVar()` | `_double`*n*`Var()` | 64-bit floating point (not supported on all platforms)
-  ---------------------------------------------------------------------------------------------
+
+
 
 Thread-local arrays of scalar types can be declared by replacing “Var“
 with “Array(dimensions)” for any of the scalar or vector types listed

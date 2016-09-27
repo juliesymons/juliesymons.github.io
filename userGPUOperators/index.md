@@ -524,80 +524,79 @@ Example:
 
 ### Math Functions
 
-T is type float or floatn (or optionally double, doublen, or halfn).
-intn, uintn, and ulongn must be scalar when T is scalar.
+T is type `float` or `float`*n*(or optionally `double`, `double`*n*, or `half`*n*).
+`int`*n*, `uint`*n*, and `ulong`*n* must be scalar when T is scalar.
 
-| Integer functions | Description |
+| Math functions | Description |
 | --- | --- |
-
-|  T \_acos (T)                          Arc cosine
-  T \_acosh (T)                         Inverse hyperbolic cosine
-  T \_acospi (T x)                      acos (x) / π
-  T \_asin (T)                          Arc sine
-  T \_asinh (T)                         Inverse hyperbolic sine
-  T \_asinpi (T x)                      asin (x) / π
-  T \_atan (Ty\_over\_x)                Arc tangent
-  T \_atan2 (T y, T x)                  Arc tangent of y / x
-  T \_atanh (T)                         Hyperbolic arc tangent
-  T \_atanpi (T x)                      atan (x) / π
-  T \_atan2pi (T x, T y)                atan2 (x, y) / π
-  T \_cbrt (T)                          Cube root
-  T \_ceil (T)                          Round to integer toward + infinity
-  T \_copysign (T x, T y)               x with sign changed to sign of y
-  T \_cos (T)                           Cosine
-  T \_cosh (T)                          Hyperbolic cosine
-  T \_cospi (T x)                       cos (π x)
-  T \_native\_divide (T x, T y)         
-  T \_erfc (T)                          Complementary error function
-  T \_erf (T)                           Calculates error function of T
-  T \_exp (T x)                         Exponential base e
-  T \_exp2 (T)                          Exponential base 2
-  T \_exp10 (T)                         Exponential base 10
-  T \_expm1 (T x)                       e\^x -1.0
-  T \_fabs (T)                          Absolute value
-  T \_fdim (T x, T y)                   “Positive difference” between x and y
-  T \_floor (T)                         Round to integer toward - infinity
-  T \_fma (T a, T b, T c)               Multiply and add, then round
-  T \_fmax (T x, T y)                   Return y if x &lt; y, otherwise it returns x
-  T \_fmin (T x, T y)                   Return y if y &lt; x, otherwise it returns x
-  T \_fmod (T x, T y)                   Modulus. Returns x – y \* truncate (x/y)
-  T \_hypot (T x, T y)                  Square root of x\^2+ y\^2
-  intn \_ilogb (T x)                    Return exponent as an integer value
-  T \_ldexp (T x, intn n)               x \* 2\^n
-  T\_ ldexp (T x, int n)                x \* 2\^n
-  T \_lgamma (T x)                      Log gamma function
-  T \_lgamma\_r (T x, Q intn \*signp)   Log gamma function
-  T \_log (T)                           Natural logarithm
-  T \_log2 (T)                          Base 2 logarithm
-  T \_log10 (T)                         Base 10 logarithm
-  T \_log1p (T x)                       ln (1.0 + x)
-  T \_logb (T x)                        Exponent of x
-  T \_mad (T a, T b, T c)               Approximates a \* b + c
-  T \_\_maxmag (T x, T y)               Maximum magnitude of x and y
-  T \_minmag (T x, T y)                 Minimum magnitude of x and y
-  float \_nan (uintn nancode)           Quiet NaN
-  floatn \_nan (uintn nancode)          Quiet NaN
-  halfn \_nan (ushortn nancode)         Quiet NaN
-  doublen \_nan (ulongn nancode)        Quiet NaN
-  T \_nextafter (T x, T y)              Next representable floating-point value following x in the direction of y
-  T \_pow (T x, T y)                    Compute x to the power of y (x\^y)
-  T \_pown (T x, intn y)                Compute x\^y, where y is an integer
-  T \_powr (T x, T y)                   Compute x\^y, where x is &gt;= 0
-  T \_remainder (T x, T y)              Floating point remainder
-  T \_remquo (T x, T y, Q intn \*quo)   Floating point remainder and quotient
-  T \_rint (T)                          Round to nearest even integer
-  T \_rootn (T x, intn y)               Compute x to the power of 1/y
-  T \_round (T x)                       Integral value nearest to x rounding
-  T \_rsqrt (T)                         Inverse square root
-  T \_sin (T)                           Sine
-  T \_sinh (T)                          Hyperbolic sine
-  T \_sinpi (T x)                       sin (π x)
-  T \_sqrt (T)                          Square root
-  T \_tan (T)                           Tangent
-  T \_tanh (T)                          Hyperbolic tangent
-  T \_tanpi (T x)                       tan (π x)
-  T \_tgamma (T)                        Gamma function
-  T \_trunc (T)                         Round to integer toward zero
+|  `T _acos (T)` |                          Arc cosine
+|  `T _acosh (T)` |                         Inverse hyperbolic cosine
+|  `T _acospi (T x)` |                      acos (x) / π
+|  `T _asin (T)` |                          Arc sine
+|  `T _asinh (T)` |                         Inverse hyperbolic sine
+|  `T _asinpi (T x)` |                      asin (x) / π
+|  `T _atan (T x)` |                        Arc tangent
+|  `T _atan2 (T y, T x)` |                  Arc tangent of y / x
+|  `T _atanh (T)` |                         Hyperbolic arc tangent
+|  `T _atanpi (T x)` |                      atan (x) / π
+|  `T _atan2pi (T x, T y)` |                atan2 (x, y) / π
+|  `T _cbrt (T)` |                          Cube root
+|  `T _ceil (T)` |                          Round to integer toward + infinity
+|  `T _copysign (T x, T y)` |               x with sign changed to sign of y
+|  `T _cos (T)` |                           Cosine
+|  `T _cosh (T)` |                          Hyperbolic cosine
+|  `T _cospi (T x)` |                       cos (π x)
+|  `T _native_divide (T x, T y)` |         
+|  `T _erfc (T)` |                          Complementary error function
+|  `T _erf (T)` |                           Calculates error function of T
+|  `T _exp (T x)` |                         Exponential base e
+|  `T _exp2 (T)` |                          Exponential base 2
+|  `T _exp10 (T)` |                         Exponential base 10
+|  `T _expm1 (T x)` |                       e\^x -1.0
+|  `T _fabs (T)` |                          Absolute value
+|  `T _fdim (T x, T y)` |                   “Positive difference” between x and y
+|  `T _floor (T)` |                         Round to integer toward - infinity
+|  `T _fma (T a, T b, T c)` |               Multiply and add, then round
+|  `T _fmax (T x, T y)` |                   Return y if x &lt; y, otherwise it returns x
+|  `T _fmin (T x, T y)` |                   Return y if y &lt; x, otherwise it returns x
+|  `T _fmod (T x, T y)` |                   Modulus. Returns x – y \* truncate (x/y)
+|  `T _hypot (T x, T y)` |                  Square root of x\^2+ y\^2
+|  `intn _ilogb (T x)` |                    Return exponent as an integer value
+|  `T _ldexp (T x, intn n)` |               x \* 2\^n
+|  `T _ ldexp (T x, int n)` |                x \* 2\^n
+|  `T _lgamma (T x)` |                      Log gamma function
+|  `T _lgamma\_r (T x, Q intn *signp)` |   Log gamma function
+|  `T _log (T)` |                           Natural logarithm
+|  `T _log2 (T)` |                          Base 2 logarithm
+|  `T _log10 (T)` |                         Base 10 logarithm
+|  `T _log1p (T x)` |                       ln (1.0 + x)
+|  `T _logb (T x)` |                        Exponent of x
+|  `T _mad (T a, T b, T c)` |               Approximates a \* b + c
+|  `T __maxmag (T x, T y)` |               Maximum magnitude of x and y
+|  `T _minmag (T x, T y)` |                 Minimum magnitude of x and y
+|  `float _nan (uintn nancode)` |           Quiet NaN
+|  `floatn _nan (uintn nancode)` |          Quiet NaN
+|  `halfn _nan (ushortn nancode)` |         Quiet NaN
+|  `doublen _nan (ulongn nancode)` |        Quiet NaN
+|  `T _nextafter (T x, T y)` |              Next representable floating-point value following x in the direction of y
+|  `T _pow (T x, T y)` |                    Compute x to the power of y (x\^y)
+|  `T _pown (T x, intn y)` |                Compute x\^y, where y is an integer
+|  `T _powr (T x, T y)` |                   Compute x\^y, where x is &gt;= 0
+|  `T _remainder (T x, T y)` |              Floating point remainder
+|  `T _remquo (T x, T y, Q intn *quo)` |   Floating point remainder and quotient
+|  `T _rint (T)` |                          Round to nearest even integer
+|  `T _rootn (T x, intn y)` |               Compute x to the power of 1/y
+|  `T _round (T x)` |                       Integral value nearest to x rounding
+|  `T _rsqrt (T)` |                         Inverse square root
+|  `T _sin (T)` |                           Sine
+|  `T _sinh (T)` |                          Hyperbolic sine
+|  `T _sinpi (T x)` |                       sin (π x)
+|  `T _sqrt (T)` |                          Square root
+|  `T _tan (T)` |                           Tangent
+|  `T _tanh (T)` |                          Hyperbolic tangent
+|  `T _tanpi (T x)` |                       tan (π x)
+|  `T _tgamma (T)` |                        Gamma function
+|  `T _trunc (T)` |                         Round to integer toward zero
 
 ### Geometric Functions
 

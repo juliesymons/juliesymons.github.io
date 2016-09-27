@@ -363,16 +363,6 @@ declares a float variable, initialized to zero, in the GPU kernel. It will gener
 
 Scalars for other scalar types are declared in the same way. The following scalar and vector variable declarations are supported:
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-Scalar type | Vector type | Description
-Markdown | (n = 2, 3, 4)  | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
 
 Scalar type | Vector type | Description
             | (n = 2, 3, 4) |

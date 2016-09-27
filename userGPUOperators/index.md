@@ -364,10 +364,9 @@ declares a float variable, initialized to zero, in the GPU kernel. It will gener
 Scalars for other scalar types are declared in the same way. The following scalar and vector variable declarations are supported:
 
 
-Scalar type | Vector type | Description
-            | (n = 2, 3, 4) |
--------- | -------- | --------
-`_boolVar()`  |  | true(1) or false(0) 
+| Scalar type | Vector type (n = 2, 3, 4) | Description |
+| --- | --- | --- |
+| `_boolVar()`  |  | true(1) or false(0) |
 `_charVar()` | `char`*n*`Var()` | 8-bit signed
 `_ucharVar()` | `_uchar`*n*`Var()` | 8-bit unsigned
 `_shortVar()` | `_short`*n*`Var()` | 16-bit signed

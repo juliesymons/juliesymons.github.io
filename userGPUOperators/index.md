@@ -369,41 +369,15 @@ Scalar type | Vector type | Description
 --- | --- | ---
 `boolVar()`  |  | true(1) or false(0) 
 `_charVar()` | `char`*n*`Var()` | 8-bit signed
-
-
-| Scalar type   | Vector type   | Description  |
-|               | (n = 2, 3, 4) |              |
-| ------------- |-------------| -----|
-| `boolVar()`  | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-  ---------------------------------------------------------------------------------------------
-  Scalar type     Vector type          Description
-                                       
-                  (*n* = 2, 3, 4)      
-  --------------- -------------------- --------------------------------------------------------
-  \_boolVar()                          true (1) or false (0)
-
-  \_charVar()     **\_**char*n*Var()   8-bit signed
-
-  \_ucharVar()    \_uchar*n*Var()      8-bit unsigned
-
-  \_shortVar()    \_short*n*Var()      16-bit signed
-
-  \_ushortVar()   \_ushort*n*Var()     16-bit unsigned
-
-  \_intVar()      \_int*n*Var()        32-bit signed
-
-  \_uintVar()     \_uint*n*Var()       32-bit unsigned
-
-  \_longVar()     \_long*n*Var()       64-bit signed
-
-  \_ulongVar()    \_ulong*n*Var()      64-bit unsigned
-
-  \_floatVar()    \_float*n*Var()      32-bit floating point
-
-  \_doubleVar()   \_double*n*Var()     64-bit floating point (not supported on all platforms)
+`_ucharVar()` | `_uchar`*n*`Var()` | 8-bit unsigned
+`_shortVar()` | `_short`*n*`Var()` | 16-bit signed
+`_ushortVar()` | `_ushort`*n*`Var()` | 16-bit unsigned
+`_intVar()`   | `_int`*n*`Var()`  | 32-bit signed
+`_uintVar()` | `_uint`*n*`Var()` |  32-bit unsigned
+`_longVar()` | `_long`*n*`Var()` | 64-bit signed
+`_ulongVar()` | `_ulong`*n*`Var()` | 64-bit unsigned
+`_floatVar()` | `_float`*n*`Var()` | 32-bit floating point
+`_doubleVar()` | `_double`*n*`Var()` | 64-bit floating point (not supported on all platforms)
   ---------------------------------------------------------------------------------------------
 
 Thread-local arrays of scalar types can be declared by replacing “Var“

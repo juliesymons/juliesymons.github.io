@@ -470,9 +470,8 @@ replaced by the** `:=` **operator, the** `==` **operator is replaced by
 the** `===` **operator, and the** `!=` **operator is replaced by the** `!==`
 **operator**. Here are the supported operators:
 
-    +      -      *      %      /      op=      :=      ===      !==      &
-    ~      ^      >      <      >=     <=       |        !       &&       ||
-    <<     >>                    
+    +      -      *      %      /      op=      :=      ===      !==      &      ~      ^
+    >      <      >=     <=     |       !       &&      ||       <<     >>                    
 
 Here’s an example of using the operators:
 

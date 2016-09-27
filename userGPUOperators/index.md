@@ -368,7 +368,15 @@ Scalar type | Vector type | Description
             | (n = 2, 3, 4) |
 --- | --- | ---
 `boolVar()`  |  | true(1) or false(0) 
-`_charVar()` | `char*n*Var()` | 8-bit signed
+`_charVar()` | `char`*n*`Var()` | 8-bit signed
+
+
+| Scalar type   | Vector type   | Description  |
+|               | (n = 2, 3, 4) |              |
+| ------------- |-------------| -----|
+| `boolVar()`  | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
   ---------------------------------------------------------------------------------------------
   Scalar type     Vector type          Description

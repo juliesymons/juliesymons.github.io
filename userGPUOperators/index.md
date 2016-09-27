@@ -327,7 +327,13 @@ create general-purpose GPUOperators that work for all tensor sizes.
 The following table summarizes the legal `_read` and `_write` operations
 for both small tensor and big tensor addressing:
 
-*insert table here*
+| Operation | small tensor | big tensor | comment |
+| --- | :---: | :---: | --- |
+| `_readTensor(f, …)`  | OK  | ILLEGAL | |
+| `_readTensorElement(f, …)`  | OK  | OK | |
+| `_writeTensor(f, …)`  | OK  | ILLEGAL | Must be last executable statement. |
+| `_writeTensorElement(f, …)`  | OK  | OK | |
+
 
 Here are general guidelines for writing efficient GPU operators:
 

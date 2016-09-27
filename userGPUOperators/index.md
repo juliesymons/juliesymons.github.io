@@ -493,7 +493,7 @@ T is type `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, `short`*n*, `ushort`,
 `int`, `int`*n*, `uint`, `uint`*n*, `long`, `long`*n*, `ulong`, or `ulong`*n*, where n is 2, 3,
 or 4. U is the unsigned version of T. S is the scalar version of T.
 
-
+| Function and types | Description |
 | --- | --- |
 |  U \_abs (T x)  |                 \|x\|   |
 |  U \_abs\_diff (T x, T y)  |      \| x – y \| without modulo overflow |

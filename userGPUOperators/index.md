@@ -369,6 +369,12 @@ Markdown | Less | Pretty
 1 | 2 | 3
 
 Scalar type | Vector type | Description
+Markdown | (n = 2, 3, 4)  | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
+
+Scalar type | Vector type | Description
             | (n = 2, 3, 4) |
 --- | --- | ---
 `boolVar()`  |  | true(1) or false(0) 

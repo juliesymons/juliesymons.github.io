@@ -353,14 +353,22 @@ will be covered in a later section.
 
 ## Variable Declarations
 
-Variables in GPU kernels are created with functions and assigned to
-Scala vals. For example, the following code
+Variables in GPU kernels are created with functions and assigned to Scala `val`'s. For example, the following code
 
-declares a float variable, initialized to zero, in the GPU kernel. It
-will generate OpenCL code equivalent to:
+`val x = _floatVar()`
 
-Scalars for other scalar types are declared in the same way. The
-following scalar and vector variable declarations are supported:
+declares a float variable, initialized to zero, in the GPU kernel. It will generate OpenCL code equivalent to:
+
+`float x = 0.0f;`
+
+Scalars for other scalar types are declared in the same way. The following scalar and vector variable declarations are supported:
+
+
+Scalar type | Vector type | Description
+            | (n = 2, 3, 4) |
+--- | --- | ---
+`boolVar()`  |  | true(1) or false(0) 
+`_charVar()` | `char*n*Var()` | 8-bit signed
 
   ---------------------------------------------------------------------------------------------
   Scalar type     Vector type          Description

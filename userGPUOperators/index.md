@@ -316,8 +316,8 @@ rules, like this:
         } 
       }
 
-The “`if (isBigTensor…)`” code runs in Scala, not on the GPU, so it does
-not count as an *executable* statement on the GPU. The square operator
+The `if (isBigTensor…)` code runs in Scala, not on the GPU, so it does
+not count as an *executable* statement on the GPU. The `square` operator
 above will generate one of two very different GPU kernels, depending on
 the size of the tensors in the input field. This tactic allows you to
 create general-purpose GPUOperators that work for all tensor sizes.
@@ -334,10 +334,12 @@ Here are general guidelines for writing efficient GPU operators:
 1. Small tensor operators are generally more efficient than big tensor operators.
 2. *Non-local* writes and reads of any kind preclude kernel fusion, possibly resulting in lower performance. Avoid them if possible:
 
+
        _writeTensor(_out0, value)              // local, efficient
        _readTensor(field)                      // local, efficient
        _writeTensor(_out0, value, row, column) // nonlocal, less efficient
        _readTensor(field, row, column)         // nonlocal, less efficient
+
 
 3. The most efficient operator is a small tensor operator with a single `_writeTensor()` function call as its final statement.
 4. It is legal to process big tensor fields in small tensor operators using `_readTensorElement()` and `_writeTensorElement()` functions.

@@ -386,25 +386,41 @@ Scalars for other scalar types are declared in the same way. The following scala
 
 
 
-Thread-local arrays of scalar types can be declared by replacing “Var“
-with “Array(dimensions)” for any of the scalar or vector types listed
+Thread-local arrays of scalar types can be declared by replacing `var`
+with `Array(dimensions)` for any of the scalar or vector types listed
 above. Arrays are limited to 1, 2 or 3 dimensions. Some examples:
 
+    val a = _float2Array(5) // 1D array of float2s 
+    val b = _intArray(4, 4) // 2D array of ints
+
 Local memory, shared by threads in a work group, is declared by using
-the \_local function on the variable or array declaration:
+the `_local` function on the variable or array declaration:
+
+    val a = _local(_floatArray(5)) // 1D array of floats, shared by work group 
+    val b = _local(_int4Array(4, 4)) // 2D array of int4s, shared by work group
 
 Variables and arrays may be declared to match the type of tensors in a
 specific input field:
+ 
+     val a = _tensorVar(field) // A tensor of the type found in field 
+     val b = _tensorArray(field, 4, 4) // 2D array of tensors 
+     val c = _local(_tensorVar(field)) // Shared tensor 
+     val d = _local(_tensorArray(field, 4, 4)) // Shared tensor array   
 
 Variables and arrays may also be declared to match the type of tensor
-*element* in a specific input field. Currently only float elements are
+*element* in a specific input field. Currently only `float` elements are
 supported, but this may be extended if and when CogX supports generic
 fields:
 
+     val a = _tensorElementVar(field) // An element found in fields 
+     val b = _tensorElementArray(field, 4, 4) // 2D array of elements 
+     val c = _local(_tensorElementVar(field)) // Shared element 
+     val d = _local(_tensorElementArray(field, 4, 4)) // Shared element array
+
 ## Constants
 
-Int and float constants are written using the Scala convention, e.g. “1”
-or “2.3f”. Other fundamental types, such double or short, are not yet
+`Int` and `float` constants are written using the Scala convention, e.g. `1`
+or `2.3f`. Other fundamental types, such double or short, are not yet
 supported.
 
 ## Vector Addressing
@@ -413,7 +429,7 @@ OpenCL uses method “swizzling,” duplication and nesting to offer an
 enormous number of methods (not functions) for accessing vector
 components. They all have the form:
 
-> vectorExpression.componentExpression
+    vectorExpression.componentExpression
 
 where componentExpression is something like x or xy. Some examples:
 

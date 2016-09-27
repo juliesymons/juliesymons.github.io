@@ -459,8 +459,8 @@ Arrays are read using Scala `apply(indices)`. Arrays are written using the
 `:=` operator:
 
     val b = _local(_floatArray(4, 4)) // 2D array of floats, shared by work group
-    val c = b(0, 2) // Read ELEMENT [0][2] of b
-    b(0, 2) := 2.0f // Write element [0][2] of b with value 2.0f
+    val c = b(0, 2)                   // Read ELEMENT [0][2] of b
+    b(0, 2) := 2.0f                   // Write element [0][2] of b with value 2.0f
 
 ## Operators
 

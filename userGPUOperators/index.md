@@ -503,8 +503,8 @@ or 4. U is the unsigned version of T. S is the scalar version of T.
 |  `T _clz (T x)`  |                 Number of leading 0-bits in x |
 |  `T _clamp (T x, T min, T max)` |  min(max(x, minval), maxval) |
 |  `T _clamp (T x, S min, S max)` |  min(max(x, minval), maxval) |
-|  `T _mad\_hi (T a, T b, T c)`  |   mul_hi(a, b) + c |
-|  `T _mad\_sat (T a, T b, T c)` |   a \* b + c and saturates the result |
+|  `T _mad_hi (T a, T b, T c)`  |   mul_hi(a, b) + c |
+|  `T _mad_sat (T a, T b, T c)` |   a \* b + c and saturates the result |
 |  `T _max (T x, T y)`  |            y if x < y, otherwise it returns x |
 |  `T _max (T x, S y)`  |            y if x < y, otherwise it returns x |
 |  `T _min (T x, T y)`  |            y if y < x, otherwise it returns x |

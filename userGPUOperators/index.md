@@ -552,20 +552,20 @@ T is type `float` or `float`*n*(or optionally `double`, `double`*n*, or `half`*n
 |  `T _exp (T x)` |                         Exponential base e
 |  `T _exp2 (T)` |                          Exponential base 2
 |  `T _exp10 (T)` |                         Exponential base 10
-|  `T _expm1 (T x)` |                       e\^x -1.0
+|  `T _expm1 (T x)` |                       e^x -1.0
 |  `T _fabs (T)` |                          Absolute value
 |  `T _fdim (T x, T y)` |                   “Positive difference” between x and y
 |  `T _floor (T)` |                         Round to integer toward - infinity
 |  `T _fma (T a, T b, T c)` |               Multiply and add, then round
 |  `T _fmax (T x, T y)` |                   Return y if x &lt; y, otherwise it returns x
 |  `T _fmin (T x, T y)` |                   Return y if y &lt; x, otherwise it returns x
-|  `T _fmod (T x, T y)` |                   Modulus. Returns x – y \* truncate (x/y)
-|  `T _hypot (T x, T y)` |                  Square root of x\^2+ y\^2
+|  `T _fmod (T x, T y)` |                   Modulus. Returns x – y * truncate (x/y)
+|  `T _hypot (T x, T y)` |                  Square root of x^2+ y^2
 |  `intn _ilogb (T x)` |                    Return exponent as an integer value
-|  `T _ldexp (T x, intn n)` |               x \* 2\^n
-|  `T _ ldexp (T x, int n)` |                x \* 2\^n
+|  `T _ldexp (T x, intn n)` |               x * 2^n
+|  `T _ldexp (T x, int n)` |                x * 2^n
 |  `T _lgamma (T x)` |                      Log gamma function
-|  `T _lgamma\_r (T x, Q intn *signp)` |   Log gamma function
+|  `T _lgamma_r (T x, Q intn *signp)`  |   Log gamma function
 |  `T _log (T)` |                           Natural logarithm
 |  `T _log2 (T)` |                          Base 2 logarithm
 |  `T _log10 (T)` |                         Base 10 logarithm
@@ -579,11 +579,11 @@ T is type `float` or `float`*n*(or optionally `double`, `double`*n*, or `half`*n
 |  `halfn _nan (ushortn nancode)` |         Quiet NaN
 |  `doublen _nan (ulongn nancode)` |        Quiet NaN
 |  `T _nextafter (T x, T y)` |              Next representable floating-point value following x in the direction of y
-|  `T _pow (T x, T y)` |                    Compute x to the power of y (x\^y)
-|  `T _pown (T x, intn y)` |                Compute x\^y, where y is an integer
-|  `T _powr (T x, T y)` |                   Compute x\^y, where x is &gt;= 0
+|  `T _pow (T x, T y)` |                    Compute x to the power of y (x^y)
+|  `T _pown (T x, intn y)` |                Compute x^y, where y is an integer
+|  `T _powr (T x, T y)` |                   Compute x^y, where x is >= 0
 |  `T _remainder (T x, T y)` |              Floating point remainder
-|  `T _remquo (T x, T y, Q intn *quo)` |   Floating point remainder and quotient
+|  `T _remquo (T x, T y, Q intn *quo)` |    Floating point remainder and quotient
 |  `T _rint (T)` |                          Round to nearest even integer
 |  `T _rootn (T x, intn y)` |               Compute x to the power of 1/y
 |  `T _round (T x)` |                       Integral value nearest to x rounding

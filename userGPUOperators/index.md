@@ -652,7 +652,10 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 | `int _isfinite (float)` <br/> `intn _isfinite (floatn)` <br/> `int _isfinite (double)` <br/> `longn _isfinite (doublen)` | Test for finite value                              
 | `int _isinf (float)` <br/> `intn _isinf (floatn)` <br/> `int _isinf (double)` <br/>  `longn _isinf (doublen)` | Test for +ve or –ve infinity                                
 | `int _isnan (float)` <br/> `intn _isnan (floatn)` <br/> `int _isnan (double)` <br/> `longn _isnan (doublen)` | Test for a NaN        
-| `int _isnormal (float)` <br/> `intn _isnormal (floatn)` <br/> `int _isnormal (double)` <br/> `longn _isnormal (doublen)` | Test for a normal value                            
+| `int _isnormal (float)` <br/> `intn _isnormal (floatn)` <br/> `int _isnormal (double)` <br/> `longn _isnormal (doublen)` | Test for a normal value 
+| `int _isordered (float x, float y)` <br/> `intn _isordered (floatn x, floatn y)` <br/> `int _isordered (double x, double y)` <br/>   `longn _isordered (doublen x, doublen y)` | Test if arguments are ordered                
+| `int _isunordered (float x, float y)` <br/> `intn _isunordered (floatn x, floatn y)` <br/> `int _isunordered (double x, double y)` <br/> `longn _isunordered (doublen x, doublen y)` | Test if arguments are unordered             
+| `int _signbit (float)` <br/> `intn _signbit (floatn)` <br/> `int _signbit (double)` <br/> `longn _signbit (doublen)` | Test for sign bit                              
 
 
 | Relational Functions | Description |

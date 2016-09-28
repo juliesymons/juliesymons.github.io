@@ -664,27 +664,29 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 
 ### Atomic Functions
 
-T is either int or uint. The first argument is a pointer to a volatile
-variable or volatile \_\_local variable or array element (Q = volatile
-\_\_local). The \_local(variable) and \_volatile(variable) functions can
+T is either `int` or `uint`. The first argument is a pointer to a `volatile`
+variable or `volatile __local` variable or array element (Q = `volatile
+__local`). The `_local(variable)` and `_volatile(variable)` functions can
 be used to annotate the declaration of a variable (scalar, vector, or
 array). The pointer value can be obtained using the
-\_pointerTo(variable) function. Note that these are functions, not
+`_pointerTo(variable)` function. Note that these are functions, not
 procedures, and the return value *must* be written to a variable even if
 it will not be used later in the code.
 
-  T \_atomic\_add(Q T \*p, T val)               Read, add, and store
-  --------------------------------------------- -----------------------------------------
-  T \_atomic\_sub(Q T \*p, T val)               Read, subtract, and store
-  T \_atomic\_xchg(Q T \*p, T val)              Read, swap, and store
-  T \_atomic\_inc(Q T \*p)                      Read, increment, and store
-  T \_atomic\_dec(Q T \*p)                      Read, decrement, and store
-  T \_atomic\_compxchg(Q T \*p, T cmp, T val)   Read and store (\*p == cmp) ? val : \*p
-  T \_atomic\_min(Q T \*p, T val)               Read, store min(\*p, val)
-  T \_atomic\_max(Q T \*p, T val)               Read, store max(\*p, val)
-  T \_atomic\_and(Q T \*p, T val)               Read, store (\*p & val)
-  T \_atomic\_or(Q T \*p, T val)                Read, store (\*p | val)
-  T \_atomic\_xor(Q T \*p, T val)               Read, store (\*p \^ val)
+
+| Atomic Functions | Description |
+| --- | --- |
+| `T _atomic_add(Q T *p, T val)` | Read, add, and store
+| `T _atomic_sub(Q T *p, T val)` |               Read, subtract, and store
+| `T _atomic_xchg(Q T *p, T val)` |              Read, swap, and store
+| `T _atomic_inc(Q T *p)` |                      Read, increment, and store
+| `T _atomic_dec(Q T *p)` |                      Read, decrement, and store
+| `T _atomic_compxchg(Q T *p, T cmp, T val)` |   Read and store (\*p == cmp) ? val : \*p
+| `T _atomic_min(Q T *p, T val)` |               Read, store min(\*p, val)
+| `T _atomic_max(Q T *p, T val)` |               Read, store max(\*p, val)
+| `T _atomic_and(Q T *p, T val)` |               Read, store (\*p & val)
+| `T _atomic_or(Q T *p, T val)` |                Read, store (\*p | val)
+| `T _atomic_xor(Q T *p, T val)` |               Read, store (\*p \^ val)
 
 Here are examples of declaring memory suitable for the first parameter
 to the above functions:

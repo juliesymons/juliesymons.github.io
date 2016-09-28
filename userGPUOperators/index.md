@@ -481,7 +481,7 @@ The above would generate OpenCL code equivalent to:
 ## Built-in Functions
 
 Most of the functions from the OpenCL 1.1 Quick Reference Card are
-supported (see http://www.khronos.org/files/opencl-1-1-quick-reference-card.pdf).
+supported. See [http://www.khronos.org/files/opencl-1-1-quick-reference-card.pdf](http://www.khronos.org/files/opencl-1-1-quick-reference-card.pdf).
 
 ### Integer Functions
 

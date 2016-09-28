@@ -643,7 +643,10 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 | Relational Functions | Description |
 | --- | --- |
 | `T _clamp(T x, T min, T max)` <br/> `floatn _clamp(floatn x, float min, float max)` | Clamp x to range given by min, max
-| `int \_isequal (float x, float y)` <br/> `intn _isequal (floatn x, floatn y)` <br/> `int _isequal (double x, double y)` <br/>     `longn _isequal (doublen x, doublen y)` | Compare of x == y    
+| `int \_isequal (float x, float y)` <br/> `intn _isequal (floatn x, floatn y)` <br/> `int _isequal (double x, double y)` <br/>     `longn _isequal (doublen x, doublen y)` | Compare of x == y  
+| `int _isnotequal (float x, float y)` <br/> `intn _isnotequal (floatn x, floatn y)` <br/> `int _isnotequal (double x, double y)` <br/> `longn _isnotequal (doublen x, doublen y)` | Compare of x != y       
+| `int _isgreater (float x, float y)` <br/> `intn _isgreater (floatn x, floatn y)` <br/> `int _isgreater (double x, double y)` <br/>   `longn _isgreater (doublen x, doublen y)` | Compare of x > y              
+| `int _isgreaterequal (float x, float y)` <br/> `intn _isgreaterequal (floatn x, floatn y)` <br/> `int _isgreaterequal (double x, double y)` <br/> `longn _isgreaterequal (doublen x, doublen y)` |Compare of x >= y  
 
 
 | Relational Functions | Description |

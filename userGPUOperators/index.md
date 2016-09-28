@@ -478,6 +478,11 @@ Here’s an example of using the operators:
 
 The above would generate OpenCL code equivalent to:
 
+    float a = 0.0f; 
+    a = 3.4f; 
+    float b = 0.0f; 
+    b = a + 1.0f;
+
 ## Built-in Functions
 
 Most of the functions from the OpenCL 1.1 Quick Reference Card are
@@ -597,7 +602,7 @@ T is type `float` or `float`*n* (or optionally `double`, `double`*n*, or `half`*
 ### Geometric Functions
 
 Vector types may have 2, 3, or 4 components. Optional extensions enable
-`double`, `double`*n* types
+`double`, `double`*n* types.
 
 | Geometric Functions | Description |
 | --- | --- |

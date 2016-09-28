@@ -685,13 +685,21 @@ it will not be used later in the code.
 | `T _atomic_min(Q T *p, T val)` |               Read, store min(\*p, val)
 | `T _atomic_max(Q T *p, T val)` |               Read, store max(\*p, val)
 | `T _atomic_and(Q T *p, T val)` |               Read, store (\*p & val)
-| `T _atomic_or(Q T *p, T val)` |                Read, store (\*p | val)
+| `T _atomic_or(Q T *p, T val)` |                Read, store (\*p \| val)
 | `T _atomic_xor(Q T *p, T val)` |               Read, store (\*p \^ val)
 
 Here are examples of declaring memory suitable for the first parameter
 to the above functions:
+  
+    val a = _volatile(_intVar()) 
+    val b = _volatile(_local(intVar())) 
+    val c = _volatile(_local(intArray(5, 5)))
 
 And here’s how to obtain the pointer for the first parameter:
+
+    x := atomic_inc(_pointerTo(a)) 
+    y := atomic_inc(_pointerTo(b)) 
+    z := atomic_inc(_pointerTo(c(2, 3)))    
 
 ### Vector Literal Functions
 

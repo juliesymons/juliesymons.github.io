@@ -604,13 +604,6 @@ T is type `float` or `float`*n* (or optionally `double`, `double`*n*, or `half`*
 Vector types may have 2, 3, or 4 components. Optional extensions enable
 `double`, `double`*n* types.
 
-| Geometric Functions | Description |
-| --- | --- |
-|  `float _dot (float p0, float p1)`   |                    Dot product                                                        
-|  `float _dot (floatn p0, floatn p1)`  |                                     
-|  `double _dot (double p0, double p1)` |                    
-|  `double _dot (doublen p0, doublen p1)` |
-
 
 
 | Geometric Functions | Description |

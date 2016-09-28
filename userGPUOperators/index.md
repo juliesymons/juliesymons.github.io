@@ -608,52 +608,15 @@ Vector types may have 2, 3, or 4 components. Optional extensions enable
 
 | Geometric Functions | Description |
 | --- | --- |
-|  `float _dot (float p0, float p1)`<br/> `float _dot (floatn p0, floatn p1)` <br/> `double _dot (double p0, double p1)` <br/>`double _dot (doublen p0, doublen p1)`|                    Dot product                       
-| float{3,4} \_cross (float{3,4} p0, float{3,4} p1) <br/> double{3,4} \_cross (double{3,4} p0, double{3,4} p1) | Cross product
+| `float _dot (float p0, float p1)`<br/> `float _dot (floatn p0, floatn p1)` <br/> `double _dot (double p0, double p1)` <br/> `double _dot (doublen p0, doublen p1)`| Dot product                       
+| `float{3,4} _cross (float{3,4} p0, float{3,4} p1)` <br/> `double{3,4} _cross (double{3,4} p0, double{3,4} p1)` | Cross product
+| `float _distance (float p0, float p1)` <br/> `float _distance (floatn p0, floatn p1)` <br/> `double _distance (double p0, double p1)` <br/> `double _distance (doublen p0, doublen p1)`     |  Vector distance        
+| `float _length (float p)` <br/> `float _length (floatn p)` <br/> `double _length (double p)` <br/> `double _length (doublen p)` | Vector length                   
+| `float _normalize (float p)` <br/> `floatn _normalize (floatn p)` <br/> `double _normalize (double p)` <br/> `doublen _normalize (doublen p)` | Normal vector length 1                       
+| `float _fast_distance (float p0, float p1)` <br/> `float _fast_distance (floatn p0, floatn p1)` | Vector distance   
+| `float _fast_length (float p)` <br/> `float _fast_length (floatn p)` | Vector length                      
+| `float _fast_normalize (float p)` <br/> `floatn _fast_normalize (floatn p)` | Normal vector length 1                
 
-
-
-
-  float{3,4} \_cross (float{3,4} p0, float{3,4} p1)      Cross product
-                                                         
-  double{3,4} \_cross (double{3,4} p0, double{3,4} p1)   
-
-  float \_distance (float p0, float p1)                  Vector distance
-                                                         
-  float \_distance (floatn p0, floatn p1)                
-                                                         
-  double \_distance (double p0, double p1)               
-                                                         
-  double \_distance (doublen p0, doublen p1)             
-
-  float \_length (float p)                               Vector length
-                                                         
-  float \_length (floatn p)                              
-                                                         
-  double \_length (double p)                             
-                                                         
-  double \_length (doublen p)                            
-
-  float \_normalize (float p)                            Normal vector length 1
-                                                         
-  floatn \_normalize (floatn p)                          
-                                                         
-  double \_normalize (double p)                          
-                                                         
-  doublen \_normalize (doublen p)                        
-
-  float \_fast\_distance (float p0, float p1)            Vector distance
-                                                         
-  float \_fast\_distance (floatn p0, floatn p1)          
-
-  float \_fast\_length (float p)                         Vector length
-                                                         
-  float \_fast\_length (floatn p)                        
-
-  float \_fast\_normalize (float p)                      Normal vector length 1
-                                                         
-  floatn \_fast\_normalize (floatn p)                    
-  -------------------------------------------------------------------------------
 
 ### Common Functions
 

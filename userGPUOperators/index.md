@@ -604,8 +604,6 @@ T is type `float` or `float`*n* (or optionally `double`, `double`*n*, or `half`*
 Vector types may have 2, 3, or 4 components. Optional extensions enable
 `double`, `double`*n* types.
 
-
-
 | Geometric Functions | Description |
 | --- | --- |
 | `float _dot (float p0, float p1)`<br/> `float _dot (floatn p0, floatn p1)` <br/> `double _dot (double p0, double p1)` <br/> `double _dot (doublen p0, doublen p1)`| Dot product                       
@@ -620,31 +618,18 @@ Vector types may have 2, 3, or 4 components. Optional extensions enable
 
 ### Common Functions
 
-T is type float or floatn:
+T is type `float` or `float`*n*:
 
-  -------------------------------------------------------------------------------------
-  T \_clamp(T x, T min, T max)                     Clamp x to range given by min, max
-                                                   
-  floatn \_clamp(floatn x, float min, float max)   
-  ------------------------------------------------ ------------------------------------
-  T \_degrees(T radians)                           radians to degrees
+| Common Functions | Description |
+| --- | --- |
+| `T _clamp(T x, T min, T max)` <br/> `floatn _clamp(floatn x, float min, float max)` | Clamp x to range given by min, max
+| `T _degrees(T radians)` | Radians to degrees
+| `T _max(T x, T y)` <br/> `floatn _max(floatn x, float y)` | Max of x and y                  
+| `T min(T x, T y)` <br/> `floatn _min(floatn x, float y)` | Min of x and y                 
+|  `T mix(T x, T y, T a)` <br/> `floatn _mix(floatn x, float y, float a)` |  Linear blend of x and y        
+| `T _radians(T degrees)` | Degrees to radians
+| `T sign(T x)` | Sign of x
 
-  T \_max(T x, T y)                                Max of x and y
-                                                   
-  floatn \_max(floatn x, float y)                  
-
-  T min(T x, T y)                                  Min of x and y
-                                                   
-  floatn \_min(floatn x, float y)                  
-
-  T mix(T x, T y, T a)                             Linear blend of x and y
-                                                   
-  floatn \_mix(floatn x, float y, float a)         
-
-  T \_radians(T degrees)                           degrees to radians
-
-  T sign(T x)                                      Sign of x
-  -------------------------------------------------------------------------------------
 
 ### Relational Functions
 

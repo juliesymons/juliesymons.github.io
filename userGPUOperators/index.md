@@ -686,7 +686,7 @@ it will not be used later in the code.
 | `T _atomic_max(Q T *p, T val)` |               Read, store max(\*p, val)
 | `T _atomic_and(Q T *p, T val)` |               Read, store (\*p & val)
 | `T _atomic_or(Q T *p, T val)` |                Read, store (\*p \| val)
-| `T _atomic_xor(Q T *p, T val)` |               Read, store (\*p \^ val)
+| `T _atomic_xor(Q T *p, T val)` |               Read, store (\*p ^ val)
 
 Here are examples of declaring memory suitable for the first parameter
 to the above functions:

@@ -633,142 +633,34 @@ T is type `float` or `float`*n*:
 
 ### Relational Functions
 
-T is type float, floatn, char, charn, uchar, ucharn, short, shortn,
-ushort, ushortn, int, intn, uint, uintn, long, longn, ulong, or ulongn
-(and optionally double, doublen). S is type char, charn, short, shortn,
-int, intn, long, or longn. U is type uchar, ucharn, ushort, ushortn,
-uint, uintn, ulong, or ulongn. Optional extensions enable double,
-doublen.
+T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, `short`*n*,
+`ushort`, `ushort`*n*, `int`, `int`*n*, `uint`, `uint`*n*, `long`, `long`*n*, `ulong`, or `ulong`*n*
+(and optionally `double`, `double`*n*). S is type `char`, `char`*n*, `short`, `short`*n*,
+`int`, `int`*n*, `long`, or `long`*n*. U is type `uchar`, `uchar`*n*, `ushort`, `ushort`*n*,
+`uint`, `uint`*n*, `ulong`, or `ulong`*n*. Optional extensions enable `double`,
+`double`*n*.
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------
-  int \_isequal (float x, float y)                        Compare of x == y
-                                                          
-  intn \_isequal (floatn x, floatn y)                     
-                                                          
-  int \_isequal (double x, double y)                      
-                                                          
-  longn \_isequal (doublen x, doublen y)                  
-  ------------------------------------------------------- ----------------------------------------------------------------------------------------------
-  int \_isnotequal (float x, float y)                     Compare of x != y
-                                                          
-  intn \_isnotequal (floatn x, floatn y)                  
-                                                          
-  int \_isnotequal (double x, double y)                   
-                                                          
-  longn \_isnotequal (doublen x, doublen y)               
-
-  int \_isgreater (float x, float y)                      Compare of x &gt; y
-                                                          
-  intn \_isgreater (floatn x, floatn y)                   
-                                                          
-  int \_isgreater (double x, double y)                    
-                                                          
-  longn \_isgreater (doublen x, doublen y)                
-
-  int \_isgreaterequal (float x, float y)                 Compare of x &gt;= y
-                                                          
-  intn \_isgreaterequal (floatn x, floatn y)              
-                                                          
-  int \_isgreaterequal (double x, double y)               
-                                                          
-  longn \_isgreaterequal (doublen x, doublen y)           
-
-  int \_isless (float x, float y)                         Compare of x &lt; y
-                                                          
-  intn \_isless (floatn x, floatn y)                      
-                                                          
-  int \_isless (double x, double y)                       
-                                                          
-  longn \_isless (doublen x, doublen y)                   
-
-  int \_islessequal (float x, float y)                    Compare of x &lt;= y
-                                                          
-  intn \_islessequal (floatn x, floatn y)                 
-                                                          
-  int \_islessequal (double x, double y)                  
-                                                          
-  longn \_islessequal (doublen x, doublen y)              
-
-  int \_islessgreater (float x, float y)                  Compare of
-                                                          
-  intn \_islessgreater (floatn x, floatn y)               (x &lt; y) || (x &gt; y)
-                                                          
-  int \_islessgreater (double x, double y)                
-                                                          
-  longn \_islessgreater (doublen x, doublen y)            
-
-  int \_isfinite (float)                                  Test for finite value
-                                                          
-  intn \_isfinite (floatn)                                
-                                                          
-  int \_isfinite (double)                                 
-                                                          
-  longn \_isfinite (doublen)                              
-
-  int \_isinf (float)                                     Test for +ve or –ve infinity
-                                                          
-  intn \_isinf (floatn)                                   
-                                                          
-  int \_isinf (double)                                    
-                                                          
-  longn \_isinf (doublen)                                 
-
-  int \_isnan (float)                                     Test for a NaN
-                                                          
-  intn \_isnan (floatn)                                   
-                                                          
-  int \_isnan (double)                                    
-                                                          
-  longn \_isnan (doublen)                                 
-
-  int \_isnormal (float)                                  Test for a normal value
-                                                          
-  intn \_isnormal (floatn)                                
-                                                          
-  int \_isnormal (double)                                 
-                                                          
-  longn \_isnormal (doublen)                              
-
-  int \_isordered (float x, float y)                      Test if arguments are ordered
-                                                          
-  intn \_isordered (floatn x, floatn y)                   
-                                                          
-  int \_isordered (double x, double y)                    
-                                                          
-  longn \_isordered (doublen x, doublen y)                
-
-  int \_isunordered (float x, float y)                    Test if arguments are unordered
-                                                          
-  intn \_isunordered (floatn x, floatn y)                 
-                                                          
-  int \_isunordered (double x, double y)                  
-                                                          
-  longn \_isunordered (doublen x, doublen y)              
-
-  int \_signbit (float)                                   Test for sign bit
-                                                          
-  intn \_signbit (floatn)                                 
-                                                          
-  int \_signbit (double)                                  
-                                                          
-  longn \_signbit (doublen)                               
-
-  int \_any (S x)                                         1 if MSB in any component of x is set; else 0
-
-  int \_all (S x)                                         1 if MSB in all components of x are set; else 0
-
-  T \_bitselect (T a, T b, T c)                           Each bit of result is corresponding bit of a if corresponding bit of c is 0
-                                                          
-  doublen \_bitselect (doublen a, doublen b, doublen c)   
-
-  T \_select (T a, T b, S c)                              For each component of a vector type, result\[i\] = if MSB of c\[i\] is set ? b\[i\] : a\[i\]
-                                                          
-  T \_select (T a, T b, U c)                              For scalar type,
-                                                          
-  doublen \_select (doublen, doublen, longn)              result = c ? b : a
-                                                          
-  doublen \_select (doublen, doublen, ulongn)             
-  ------------------------------------------------------------------------------------------------------------------------------------------------------
+| Relational Functions | Description |
+| --- | --- |
+| `int \_isequal (float x, float y)` <br/> `intn _isequal (floatn x, floatn y)` <br/> `int _isequal (double x, double y)` <br/>     `longn _isequal (doublen x, doublen y)` | Compare of x == y                 
+| `int _isnotequal (float x, float y)` <br/> `intn _isnotequal (floatn x, floatn y)` <br/> `int _isnotequal (double x, double y)` <br/> `longn _isnotequal (doublen x, doublen y)` | Compare of x != y       
+| `int _isgreater (float x, float y)` <br/> `intn _isgreater (floatn x, floatn y)` <br/> `int _isgreater (double x, double y)` <br/>   `longn _isgreater (doublen x, doublen y)` | Compare of x > y              
+| `int _isgreaterequal (float x, float y)` <br/> `intn _isgreaterequal (floatn x, floatn y)` <br/> `int _isgreaterequal (double x, double y)` <br/> `longn _isgreaterequal (doublen x, doublen y)` |Compare of x >= y  
+| `int _isless (float x, float y)` <br/> `intn _isless (floatn x, floatn y)` <br/> `int _isless (double x, double y)` <br/> `longn _isless (doublen x, doublen y)` | Compare of x < y           
+| `int _islessequal (float x, float y)` <br/> `intn _islessequal (floatn x, floatn y)` <br/> `int _islessequal (double x, double y)` <br/> `longn _islessequal (doublen x, doublen y)` | Compare of x <= y      
+| `int _islessgreater (float x, float y)` <br/>  `intn _islessgreater (floatn x, floatn y)` <br/>  `int _islessgreater (double x, double y)` <br/>  `longn _islessgreater (doublen x, doublen y)` | Compare of (x < y) || (x > y)
+| `int _isfinite (float)` <br/> `intn _isfinite (floatn)` <br/> `int _isfinite (double)` <br/> `longn _isfinite (doublen)` | Test for finite value                              
+| `int _isinf (float)` <br/> `intn _isinf (floatn)` <br/> `int _isinf (double)` <br/>  `longn _isinf (doublen)` | Test for +ve or –ve infinity                                
+| `int _isnan (float)` <br/> `intn _isnan (floatn)` <br/> `int _isnan (double)` <br/> `longn _isnan (doublen)` | Test for a NaN        
+| `int _isnormal (float)` <br/> ` intn _isnormal (floatn)` <br/> `int _isnormal (double)` <br/> `longn _isnormal (doublen)` | Test for a normal value                            
+| `int _isordered (float x, float y)` <br/> `intn _isordered (floatn x, floatn y)` <br/> `int _isordered (double x, double y)` <br/>   `longn _isordered (doublen x, doublen y)` | Test if arguments are ordered                
+| `int _isunordered (float x, float y)` <br/> `intn _isunordered (floatn x, floatn y)` <br/> `int _isunordered (double x, double y)` <br/> `longn _isunordered (doublen x, doublen y)` | Test if arguments are unordered             
+| `int _signbit (float)` <br/> `intn _signbit (floatn)` <br/> `int _signbit (double)` <br/> `longn _signbit (doublen)` | Test for sign bit                              
+| `int _any (S x)` | 1 if MSB in any component of x is set; else 0
+| `int _all (S x)` | 1 if MSB in all components of x are set; else 0
+| `T _bitselect (T a, T b, T c)` <br/> `doublen _bitselect (doublen a, doublen b, doublen c)` | Each bit of result is corresponding bit of a if corresponding bit of c is 0 
+| `T _select (T a, T b, S c)` <br/> `T _select (T a, T b, U c)` <br/> `doublen _select (doublen, doublen, longn)` <br/> `doublen _select (doublen, doublen, ulongn)` | For each component of a vector type, result\[i\] = if MSB of c\[i\] is set ? b\[i\] : a\[i\]For scalar type, result = c ? b : a  
+ 
 
 ### Atomic Functions
 

@@ -613,8 +613,8 @@ Vector types may have 2, 3, or 4 components. Optional extensions enable
 
 | Geometric Functions | Description |
 | --- | --- |
-|  `float _dot (float p0, float p1)`<br/> `float _dot (floatn p0, floatn p1)` <br/> 
-`double _dot (double p0, double p1)` <br/>`double _dot (doublen p0, doublen p1)`|                    Dot product                       | float{3,4} \_cross (float{3,4} p0, float{3,4} p1) <br/> double{3,4} \_cross (double{3,4} p0, double{3,4} p1) | Cross product
+|  `float _dot (float p0, float p1)`<br/> `float _dot (floatn p0, floatn p1)` <br/> `double _dot (double p0, double p1)` <br/>`double _dot (doublen p0, doublen p1)`|                    Dot product                       
+| float{3,4} \_cross (float{3,4} p0, float{3,4} p1) <br/> double{3,4} \_cross (double{3,4} p0, double{3,4} p1) | Cross product
 
 
 

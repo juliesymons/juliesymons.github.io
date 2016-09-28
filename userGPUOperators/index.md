@@ -640,6 +640,7 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 `uint`, `uint`*n*, `ulong`, or `ulong`*n*. Optional extensions enable `double`,
 `double`*n*.
 
+
 | Relational Functions | Description |
 | --- | --- |
 | `int \_isequal (float x, float y)` <br/> `intn _isequal (floatn x, floatn y)` <br/> `int _isequal (double x, double y)` <br/>     `longn _isequal (doublen x, doublen y)` | Compare of x == y                 

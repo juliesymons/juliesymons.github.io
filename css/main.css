@@ -46,6 +46,6 @@ img {
     margin: auto;
     width: 90%;
 }
-table {
+table, th {
    border: 1px solid black;
 }

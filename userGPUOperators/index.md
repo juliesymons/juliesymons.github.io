@@ -643,6 +643,7 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 | Relational Functions | Description |
 | --- | --- |
 | `T _clamp(T x, T min, T max)` <br/> `floatn _clamp(floatn x, float min, float max)` | Clamp x to range given by min, max
+| `int \_isequal (float x, float y)` <br/> `intn _isequal (floatn x, floatn y)` <br/> `int _isequal (double x, double y)` <br/>     `longn _isequal (doublen x, doublen y)` | Compare of x == y    
 
 
 | Relational Functions | Description |

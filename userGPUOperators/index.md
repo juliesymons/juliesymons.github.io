@@ -640,6 +640,10 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 `uint`, `uint`*n*, `ulong`, or `ulong`*n*. Optional extensions enable `double`,
 `double`*n*.
 
+| Common Functions | Description |
+| --- | --- |
+| `T _clamp(T x, T min, T max)` <br/> `floatn _clamp(floatn x, float min, float max)` | Clamp x to range given by min, max
+
 
 | Relational Functions | Description |
 | --- | --- |

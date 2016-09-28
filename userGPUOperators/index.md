@@ -655,7 +655,11 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 | `int _isnormal (float)` <br/> `intn _isnormal (floatn)` <br/> `int _isnormal (double)` <br/> `longn _isnormal (doublen)` | Test for a normal value 
 | `int _isordered (float x, float y)` <br/> `intn _isordered (floatn x, floatn y)` <br/> `int _isordered (double x, double y)` <br/>   `longn _isordered (doublen x, doublen y)` | Test if arguments are ordered                
 | `int _isunordered (float x, float y)` <br/> `intn _isunordered (floatn x, floatn y)` <br/> `int _isunordered (double x, double y)` <br/> `longn _isunordered (doublen x, doublen y)` | Test if arguments are unordered             
-| `int _signbit (float)` <br/> `intn _signbit (floatn)` <br/> `int _signbit (double)` <br/> `longn _signbit (doublen)` | Test for sign bit                              
+| `int _signbit (float)` <br/> `intn _signbit (floatn)` <br/> `int _signbit (double)` <br/> `longn _signbit (doublen)` | Test for sign bit    
+| `int _any (S x)` | 1 if MSB in any component of x is set; else 0
+| `int _all (S x)` | 1 if MSB in all components of x are set; else 0
+| `T _bitselect (T a, T b, T c)` <br/> `doublen _bitselect (doublen a, doublen b, doublen c)` | Each bit of result is corresponding bit of a if corresponding bit of c is 0 
+| `T _select (T a, T b, S c)` <br/> `T _select (T a, T b, U c)` <br/> `doublen _select (doublen, doublen, longn)` <br/> `doublen _select (doublen, doublen, ulongn)` | For each component of a vector type, result\[i\] = if MSB of c\[i\] is set ? b\[i\] : a\[i\]For scalar type, result = c ? b : a  
 
 
 | Relational Functions | Description |

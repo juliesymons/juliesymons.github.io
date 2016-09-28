@@ -4,10 +4,6 @@ title: User GPU Operators
 ---
 <h1>{{ page.title }}</h1>
 
-Version 12
-
-Written By: Greg Snider
-
 Cog simplifies writing massively-parallel programming by compiling
 high-level abstractions down to optimized GPU kernels, avoiding the
 painful and laborious process of writing low-level GPU kernels in either
@@ -493,7 +489,7 @@ T is type `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, `short`*n*, `ushort`,
 `int`, `int`*n*, `uint`, `uint`*n*, `long`, `long`*n*, `ulong`, or `ulong`*n*, where n is 2, 3,
 or 4. U is the unsigned version of T. S is the scalar version of T.
 
-| Integer functions | Description |
+| Integer Functions | Description |
 | --- | --- |
 |  `U _abs (T x)`  |                  \|x\|   |
 |  `U _abs_diff (T x, T y)`  |       \| x – y \| without modulo overflow |
@@ -527,7 +523,7 @@ Example:
 T is type `float` or `float`*n*(or optionally `double`, `double`*n*, or `half`*n*).
 `int`*n*, `uint`*n*, and `ulong`*n* must be scalar when T is scalar.
 
-| Math functions | Description |
+| Math Functions | Description |
 | --- | --- |
 |  `T _acos (T)` |                          Arc cosine
 |  `T _acosh (T)` |                         Inverse hyperbolic cosine
@@ -572,7 +568,7 @@ T is type `float` or `float`*n*(or optionally `double`, `double`*n*, or `half`*n
 |  `T _log1p (T x)` |                       ln (1.0 + x)
 |  `T _logb (T x)` |                        Exponent of x
 |  `T _mad (T a, T b, T c)` |               Approximates a \* b + c
-|  `T __maxmag (T x, T y)` |               Maximum magnitude of x and y
+|  `T __maxmag (T x, T y)` |                Maximum magnitude of x and y
 |  `T _minmag (T x, T y)` |                 Minimum magnitude of x and y
 |  `float _nan (uintn nancode)` |           Quiet NaN
 |  `floatn _nan (uintn nancode)` |          Quiet NaN
@@ -601,17 +597,15 @@ T is type `float` or `float`*n*(or optionally `double`, `double`*n*, or `half`*n
 ### Geometric Functions
 
 Vector types may have 2, 3, or 4 components. Optional extensions enable
-double, doublen types
+`double`, `double`*n* types
 
-  -------------------------------------------------------------------------------
-  float \_dot (float p0, float p1)                       Dot product
-                                                         
-  float \_dot (floatn p0, floatn p1)                     
-                                                         
-  double \_dot (double p0, double p1)                    
-                                                         
-  double \_dot (doublen p0, doublen p1)                  
-  ------------------------------------------------------ ------------------------
+| Geometric Functions | Description |
+| --- | --- |
+|  `float _dot (float p0, float p1)`   |                    Dot product                                                        
+|  `float _dot (floatn p0, floatn p1)`  |                                     
+|  `double _dot (double p0, double p1)` |                    
+|  `double _dot (doublen p0, doublen p1)` |
+
   float{3,4} \_cross (float{3,4} p0, float{3,4} p1)      Cross product
                                                          
   double{3,4} \_cross (double{3,4} p0, double{3,4} p1)   

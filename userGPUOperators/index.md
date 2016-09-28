@@ -652,7 +652,7 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 | `int _isfinite (float)` <br/> `intn _isfinite (floatn)` <br/> `int _isfinite (double)` <br/> `longn _isfinite (doublen)` | Test for finite value                              
 | `int _isinf (float)` <br/> `intn _isinf (floatn)` <br/> `int _isinf (double)` <br/>  `longn _isinf (doublen)` | Test for +ve or –ve infinity                                
 | `int _isnan (float)` <br/> `intn _isnan (floatn)` <br/> `int _isnan (double)` <br/> `longn _isnan (doublen)` | Test for a NaN        
-| `int _isnormal (float)` <br/> ` intn _isnormal (floatn)` <br/> `int _isnormal (double)` <br/> `longn _isnormal (doublen)` | Test for a normal value                            
+| `int _isnormal (float)` <br/> `intn _isnormal (floatn)` <br/> `int _isnormal (double)` <br/> `longn _isnormal (doublen)` | Test for a normal value                            
 
 
 | Relational Functions | Description |

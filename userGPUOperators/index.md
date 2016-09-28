@@ -520,7 +520,7 @@ Example:
 
 ### Math Functions
 
-T is type `float` or `float`*n*(or optionally `double`, `double`*n*, or `half`*n*).
+T is type `float` or `float`*n* (or optionally `double`, `double`*n*, or `half`*n*).
 `int`*n*, `uint`*n*, and `ulong`*n* must be scalar when T is scalar.
 
 | Math Functions | Description |

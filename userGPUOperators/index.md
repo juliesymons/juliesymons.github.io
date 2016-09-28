@@ -646,6 +646,9 @@ T is type `float`, `float`*n*, `char`, `char`*n*, `uchar`, `uchar`*n*, `short`, 
 | `int _isnotequal (float x, float y)` <br/> `intn _isnotequal (floatn x, floatn y)` <br/> `int _isnotequal (double x, double y)` <br/> `longn _isnotequal (doublen x, doublen y)` | Compare of x != y       
 | `int _isgreater (float x, float y)` <br/> `intn _isgreater (floatn x, floatn y)` <br/> `int _isgreater (double x, double y)` <br/>   `longn _isgreater (doublen x, doublen y)` | Compare of x > y              
 | `int _isgreaterequal (float x, float y)` <br/> `intn _isgreaterequal (floatn x, floatn y)` <br/> `int _isgreaterequal (double x, double y)` <br/> `longn _isgreaterequal (doublen x, doublen y)` |Compare of x >= y  
+| `int _isless (float x, float y)` <br/> `intn _isless (floatn x, floatn y)` <br/> `int _isless (double x, double y)` <br/> `longn _isless (doublen x, doublen y)` | Compare of x < y           
+| `int _islessequal (float x, float y)` <br/> `intn _islessequal (floatn x, floatn y)` <br/> `int _islessequal (double x, double y)` <br/> `longn _islessequal (doublen x, doublen y)` | Compare of x <= y      
+| `int _islessgreater (float x, float y)` <br/>  `intn _islessgreater (floatn x, floatn y)` <br/>  `int _islessgreater (double x, double y)` <br/>  `longn _islessgreater (doublen x, doublen y)` | Compare of (x < y) || (x > y)
 
 
 | Relational Functions | Description |

@@ -931,10 +931,10 @@ following functions. The `OutField` parameter in each is one of `_out0,
 | `_writeTensorElement(OutField, value, element)` | Write value to location (`_layer, _row, _column, element`) (3D, 2D, 1D fields only)
 | `_writeTensorElement(OutField, value, element)` |   Write value to the only tensor in the field (0D fields only)
 
-ComplexFields can be written and read using any of the above functions,
+`ComplexField`s can be written and read using any of the above functions,
 but a complex tensor element is represented by a `_float2`. The first
 element of the `_float2` is the real part, the second is the imaginary
-part. ComplexVectorFields are not yet supported.
+part. `ComplexVectorField`s are not yet supported.
 
 ## Cog Primitives
 

@@ -845,10 +845,19 @@ types:
 
 Here’s a function that creates and returns a vector variable:
 
+    def createMyInt4Variable(): GPUVariable = 
+      _int4Var()
+
 Here’s a slightly more useful one that creates and returns a 2D
 volatile, local array:
 
+    def createLocalArray(rows: Int, columns: Int): GPUArrayVariable = 
+      _volatile(_local(_floatArray(rows, columns)))
+
 Here’s one that computes the average of two values and returns it:
+
+    def average(e1: GPUExpression, e2: GPUExpression): GPUExpression = 
+      (e1 + e2) / 2.0f
 
 GPU functions allow for more modular algorithm design, but they do not
 offer any performance benefits. GPU compilers inline all functions
@@ -857,54 +866,47 @@ kernel that makes no function calls.
 
 ## Reading and Writing Tensor Fields
 
-Small tensors are read as float, float2, float3, or float4, regardless
+Small tensors are read as `float`, `float2`, `float3`, or `float4`, regardless
 of the actual tensor shape. For example, a length 4 vector and a 2x2
-matrix are both represented by float4. Matrix elements are linearized
+matrix are both represented by `float4`. Matrix elements are linearized
 using row-major order.
 
 In the following functions, T is a tensor type determined by the field
-being read, which may be any of the following: float, float2, float3,
-float4. (Future versions may support: char, charn, uchar, ucharn, short,
-shortn, ushort, ushortn, int, intn, uint, uintn, long, longn, ulong, or
-ulongn.) The layer, row and column parameters are all integer
+being read, which may be any of the following: `float`, `float2`, `float3`,
+`float4`. (Future versions may support: `char`, `char`*n*, `uchar`, `uchar`*n*, `short`,
+`shortn`, `ushort`, `ushort`*n*, `int`, `int`*n*, `uint`, `uint`*n*, `long`, `long`*n*, `ulong`, or
+`ulong`*n*.) The layer, row and column parameters are all integer
 expressions.
 
-  T \_readTensor(Field, layer, row, column)   Read tensor at indexed location (3D fields only)
-  ------------------------------------------- -----------------------------------------------------------------------------
-  T \_readTensor(Field, row, column)          Read tensor at indexed location (2D fields only)
-  T \_readTensor(Field, column)               Read tensor at indexed location (1D fields only)
-  T \_readTensor(Field)                       Read tensor at location (\_layer, \_row, \_column) (3D, 2D, 1D fields only)
-  T \_readTensor(Field)                       Read the only tensor in the field (0D fields only)
+| Read and Write Tensor Functions | Description |
+|---|---|
+|  `T _readTensor(Field, layer, row, column)` |   Read tensor at indexed location (3D fields only)
+|  `T _readTensor(Field, row, column)` |          Read tensor at indexed location (2D fields only)
+|  `T _readTensor(Field, column)` |               Read tensor at indexed location (1D fields only)
+|  `T _readTensor(Field)` |                       Read tensor at location (`_layer, _row, _column`) (3D, 2D, 1D fields only)
+|  `T _readTensor(Field)` |                       Read the only tensor in the field (0D fields only)
 
-The last two functions, \_readTensor(Field), require more explanation. A
+The last two functions, `_readTensor(Field)`, require more explanation. A
 0D field contains only a single tensor, so that is returned by that
 function. For higher-dimensional fields, the tensor address is
-implicitly defined by the (\_layer, \_row, \_column) thread-local
+implicitly defined by the (`_layer, _row, _column`) thread-local
 constants of the current thread. This makes it easy to read an input
 tensor, calculate something with it, and write the result to the
 corresponding tensor in the output field. This is much more efficient
 than the other variants and should used whenever possible.
 
 Writing tensors to (small) tensor fields use the following functions.
-The OutField parameter in each is one of \_out0, \_out1, \_out2, …,
-\_out9.
+The `OutField` parameter in each is one of `_out0, _out1, _out2, …,
+_out9`.
 
-  -----------------------------------------------------------------------------------------------------------------------------
-  \_writeTensor(OutField, value, layer,    Write tensor value to indexed location (3D fields only)
-                                           
-  row, column)                             
-  ---------------------------------------- ------------------------------------------------------------------------------------
-  \_writeTensor(OutField, value, row,      Write tensor value to indexed location (2D fields only)
-                                           
-  column)                                  
-
-  \_writeTensor(OutField, value, column)   Write tensor value to indexed location (1D fields only)
-
-  \_writeTensor(OutField, value)           Write tensor value to location (\_layer, \_row, \_column) (3D, 2D, 1D fields only)
-
-  \_writeTensor(OutField, value)           Write tensor value to the only tensor in the field (0D fields only)
-  -----------------------------------------------------------------------------------------------------------------------------
-
+| Read and Write Tensor Functions | Description |
+|---|---|
+| `_writeTensor(OutField, value, layer, row, column)` |    Write tensor value to indexed location (3D fields only)                     
+| `_writeTensor(OutField, value, row, column)` |     Write tensor value to indexed location (2D fields only)
+| `_writeTensor(OutField, value, column)` |   Write tensor value to indexed location (1D fields only)
+| `_writeTensor(OutField, value)` |  Write tensor value to location (`_layer, _row, _column`) (3D, 2D, 1D fields only)
+| `_writeTensor(OutField, value)` |          Write tensor value to the only tensor in the field (0D fields only)
+ 
 Big tensors (tensors with more than 4 elements) cannot be read into a
 single variable, but elements (or components) of a big tensor can. T in
 the following functions is float.

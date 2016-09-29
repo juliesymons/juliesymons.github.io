@@ -1044,7 +1044,7 @@ The following constants describe the shape of the work field:
 Each thread is assigned a single tensor location in the output field and
 is provided with the following thread-private constants:
 
-| Thread Organization Constants | Description |
+| Thread Identity Constants | Description |
 |---|---|
 | `_layer` |           Layer assigned to this thread (3D fields only)
 | `_row` |             Row assigned to this thread (3D, 2D fields)
@@ -1063,12 +1063,13 @@ is provided with the following thread-private constants:
 These constants name output fields, necessary for multi-output
 operators. The maximum number of output fields is 10.
 
-  \_out0   First output field
-  -------- ---------------------
-  \_out1   Second output field
-  \_out2   Third output field
-  ...      ...
-  \_out9   Tenth output field
+| Output Field Constants | Description |
+|---|---|  
+| `_out0` |   First output field
+| `_out1` |   Second output field
+| `_out2` |   Third output field
+|  ...  |    ...
+| `_out9` |   Tenth output field
 
 ## Examples
 
@@ -1079,24 +1080,50 @@ This section shows a few examples of GPUOperator programming.
 This first example shows how to flip a 2D field upside down. Here’s the
 GPUOperator code:
 
+    def upsideDown(field: Field): Field = { 
+      // Semantic checking 
+      require(field.fieldShape.dimensions == 2, "Requires a 2D field") 
+      GPUOperator(field.fieldType) { 
+        val readRow = _rows - _row - 1 
+        val readColumn = _column 
+        val x = _readTensor(field, readRow, readColumn) 
+        _writeTensor(_out0, x) 
+      } 
+    }
+
 Note that before defining the GPUOperator, the input field is checked
 for semantic correctness. You should always do this if your operator
 cannot handle all possible field types. Here we check that the input
 field is two-dimensional. The GPUOperator itself uses the Cog
-thread-local constants \_rows, \_row, and \_column to determine which
+thread-local constants `_rows`, `_row`, and `_column` to determine which
 tensor of the input field each thread reads.
 
 Scala does not support pure functions, so the above function definition
 must be embedded somewhere. One possibility is to embed it in a
-ComputeGraph:
+`ComputeGraph`:
+
+    new ComputeGraph { 
+      def upsideDown(field: Field): Field = { 
+        // GPUOperator function definition here 
+      } 
+      val input: ColorField = ... 
+      val output = upsideDown(input) 
+    }
 
 However, this definition is not reusable. If the operator is generally
 useful, it’s better to put it in a trait so it can be mixed in with
 other applications:
 
+    trait MyLibrary { 
+      def upsideDown(field: Field): Field = { 
+        // GPUOperator function definition here 
+      } 
+    }
+
+
 Here’s the result of running this operator:
 
-![](./media/image3.png){width="6.4in" height="3.4612904636920385in"}
+![](./media/image3.png)
 
 ### Local Memory Allocation
 

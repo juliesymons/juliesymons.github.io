@@ -951,21 +951,27 @@ you write, and most of the time they will be appropriate. However, some
 (relatively rare) algorithms require explicit control of thread
 allocation, so two functions are supplied that give you that control:
 
-  \_localThreads(Shape)           Shape of the local work group.
-  ------------------------------- ----------------------------------------------
-  \_globalThreads(Shape)          Shape of all threads executed by the kernel.
-  \_globalThreads(Shape, Shape)   Shape of all threads executed by the kernel.
+| Thread Functions | Description |
+|---|---|
+| `_localThreads(Shape)` |           Shape of the local work group.
+| `_globalThreads(Shape)` |          Shape of all threads executed by the kernel.
+| `_globalThreads(Shape, Shape)` |   Shape of all threads executed by the kernel.
 
 The default local work group size is platform dependent; overriding this
-with the \_localThreads function requires knowledge of the platform
-you’re running on. This is not recommended unless you really know what
-you’re doing.
+with the `_localThreads` function requires knowledge of the platform
+you are running on. This is not recommended unless you really know what
+you are doing.
 
 The default global work group size is assigned the shape of the first
 output field *rounded up* so that the size of each dimension is a
 multiple of the corresponding dimension in the local work group. For
 example, a GPUOperator that transforms a 20 x 20 scalar field to another
 20 x 20 scalar field might have default assignments like this:
+
+    local work group: Shape(16, 16)   // Default local work group size. 
+    global work group: Shape(32, 32)  // Default global threads for 20 x 20 output; 
+                                      // note roundup of global work group to be a 
+                                      // multiple of local work group in each dimension.
 
 This means that a field may have too many threads assigned to meet the
 one-thread / one-output-tensor mapping of the programming model. Cog

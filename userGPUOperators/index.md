@@ -711,53 +711,53 @@ argument, it will be replicated as necessary to create the result.
 
 | Vector Literal Functions | Description |
 | --- | --- |
-| `float2 _float2(e1)`              | Convert expression e1 to float2
-| `float2 _float2(e1, e2)`          | Convert expressions e1, e2 to float2
-| `float3 _float3(e1)`              | Convert expressions e1 to float3
-| `float3 _float3(e1, e2)`          | Convert expressions e1, e2 to float3
-| `float3 _float3(e1, e2, e3)`      | Convert expressions e1, e2, e3 to float3
-| `float4 _float4(e1)`              | Convert expression e1 to float4
-| `float4 _float4(e1, e2)`          | Convert expressions e1, e2 to float4
-| `float4 _float4(e1, e2, e3)`      | Convert expressions e1, e2, e3 to float4
-| `float4 _float4(e1, e2, e3, e4)`  | Convert expressions e1, e2, e3, e4 to float4
-| `int2 _int2(e1)`                  | Convert expression e1 to int2
-| `int2 _int2(e1, e2)`              | Convert expressions e1, e2 to int2
-| `int3 _int3(e1)`                  | Convert expressions e1 to int3
-| `int3 _int3(e1, e2)`              | Convert expressions e1, e2 to int3
-| `int3 _int3(e1, e2, e3)`          | Convert expressions e1, e2, e3 to int3
-| `int4 _int4(e1)`                  | Convert expression e1 to int4
-| `int4 _int4(e1, e2)`              | Convert expressions e1, e2 to int4
-| `int2 _int4(e1)`                  | Convert expressions e1, e2, e3 to int4
-| `int2 _int4(e1, e2)`              | Convert expressions e1, e2, e3, e4 to int4
+| `float2 _float2(e1)`              | Convert expression `e1` to `float2`
+| `float2 _float2(e1, e2)`          | Convert expressions `e1`, `e2` to `float2`
+| `float3 _float3(e1)`              | Convert expressions `e1` to `float3`
+| `float3 _float3(e1, e2)`          | Convert expressions `e1`, `e2` to `float3`
+| `float3 _float3(e1, e2, e3)`      | Convert expressions `e1`, `e2`, `e3` to `float3`
+| `float4 _float4(e1)`              | Convert expression `e1` to `float4`
+| `float4 _float4(e1, e2)`          | Convert expressions `e1`, `e2` to `float4`
+| `float4 _float4(e1, e2, e3)`      | Convert expressions `e1`, `e2`, `e3` to `float4`
+| `float4 _float4(e1, e2, e3, e4)`  | Convert expressions `e1`, `e2`, `e3`, `e4` to `float4`
+| `int2 _int2(e1)`                  | Convert expression `e1` to `int2`
+| `int2 _int2(e1, e2)`              | Convert expressions `e1`, `e2` to `int2`
+| `int3 _int3(e1)`                  | Convert expressions `e1` to `int3`
+| `int3 _int3(e1, e2)`              | Convert expressions `e1`, `e2` to `int3`
+| `int3 _int3(e1, e2, e3)`          | Convert expressions `e1`, `e2`, `e3` to `int3`
+| `int4 _int4(e1)`                  | Convert expression `e1` to `int4`
+| `int4 _int4(e1, e2)`              | Convert expressions `e1`, `e2` to `int4`
+| `int2 _int4(e1)`                  | Convert expressions `e1`, `e2`, `e3` to `int4`
+| `int2 _int4(e1, e2)`              | Convert expressions `e1`, `e2`, `e3`, `e4` to `int4`
 
-#### 
 
 ### Type Conversion and Reinterpretation Functions
 
 These functions convert or reinterpret expressions of one type to
 another type:
 
-  float \_convert\_float(e)     Convert e to float
-  ----------------------------- -------------------------
-  float2 \_convert\_float2(e)   Convert e to float2
-  float3 \_convert\_float3(e)   Convert e to float3
-  float4 \_convert\_float4(e)   Convert e to float4
-  int \_convert\_int(e)         Convert e to int
-  int2 \_convert\_int2(e)       Convert e to int2
-  int3 \_convert\_int3(e)       Convert e to int3
-  int4 \_convert\_int4(e)       Convert e to int4
-  float \_as\_float(e)          Reinterpret e as float
-  float \_as\_float2(e)         Reinterpret e as float2
-  float \_as\_float3(e)         Reinterpret e as float3
-  float \_as\_float4(e)         Reinterpret e as float4
-  float \_as\_int(e)            Reinterpret e as int
-  float \_as\_int2(e)           Reinterpret e as int2
-  float \_as\_int3(e)           Reinterpret e as int3
-  float \_as\_int4(e)           Reinterpret e as int4
-  float \_as\_uint(e)           Reinterpret e as uint
-  float \_as\_uint2(e)          Reinterpret e as uint2
-  float \_as\_uint3(e)          Reinterpret e as uint3
-  float \_as\_uint4(e)          Reinterpret e as uint4
+| Type Conversion and Reinterpretation Functions | Description |
+| --- | --- |
+| `float _convert_float(e)` |     Convert `e` to `float`
+| `float2 _convert_float2(e)` |   Convert `e` to `float2`
+| `float3 _convert_float3(e)` |   Convert `e` to `float3`
+| `float4 _convert_float4(e)` |   Convert `e` to `float4`
+| `int _convert_int(e)` |         Convert `e` to `int`
+| `int2 _convert_int2(e)` |       Convert `e` to `int2`
+| `int3 _convert_int3(e)` |       Convert `e` to `int3`
+| `int4 _convert_int4(e)` |       Convert `e` to `int4`
+| `float _as_float(e)` |          Reinterpret `e` as `float`
+| `float _as_float2(e)` |         Reinterpret `e` as `float2`
+| `float _as_float3(e)` |         Reinterpret `e` as `float3`
+| `float _as_float4(e)` |         Reinterpret `e` as `float4`
+| `float _as_int(e)` |            Reinterpret `e` as `int`
+| `float _as_int2(e)` |           Reinterpret `e` as `int2`
+| `float _as_int3(e)` |           Reinterpret `e` as `int3`
+| `float _as_int4(e)` |           Reinterpret `e` as `int4`
+| `float _as_uint(e)` |           Reinterpret `e` as `uint`
+| `float _as_uint2(e)` |          Reinterpret `e` as `uint2`
+| `float _as_uint3(e)` |          Reinterpret `e` as `uint3`
+| `float _as_uint4(e)` |          Reinterpret `e` as `uint4`
 
 ### Miscellaneous
 

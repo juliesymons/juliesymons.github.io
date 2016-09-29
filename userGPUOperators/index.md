@@ -837,7 +837,6 @@ GPUOperators can also be built using smaller, reusable *GPU functions*.
 Such functions are just Scala functions that return one of three GPU
 types:
 
-  | | |
   |---|---|
   | `GPUVariable` |        A scalar or vector variable on the GPU.
   | `GPUArrayVariable` |   An array variable on the GPU.

@@ -761,13 +761,14 @@ another type:
 
 ### Miscellaneous
 
-  \_syncThreadsLocal      Barrier synchronization of work group with respect to local memory reads and writes. Note that no parentheses are used (this is a statement, not a function).
-  ----------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \_syncThreadsGlobal     Barrier synchronization of work group with respect to global memory reads and writes. Note that no parentheses are used (this is a statement, not a function).
-  \_local(variable)       Annotate variable as local and return annotated variable.
-  \_volatile(variable)    Annotate variable as volatile and return annotated variable.
-  \_pointerTo(variable)   Get pointer to a variable or array element. Useful only for the atomic functions.
-  isBigTensor(Shape)      Returns true if the specified shape (assumed to be a tensor shape) is a “big tensor.”
+| Miscellaneous Functions | Description |
+| --- | --- |
+| `_syncThreadsLocal` |      Barrier synchronization of work group with respect to local memory reads and writes. Note that no parentheses are used (this is a statement, not a function).
+| `_syncThreadsGlobal` |    Barrier synchronization of work group with respect to global memory reads and writes. Note that no parentheses are used (this is a statement, not a function).
+| `_local(variable)` |       Annotate variable as local and return annotated variable.
+| `_volatile(variable)` |    Annotate variable as volatile and return annotated variable.
+| `_pointerTo(variable)` |   Get pointer to a variable or array element. Useful only for the atomic functions.
+| `isBigTensor(Shape)` |      Returns true if the specified shape (assumed to be a tensor shape) is a “big tensor.”
 
 ## Blocks
 
@@ -775,22 +776,59 @@ Three types of blocks are supported: *for* loops, *while* loops, and
 *if* (*else*) blocks.
 
 *For* loops look like this:
+      
+      val i = _intVar()
+      _for (i := 0, i < 5, i += 1) { 
+        // do work here 
+      }
 
 The curly braces are required for the loop body, even if it only
-contains one line. Note that \_for is a function call, so the three
+contains one line. Note that `_for` is a function call, so the three
 arguments are separated by commas, not semicolons.
 
 *While* loops follow the same pattern:
 
-A simple if block looks like this:
+    _while (x >= 0.0f) { 
+      // do work here 
+    }
+    
+A simple *if* block looks like this:
 
-An if / else block looks like this:
+    _if (x < 4) { 
+      // do work here 
+    }
 
-Chains of if, else if, else if, are done like this:
+An *if / else* block looks like this:
+
+    _if (x < 4) { 
+      // do work here 
+    } 
+    _else { 
+      // do work here 
+    }
+
+Chains of *if*, *else if*, *else if*, are done like this:
+
+    _if (x < 1) { 
+      // do work here 
+    } 
+    _elseif (x < 2) { 
+      // do work here 
+    } 
+    _elseif (x < 3) { 
+      // do work here 
+    } 
+    _else { 
+      // do work here 
+    }
 
 These can also be written more compactly:
 
-But the closing } must be followed by a newline (or comment) in every
+    _if (x < 4) { y := 0 } 
+    _elseif (x > 5) { y := 1 } 
+    _else { y := 2 }
+
+But the closing `}` must be followed by a newline (or comment) in every
 case.
 
 ## GPU Functions
@@ -799,10 +837,10 @@ GPUOperators can also be built using smaller, reusable *GPU functions*.
 Such functions are just Scala functions that return one of three GPU
 types:
 
-  GPUVariable        A scalar or vector variable on the GPU.
-  ------------------ -----------------------------------------
-  GPUArrayVariable   An array variable on the GPU.
-  GPUExpression      A scalar or vector value on the GPU.
+  |---|---|
+  | `GPUVariable` |        A scalar or vector variable on the GPU.
+  | `GPUArrayVariable` |   An array variable on the GPU.
+  | `GPUExpression` |      A scalar or vector value on the GPU.
 
 Here’s a function that creates and returns a vector variable:
 

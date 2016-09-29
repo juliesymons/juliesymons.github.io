@@ -1239,7 +1239,7 @@ Next is the function that converts XYZ pixels to Lab:
       // Compress to _float3 
       _float3(L, a, b) }
 
-These two functions are used to create the actual GPUOperator:
+These two functions are used to create the actual `GPUOperator`:
 
     /** Convert an RGB color image to CIELab. 
       * 

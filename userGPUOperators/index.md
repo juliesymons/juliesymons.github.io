@@ -941,11 +941,8 @@ part. The `ComplexVectorField` is not yet supported.
 Cog primitives in GPUOperators provide:
 
 1.  Optional mechanisms for defining thread allocation and grouping.
-
 2.  Constants that describe the shapes and sizes of tensor fields.
-
-3.  Constants that describe thread grouping (work groups) and
-    thread identity.
+3.  Constants that describe thread grouping (work groups) and thread identity.
 
 ### Thread Allocation
 

@@ -1123,7 +1123,7 @@ other applications:
 
 Here’s the result of running this operator:
 
-![](./media/image3.png)
+![](./img/image3.png)
 
 ### Local Memory Allocation
 
@@ -1134,10 +1134,31 @@ all of the threads in the work group to do the copying. If you aren’t
 familiar with OpenCL, this will take a bit of study. Remember that all
 threads in a work group run the same code.
 
+    // Function which reads a “tile” of the input field into local memory. The 
+    // local memory is allocated by the function and returned. 
+    
+    def tile(field: Field): GPUArrayMemory = { 
+      val memory = _local(_tensorArray(field, _localRows, _localColumns)) 
+      memory(_localRow, _localColumn) = _readTensor(field, _row, _column) 
+      _syncThreadsGlobal 
+      return memory 
+    }
+
 The above function is not a GPUOperator but simply a Scala function.
 Since we can use Scala functions for building up GPUOperators, there is
 no need for low-level OpenCL or CUDA functions. Here’s an example of
 calling this:
+
+    // Read input field into local memory tiles, then write output from those tiles. 
+    // Output field is identical to the input field. 
+    
+    def identityTransform(field: Field) = 
+      GPUOperator(field.fieldType) { 
+        val inputTile = tile(field) 
+        val localRow = _row - _groupRow * _localRows 
+        val localColumn = _column - _groupColumn * _localColumns 
+        _writeTensor(_out1, inputTile(localRow, localColumn)) 
+      }
 
 The above GPUOperator, though doing nothing useful, illustrates the
 thread-local constants and idioms for handling local memory.
@@ -1153,13 +1174,90 @@ algorithm can be found at <http://www.easyrgb.com>.
 
 First, here’s a function that converts RGB pixels to XYZ pixels:
 
+    /** Transform an RGB pixel to an XYZ pixel. 
+      * 
+      * @param pixel Input pixel in _float4 format (RGBA). 
+      * @return Output pixel in Array(_float, _float, _float) format. 
+      */ 
+    def pixelRGBtoXYZ(pixel: GPUExpression): Array[GPUExpression] = { 
+      val r = _floatVar() 
+      r := pixel.x 
+      val g = _floatVar() 
+      g := pixel.y 
+      val b = _floatVar() 
+      b := pixel.z 
+      
+      _if (r > 0.04045f) {r := _pow((r + 0.055f) / 1.055f, 2.4f)} 
+      _else {r := r / 12.92f} 
+      _if (g > 0.04045f) {g := _pow((g + 0.055f) / 1.055f, 2.4f)}
+      _else {g := g / 12.92f} 
+      _if (b > 0.04045f) {b := _pow((b + 0.055f) / 1.055f, 2.4f)} 
+      _else {b := b / 12.92f} 
+      
+      val scaledPixel = _float3(r, g, b) * 100f 
+      
+      val xTransform = _float3(0.4124f, 0.3576f, 0.1805f) 
+      val yTransform = _float3(0.2126f, 0.7152f, 0.0722f) 
+      val zTransform = _float3(0.0193f, 0.1192f, 0.9505f) 
+      val x = _dot(scaledPixel, xTransform) 
+      val y = _dot(scaledPixel, yTransform) 
+      val z = _dot(scaledPixel, zTransform) Array(x, y, z) }
+
 Next is the function that converts XYZ pixels to Lab:
+
+    /** Transform an XYZ pixel to a CIE L*a*b* pixel. 
+      * 
+      * @param pixel Input pixel in Array(_float, _float, _float) format (RGB). 
+      * @return Output pixel in _float3 format. 
+      */ 
+    protected def pixelXYZtoCIELAB(pixel: Array[GPUExpression]): GPUExpression = { 
+      val x = _floatVar() 
+      x := pixel(0) 
+      val y = _floatVar() 
+      y := pixel(1) 
+      val z = _floatVar() 
+      z := pixel(2) 
+      
+      // Divide by reference white.
+      x := x / 95.047f 
+      y := y / 100f 
+      z := z / 108.883f 
+      
+      // Phase 2 of conversion magic
+      _if (x > 0.008856f) {x := _pow(x, 1f / 3)} 
+      _else {x := 7.787f * x + (16f / 116)} 
+      _if (y > 0.008856f) {y := _pow(y, 1f / 3)} 
+      _else {y := 7.787f * y + (16f / 116)} 
+      _if (z > 0.008856f) {z := _pow(z, 1f / 3)} 
+      _else {z := 7.787f * z + (16f / 116)} 
+      
+      // Compute L a b 
+      val L = y * 116f - 16f 
+      val a = (x - y) * 500f 
+      val b = (y - z) * 200f 
+      
+      // Compress to _float3 
+      _float3(L, a, b) }
 
 These two functions are used to create the actual GPUOperator:
 
-Here’s the output of this operator using the color image of Barbara, top
-left. The L, a, b components are shown at the bottom from left to right.
+    /** Convert an RGB color image to CIELab. 
+      * 
+      * @param image The color image to be converted. 
+      * @return Vector field, length 3 vectors, holding the L a b coordinates. 
+      */ 
+    def RGBtoCIELAB(image: ColorField): VectorField = 
+      GPUOperator(new FieldType(image.fieldType.fieldShape, Shape(4), Float32)) { 
+        val pixel = _float4Var() 
+        pixel := _readTensor(image) 
+        val xyz = pixelRGBtoXYZ(pixel) 
+        val Lab = pixelXYZtoCIELAB(xyz) 
+        _writeTensor(_out0, Lab) 
+      }
 
-![](./media/image4.png){width="6.4in" height="4.635483377077866in"}
+Here’s the output of this operator using the color image of Barbara, top
+left. The `L, a, b` components are shown at the bottom from left to right.
+
+![](./img/image4.png)
 
 More examples of GPUOperators can be found in the Cog library.

@@ -899,7 +899,7 @@ Writing tensors to (small) tensor fields use the following functions.
 The `OutField` parameter in each is one of `_out0, _out1, _out2, …,
 _out9`.
 
-| Read and Write Tensor Functions | Description |
+| `_writeTensor` Function | Description |
 |---|---|
 | `_writeTensor(OutField, value, layer, row, column)` |    Write tensor value to indexed location (3D fields only)                     
 | `_writeTensor(OutField, value, row, column)` |     Write tensor value to indexed location (2D fields only)
@@ -909,57 +909,31 @@ _out9`.
  
 Big tensors (tensors with more than 4 elements) cannot be read into a
 single variable, but elements (or components) of a big tensor can. T in
-the following functions is float.
+the following functions is `float`.
 
-  -----------------------------------------------------------------------------------------------------------
-  T \_readTensorElement(Field, layer, row,    Read element at indexed location (3D fields only)
-                                              
-  column, element)                            
-  ------------------------------------------- ---------------------------------------------------------------
-  T \_readTensorElement(Field, row, column,   Read element at indexed location (2D fields only)
-                                              
-  element)                                    
-
-  T \_readTensorElement(Field, column,        Read element at indexed location (1D fields only)
-                                              
-  element)                                    
-
-  T \_readTensorElement(Field, element)       Read element at location
-                                              
-                                              (\_layer, \_row, \_column, element) (3D, 2D, 1D fields only)
-
-  T \_readTensorElement(Field, element)       Read element of the only tensor in the field (0D fields only)
-  -----------------------------------------------------------------------------------------------------------
+| `_readTensorElement` Function | Description |
+|---|---|
+| `T _readTensorElement(Field, layer, row, column, element)` |     Read element at indexed location (3D fields only)
+| `T _readTensorElement(Field, row, column, element)` |   Read element at indexed location (2D fields only)
+| `T _readTensorElement(Field, column, element)` |       Read element at indexed location (1D fields only)
+| `T _readTensorElement(Field, element)` |  Read element at location (`_layer, _row, _column, element`) (3D, 2D, 1D fields only)
+| `T _readTensorElement(Field, element)` |       Read element of the only tensor in the field (0D fields only)
 
 Big tensors can only be written one element at a time using the
-following functions. The OutField parameter in each is one of \_out0,
-\_out1, \_out2, …, \_out9.
+following functions. The `OutField` parameter in each is one of `_out0,
+\_out1, \_out2, …, \_out9`.
 
-  ---------------------------------------------------------------------------------------------------------------
-  \_writeTensorElement(OutField, value,            Write value to indexed location (3D fields only)
-                                                   
-  layer, row, column,                              
-                                                   
-  element)                                         
-  ------------------------------------------------ --------------------------------------------------------------
-  \_writeTensorElement(OutField, value,            Write value to indexed location (2D fields only)
-                                                   
-  row, column, element)                            
-
-  \_writeTensorElement(OutField, value,            Write value to indexed location (1D fields only)
-                                                   
-  column, element)                                 
-
-  \_writeTensorElement(OutField, value, element)   Write value to location
-                                                   
-                                                   (\_layer, \_row, \_column, element) (3D, 2D, 1D fields only)
-
-  \_writeTensorElement(OutField, value, element)   Write value to the only tensor in the field (0D fields only)
-  ---------------------------------------------------------------------------------------------------------------
+| `_writeTensorElement` Function | Description |
+|---|---|
+| `_writeTensorElement(OutField, value, layer, row, column,  element)` | Write value to indexed location (3D fields only)
+| `_writeTensorElement(OutField, value, row, column, element)` |           Write value to indexed location (2D fields only)
+| `_writeTensorElement(OutField, value,  column, element)` |          Write value to indexed location (1D fields only)
+| `_writeTensorElement(OutField, value, element)` | Write value to location (`_layer, _row, _column, element`) (3D, 2D, 1D fields only)
+| `_writeTensorElement(OutField, value, element)` |   Write value to the only tensor in the field (0D fields only)
 
 ComplexFields can be written and read using any of the above functions,
-but a complex tensor element is represented by a \_float2. The first
-element of the \_float2 is the real part, the second is the imaginary
+but a complex tensor element is represented by a `_float2`. The first
+element of the `_float2` is the real part, the second is the imaginary
 part. ComplexVectorFields are not yet supported.
 
 ## Cog Primitives

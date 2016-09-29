@@ -980,82 +980,83 @@ don’t do any computation, so you can envision the global work group
 shape as equal to the shape of the output field (one thread per output
 tensor), even though it is often bigger.
 
-Calling \_globalThreads(Shape) overrides the default global work group
+Calling `_globalThreads(Shape)` overrides the default global work group
 based on its shape parameter, and is typically used to allocate one
 thread per tensor in some field other than the first output field. For
 example, an operator that summed all entries in a scalar field down to a
 single scalar in an output field would, by default, be allocated only a
 single thread. If you wanted a thread for every *input* tensor, you
-could call \_globalThreads(shape), where shape would be the shape of the
+could call `_globalThreads(shape)`, where shape would be the shape of the
 input field. Each allocated thread in this scenario would still be able
 to deduce its identity from the field constants:
 
-\_layer
+    _layer
+    _row
+    _column
 
-\_row
-
-\_column
-
-The \_globalThreads(fieldShape: Shape, tensorShape: Shape) function
+The `_globalThreads(fieldShape: Shape, tensorShape: Shape)` function
 gives you even finer control over thread allocation. This is typically
 used to allocate one thread per tensor element in a field other than the
 first output field. The number of threads allocated would equal the
-number of points in fieldShape times the number of points in
-tensorShape. Each allocated thread can deduce its identity from the
+number of points in `fieldShape` times the number of points in
+`tensorShape`. Each allocated thread can deduce its identity from the
 field constants:
 
-\_layer
+    _layer
+    _row
+    _column
+    _tensorElement
 
-\_row
+The (`_layer, _row, _column`) indices are derived from the `fieldShape`
+parameter while the `_tensorElement` index is derived from the
+`tensorShape` parameter.
 
-\_column
-
-\_tensorElement
-
-The (\_layer, \_row, \_column) indices are derived from the fieldShape
-parameter while the \_tensorElement index is derived from the
-tensorShape parameter.
-
-You may call \_localThreads(Shape) and \_globalThreads(Field) in any
+You may call `_localThreads(Shape)` and `_globalThreads(Field)` in any
 order and the threads will be allocated correctly. Any required roundup
 of the actual global work group size is handled automatically.
 
-Any calls to these functions must be done in the GPUOperator before any
+Any calls to these functions must be done in the `GPUOperator` before any
 *executable* code is programmed:
+
+    def foo(in1: Field, in2: Field): Field = 
+      GPUOperator(in1.fieldType) { 
+        _localThreads(Shape(16, 16)) 
+        _globalThreads(in2) 
+        // operator code here 
+      }
 
 ### Thread Organization Constants
 
 The following constants describe the shape of the work field:
 
-  \_layers           Number of layers in the field (3D fields only)
-  ------------------ ---------------------------------------------------------
-  \_rows             Number of rows in the field (3D, 2D fields)
-  \_columns          Number of columns in the field (3D, 2D, 1D fields)
-  \_tensorElements   Number of elements in each tensor (1, 2, or 4)
-  \_localLayers      Number of layers in the work group (3D fields only)
-  \_localRows        Number of rows in the work group (3D, 2D fields)
-  \_localColumns     Number of columns in the work group (3D, 2D, 1D fields)
-
-#### 
+| Thread Organization Constants | Description |
+|---|---|
+| `_layers` |           Number of layers in the field (3D fields only)
+| `_rows` |             Number of rows in the field (3D, 2D fields)
+| `_columns` |          Number of columns in the field (3D, 2D, 1D fields)
+| `_tensorElements` |   Number of elements in each tensor (1, 2, or 4)
+| `_localLayers` |      Number of layers in the work group (3D fields only)
+| `_localRows` |        Number of rows in the work group (3D, 2D fields)
+| `_localColumns` |     Number of columns in the work group (3D, 2D, 1D fields)
 
 ### Thread Identity Constants
 
 Each thread is assigned a single tensor location in the output field and
 is provided with the following thread-private constants:
 
-  \_layer           Layer assigned to this thread (3D fields only)
-  ----------------- ---------------------------------------------------------------------------------------------
-  \_row             Row assigned to this thread (3D, 2D fields)
-  \_column          Column assigned to this thread (3D, 2D, 1D fields)
-  \_groupLayer      Group layer (3D fields only). See OpenCL get\_group\_id()
-  \_groupColumn     Group column (3D, 2D fields only). See OpenCL get\_group\_id()
-  \_groupRow        Group row (3D, 2D, 1D fields only). See OpenCL get\_group\_id()
-  \_localLayer      Local layer within work group (3D fields only). See OpenCL get\_local\_id()
-  \_localColumn     Local column within work group (3D, 2D fields only). See OpenCL get\_local\_id()
-  \_localRow        Local row within work group (3D, 2D, 1D fields). See OpenCL get\_local\_id()
-  \_tensorElement   Index of current tensor (used in \_forEachTensorElement for “big tensor” field processing).
+| Thread Organization Constants | Description |
+|---|---|
+| `_layer` |           Layer assigned to this thread (3D fields only)
+| `_row` |             Row assigned to this thread (3D, 2D fields)
+| `_column` |          Column assigned to this thread (3D, 2D, 1D fields)
+| `_groupLayer` |      Group layer (3D fields only). See OpenCL `get_group_id()`
+| `_groupColumn` |     Group column (3D, 2D fields only). See OpenCL `get_group_id()`
+| `_groupRow` |        Group row (3D, 2D, 1D fields only). See OpenCL `get_group_id()`
+| `_localLayer` |      Local layer within work group (3D fields only). See OpenCL `get_local_id()`
+| `_localColumn` |     Local column within work group (3D, 2D fields only). See OpenCL `get_local_id()`
+| `_localRow` |        Local row within work group (3D, 2D, 1D fields). See OpenCL `get_local_id()`
+| `_tensorElement` |   Index of current tensor (used in `_forEachTensorElement` for “big tensor” field processing).
 
-#### 
 
 ### Output Field Constants
 

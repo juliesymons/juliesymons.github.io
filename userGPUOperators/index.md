@@ -709,25 +709,26 @@ the total number of components in the arguments must equal the number of
 components in the result. An exception: if there is only one scalar
 argument, it will be replicated as necessary to create the result.
 
-  float2 \_float2(e1)               Convert expression e1 to float2
-  --------------------------------- ----------------------------------------------
-  float2 \_float2(e1, e2)           Convert expressions e1, e2 to float2
-  float3 \_float3(e1)               Convert expressions e1 to float3
-  float3 \_float3(e1, e2)           Convert expressions e1, e2 to float3
-  float3 \_float3(e1, e2, e3)       Convert expressions e1, e2, e3 to float3
-  float4 \_float4(e1)               Convert expression e1 to float4
-  float4 \_float4(e1, e2)           Convert expressions e1, e2 to float4
-  float4 \_float4(e1, e2, e3)       Convert expressions e1, e2, e3 to float4
-  float4 \_float4(e1, e2, e3, e4)   Convert expressions e1, e2, e3, e4 to float4
-  int2 \_int2(e1)                   Convert expression e1 to int2
-  int2 \_int2(e1, e2)               Convert expressions e1, e2 to int2
-  int3 \_int3(e1)                   Convert expressions e1 to int3
-  int3 \_int3(e1, e2)               Convert expressions e1, e2 to int3
-  int3 \_int3(e1, e2, e3)           Convert expressions e1, e2, e3 to int3
-  int4 \_int4(e1)                   Convert expression e1 to int4
-  int4 \_int4(e1, e2)               Convert expressions e1, e2 to int4
-  int2 \_int4(e1)                   Convert expressions e1, e2, e3 to int4
-  int2 \_int4(e1, e2)               Convert expressions e1, e2, e3, e4 to int4
+| Vector Literal Functions | Description |
+| --- | --- |
+| `float2 _float2(e1)`              | Convert expression e1 to float2
+| `float2 _float2(e1, e2)`          | Convert expressions e1, e2 to float2
+| `float3 _float3(e1)`              | Convert expressions e1 to float3
+| `float3 _float3(e1, e2)`          | Convert expressions e1, e2 to float3
+| `float3 _float3(e1, e2, e3)`      | Convert expressions e1, e2, e3 to float3
+| `float4 _float4(e1)`              | Convert expression e1 to float4
+| `float4 _float4(e1, e2)`          | Convert expressions e1, e2 to float4
+| `float4 _float4(e1, e2, e3)`      | Convert expressions e1, e2, e3 to float4
+| `float4 _float4(e1, e2, e3, e4)`  | Convert expressions e1, e2, e3, e4 to float4
+| `int2 _int2(e1)`                  | Convert expression e1 to int2
+| `int2 _int2(e1, e2)`              | Convert expressions e1, e2 to int2
+| `int3 _int3(e1)`                  | Convert expressions e1 to int3
+| `int3 _int3(e1, e2)`              | Convert expressions e1, e2 to int3
+| `int3 _int3(e1, e2, e3)`          | Convert expressions e1, e2, e3 to int3
+| `int4 _int4(e1)`                  | Convert expression e1 to int4
+| `int4 _int4(e1, e2)`              | Convert expressions e1, e2 to int4
+| `int2 _int4(e1)`                  | Convert expressions e1, e2, e3 to int4
+| `int2 _int4(e1, e2)`              | Convert expressions e1, e2, e3, e4 to int4
 
 #### 
 

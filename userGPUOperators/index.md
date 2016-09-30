@@ -66,13 +66,13 @@ CUDA languages, there are two different styles of `GPUOperator`: those
 that operate on “small tensor” fields (fields with tensors containing no
 more than 4 elements) and those that that operate on “big tensor” fields
 (fields with tensors of more than 4 elements). The “Small tensor”
-`GPUOperator` are generally the most efficient since they can be easily
-optimized and fused with other GPUOperators. Small tensor fields are the
+`GPUOperator` is generally the most efficient since they can be easily
+optimized and fused with other `GPUOperator`s. Small tensor fields are the
 most common and include scalar fields, vector fields (with length 2, 3,
 or 4 vectors), matrix fields (2 x 2 matrices) and color fields (four
-components, RGBA, per tensor). “Big tensor” GPUOperators are usually
+components, RGBA, per tensor). The “Big tensor” `GPUOperator` is usually
 less efficient, but necessary for processing the occasional big tensor
-fields. We’ll show later how to write a single GPUOperator that can
+fields. We’ll show later how to write a single `GPUOperator` that can
 handle both big and small tensor fields.
 
 Here’s an example of a user-written GPU kernel that divides every
@@ -102,7 +102,7 @@ elements per tensor):
     val mHalf = half(m)    // Matrix field result
     val cHalf = half(c)    // Color field result
 
-The synthesized OpenCL code for the half GPUOperator applied to a 512 x
+The synthesized OpenCL code for the `half` `GPUOperator` applied to a 512 x
 512 scalar field would look something like this:
 
     // OpenCL code for half GPUOperator
@@ -149,13 +149,13 @@ The synthesized OpenCL code for the half GPUOperator applied to a 512 x
         _out_field_0[_row * _out_field_0_rowStride + _column] = _temp_1;
     }
 
-As you can see, the GPUOperator code is simpler and more abstract, and
+As you can see, the `GPUOperator` code is simpler and more abstract, and
 hides the low-level boilerplate required by OpenCL. Note that this same
 function can be performed more simply using the existing API:
 
     val sHalf = s / 2.0f
 
-The real value of GPUOperators comes with its flexibility to handle more
+The real value of `GPUOperator`s comes with its flexibility to handle more
 complicated operations such as those requiring tiled processing.
 
 ## Programming Model
@@ -166,26 +166,26 @@ understand the rest of this document.
 
 ### Single output, small tensor field operators
 
-The simplest GPUOperator works only with “small tensor” fields, and
+The simplest `GPUOperator` works only with “small tensor” fields, and
 writes a single output tensor field. Let’s start with that by going back
-to the original half GPUOperator example and dissect it:
+to the original `half` `GPUOperator` example and dissect it:
 
     def half(input: Field): Field =
       GPUOperator(input.fieldType) { 
         _writeTensor(_out0, _readTensor(input) / 2.0f)
     }
 
-The input parameter to the GPUOperator function is the type of the
+The input parameter to the `GPUOperator` function is the type of the
 desired output field. Here the output field is defined to be of the same
 type as the input field, whatever that happens to be. This saves a lot
 of time—write an operator once and use it on different field types. The
-GPUOperator function returns the desired field.
+`GPUOperator` function returns the desired field.
 
 The code segment inside the curly braces defines the action performed
 *by a single thread* on the GPU. Each tensor in the output field is
 given its own thread, and all threads (conceptually) can run in
 parallel. For example, if the output field is a 512 x 512 vector field,
-the GPUOperator will allocate 512 x 512 = 262,144 GPU threads to
+the `GPUOperator` will allocate 512 x 512 = 262,144 GPU threads to
 implement the function.
 
 The `_readTensor` function reads a single tensor from the input field.
@@ -214,7 +214,7 @@ on a GPU.
 
 ### Multiple outputs, small tensor field operators
 
-A GPUOperator can also write multiple output fields. Here’s a simple
+A `GPUOperator` can also write multiple output fields. Here’s a simple
 operator that takes one input field and writes an output field where
 every element is half the input, and a second output field where every
 element is double the input:
@@ -227,7 +227,7 @@ element is double the input:
         _writeTensor(_out1, in * 2.0f)
       }
 
-Since we’re writing two output fields, the GPUOperator function here
+Since we’re writing two output fields, the `GPUOperator` function here
 requires two parameters specifying the types of the output fields. The
 output fields are named `_out0` and `_out1`.
 
@@ -313,7 +313,7 @@ The `if (isBigTensor…)` code runs in Scala, not on the GPU, so it does
 not count as an *executable* statement on the GPU. The `square` operator
 above will generate one of two very different GPU kernels, depending on
 the size of the tensors in the input field. This tactic allows you to
-create general-purpose GPUOperators that work for all tensor sizes.
+create general-purpose `GPUOperator`s that work for all tensor sizes.
 
 ### Rules for reading and writing
 
@@ -426,7 +426,7 @@ components. They all have the form:
 
 where componentExpression is something like x or xy. Some examples:
 
-See the OpenCL 1.1 Specification for details. Find it [here](https://www.khronos.org/opencl/). GPUOperators support the
+See the OpenCL 1.1 Specification for details. Find it [here](https://www.khronos.org/opencl/). `GPUOperator`s support the
 following vector component methods:
 
 >**x y z w**
@@ -835,7 +835,7 @@ case.
 
 ## GPU Functions
 
-GPUOperators can also be built using smaller, reusable *GPU functions*.
+`GPUOperator`s can also be built using smaller, reusable *GPU functions*.
 Such functions are just Scala functions that return one of three GPU
 types:
 
@@ -863,7 +863,7 @@ Here’s one that computes the average of two values and returns it:
 
 GPU functions allow for more modular algorithm design, but they do not
 offer any performance benefits. GPU compilers inline all functions
-anyway, so ultimately a GPUOperator gets compiled down to a single GPU
+anyway, so ultimately a `GPUOperator` gets compiled down to a single GPU
 kernel that makes no function calls.
 
 ## Reading and Writing Tensor Fields
@@ -940,7 +940,7 @@ part. The `ComplexVectorField` is not yet supported.
 
 ## Cog Primitives
 
-Cog primitives in GPUOperators provide:
+Cog primitives in `GPUOperator`s provide:
 
 1.  Optional mechanisms for defining thread allocation and grouping.
 2.  Constants that describe the shapes and sizes of tensor fields.
@@ -948,7 +948,7 @@ Cog primitives in GPUOperators provide:
 
 ### Thread Allocation
 
-Cog will assign default thread work group sizes to any GPUOperator that
+Cog will assign default thread work group sizes to any `GPUOperator` that
 you write, and most of the time they will be appropriate. However, some
 (relatively rare) algorithms require explicit control of thread
 allocation, so two functions are supplied that give you that control:
@@ -967,7 +967,7 @@ you are doing.
 The default global work group size is assigned the shape of the first
 output field *rounded up* so that the size of each dimension is a
 multiple of the corresponding dimension in the local work group. For
-example, a GPUOperator that transforms a 20 x 20 scalar field to another
+example, a `GPUOperator` that transforms a 20 x 20 scalar field to another
 20 x 20 scalar field might have default assignments like this:
 
     local work group: Shape(16, 16)   // Default local work group size. 
@@ -1075,12 +1075,12 @@ operators. The maximum number of output fields is 10.
 
 ## Examples
 
-This section shows a few examples of GPUOperator programming.
+This section shows a few examples of `GPUOperator` programming.
 
 ### Upside-Down Operator
 
 This first example shows how to flip a 2D field upside down. Here’s the
-GPUOperator code:
+`GPUOperator` code:
 
     def upsideDown(field: Field): Field = { 
       // Semantic checking 
@@ -1093,10 +1093,10 @@ GPUOperator code:
       } 
     }
 
-Note that before defining the GPUOperator, the input field is checked
+Note that before defining the `GPUOperator`, the input field is checked
 for semantic correctness. You should always do this if your operator
 cannot handle all possible field types. Here we check that the input
-field is two-dimensional. The GPUOperator itself uses the Cog
+field is two-dimensional. The `GPUOperator` itself uses the Cog
 thread-local constants `_rows`, `_row`, and `_column` to determine which
 tensor of the input field each thread reads.
 
@@ -1146,8 +1146,8 @@ threads in a work group run the same code.
       return memory 
     }
 
-The above function is not a GPUOperator but simply a Scala function.
-Since we can use Scala functions for building up GPUOperators, there is
+The above function is not a `GPUOperator` but simply a Scala function.
+Since we can use Scala functions for building up `GPUOperator`s, there is
 no need for low-level OpenCL or CUDA functions. Here’s an example of
 calling this:
 
@@ -1162,7 +1162,7 @@ calling this:
         _writeTensor(_out1, inputTile(localRow, localColumn)) 
       }
 
-The above GPUOperator, though doing nothing useful, illustrates the
+The above `GPUOperator`, though doing nothing useful, illustrates the
 thread-local constants and idioms for handling local memory.
 
 ### Color Conversion
@@ -1262,4 +1262,4 @@ left. The `L, a, b` components are shown at the bottom from left to right.
 
 ![](./img/image4.png)
 
-More examples of GPUOperators can be found in the Cog library.
+More examples of `GPUOperator`s can be found in the Cog library.

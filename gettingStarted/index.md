@@ -20,7 +20,8 @@ The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep
       * [The Feedback Operator](#the-feedback-operator)
       * [User-defined GPU Operators](#user-defined-gpu-operators)  
       * [User-defined CPU Operators](#user-defined-cpu-operators)  
-*   [Coming Soon](#coming-soon)
+*   [Compute Graphs](#compute-graphs)
+*   [Neural Network Toolkit](#neural-network-toolkit)
 
 
 ## Intro
@@ -268,6 +269,11 @@ A CPU operator is a useful way to develop and test a new operator. These are eas
 CPU operators are described in the [User-defined operators](../programmingGuide/#user-defined-operators) section *CCT Programming Guide*.
 
 
-## Coming Soon
+## Compute Graphs
 
-Come back here soon. More information will be posted about the Compute Graph, Neural Network Toolkit, and more.
+More information about the Compute Graph
+ 
+ 
+## Neural Network Toolkit
+
+More information about the Neural Network Toolkit 

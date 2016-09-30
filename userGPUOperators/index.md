@@ -279,12 +279,9 @@ output, the output tensor is fully specified.
 There are three rules that must be followed in writing such “big tensor”
 operators:
 
-1.  The `_forEachTensorElement` statement must be the *first* statement
-    *executed* in any given instance of a GPUOperator.
-2.  No *executed* statement may follow a `_forEachTensorElement`
-    code block.
-3.  The `_readTensor` and `_writeTensor` functions are not valid in this
-    mode and will generate compile errors if used.
+1.  The `_forEachTensorElement` statement must be the *first* statement *executed* in any given instance of a GPUOperator.
+2.  No *executed* statement may follow a `_forEachTensorElement` code block.
+3.  The `_readTensor` and `_writeTensor` functions are not valid in this mode and will generate compile errors if used.
 
 ### Big / small tensor field operator
 

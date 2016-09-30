@@ -351,7 +351,7 @@ Most of the time you will not have to worry about how threads and
 structured on the GPU. Cog uses its own default values for workgroup
 sizes to maximize kernel fusion to improve performance. Some operations,
 though, such as reductions, require explicit thread allocation. This
-will be covered in a later section.
+will be covered in a later [section](#thread-allocation).
 
 ## Variable Declarations
 

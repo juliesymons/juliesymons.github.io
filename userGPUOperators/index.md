@@ -67,7 +67,7 @@ that operate on “small tensor” fields (fields with tensors containing no
 more than 4 elements) and those that that operate on “big tensor” fields
 (fields with tensors of more than 4 elements). The “Small tensor”
 `GPUOperator` is generally the most efficient since they can be easily
-optimized and fused with other `GPUOperator`'s. Small tensor fields are the
+optimized and fused with other `GPUOperator`s. Small tensor fields are the
 most common and include scalar fields, vector fields (with length 2, 3,
 or 4 vectors), matrix fields (2 x 2 matrices) and color fields (four
 components, RGBA, per tensor). The “Big tensor” `GPUOperator` is usually
@@ -155,7 +155,7 @@ function can be performed more simply using the existing API:
 
     val sHalf = s / 2.0f
 
-The real value of `GPUOperator`s comes with its flexibility to handle more
+The real value of `GPUOperator`'s comes with its flexibility to handle more
 complicated operations such as those requiring tiled processing.
 
 ## Programming Model
@@ -313,7 +313,7 @@ The `if (isBigTensor…)` code runs in Scala, not on the GPU, so it does
 not count as an *executable* statement on the GPU. The `square` operator
 above will generate one of two very different GPU kernels, depending on
 the size of the tensors in the input field. This tactic allows you to
-create general-purpose `GPUOperator`s that work for all tensor sizes.
+create general-purpose `GPUOperator`'s that work for all tensor sizes.
 
 ### Rules for reading and writing
 
@@ -426,7 +426,7 @@ components. They all have the form:
 
 where componentExpression is something like x or xy. Some examples:
 
-See the OpenCL 1.1 Specification for details. Find it [here](https://www.khronos.org/opencl/). `GPUOperator`s support the
+See the OpenCL 1.1 Specification for details. Find it [here](https://www.khronos.org/opencl/). `GPUOperator`'s support the
 following vector component methods:
 
 >**x y z w**
@@ -835,7 +835,7 @@ case.
 
 ## GPU Functions
 
-`GPUOperator`s can also be built using smaller, reusable *GPU functions*.
+`GPUOperator`'s can also be built using smaller, reusable *GPU functions*.
 Such functions are just Scala functions that return one of three GPU
 types:
 
@@ -940,7 +940,7 @@ part. The `ComplexVectorField` is not yet supported.
 
 ## Cog Primitives
 
-Cog primitives in `GPUOperator`s provide:
+Cog primitives in `GPUOperator`'s provide:
 
 1.  Optional mechanisms for defining thread allocation and grouping.
 2.  Constants that describe the shapes and sizes of tensor fields.
@@ -1147,7 +1147,7 @@ threads in a work group run the same code.
     }
 
 The above function is not a `GPUOperator` but simply a Scala function.
-Since we can use Scala functions for building up `GPUOperator`s, there is
+Since we can use Scala functions for building up `GPUOperator`'s, there is
 no need for low-level OpenCL or CUDA functions. Here’s an example of
 calling this:
 
@@ -1262,4 +1262,4 @@ left. The `L, a, b` components are shown at the bottom from left to right.
 
 ![](./img/image4.png)
 
-More examples of `GPUOperator`s can be found in the Cog library.
+More examples of `GPUOperator`'s can be found in the Cog library.

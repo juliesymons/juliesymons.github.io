@@ -294,7 +294,7 @@ More information about the Neural Network Toolkit
 2. logicstic regression (simple network to train mnist - fully connected layer)
 3. dual port regression (extended to train and validate mnist)
 4. conv net (trains mnist with convolutional neural network, with convolution, bias, max pooling relu, tanh
-5. twolayernet - is this redudneant to dual port?
+5. twolayernet - is this redudnant to dual port? it has two layers (dual port has one layer)
 
 * in each section point to good examples to look at 
 

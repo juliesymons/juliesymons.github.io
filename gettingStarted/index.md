@@ -271,9 +271,45 @@ CPU operators are described in the [User-defined operators](../programmingGuide/
 
 ## Compute Graphs
 
-More information about the Compute Graph
+The *compute graph* defines the inputs and outputs and all of the operations. The *compute graph* wraps all of the operations into a single, massively-parallel unit of computation. It is a state machine that evolves in discrete time. A single tick, or *step* of the CCT clock sends the input data through the entire *compute graph* to its outputs. 
+
+Persistent state, for learning and adaptation, is handled using feedback. The state of a field can be updated at each step and fed back into the compute graph at the next step, providing control loops and learning. The *compute graph* can be embedded in and controlled by a conventional application. 
+
+External data is fed into the compute graph via sensors and output to external sources using actuators. 
+
+Several examples in this tutorial demonstrate some of the basic uses of the *compute graph*. In the Counter example, a simple compute graph is wrapped by the CogDebugger. The ScalarSensorActuatorExample, defines a simple compute graph then shows some code that steps through the compute graph. This example also has a detailed description in the comments about what happens in the first call to `step` of a compute graph.  The ActuatorExample shows yet another way to invoke the use of a compute graph.
+
+The most common methods of a compute graph are step, reset, and release. Save, too.  
+
+The Programming Cog Applications chapter of the Programming Tutorial document has a lot of detail about the internals of  compute graph For more details about the tick two steps reset
  
  
 ## Neural Network Toolkit
 
 More information about the Neural Network Toolkit 
+
+5 tutorial examples
+1. MNISTdata.scala - ?? what does it do instructions where to down load and where to put
+2. logicstic regression (simple network to train mnist - fully connected layer)
+3. dual port regression (extended to train and validate mnist)
+4. conv net (trains mnist with convolutional neural network, with convolution, bias, max pooling relu, tanh
+5. twolayernet - is this redudneant to dual port?
+
+* in each section point to good examples to look at 
+
+## Filtering Toolkit
+
+## Scalabasics examples
+
+## Programming CCT Applications
+
+what can we plu here
+
+## Visual Debugger
+
+go over its functionality
+
+
+## Other Tidbits
+
+Debug Flags?

@@ -1262,4 +1262,4 @@ left. The `L, a, b` components are shown at the bottom from left to right.
 
 ![](./img/image4.png)
 
-More examples of `GPUOperator`'s can be found in the Cog library.
+More examples of `GPUOperator`'s can be found in the Cog libraries/repositories of [hpe-cct](https://github.com/hpe-cct).

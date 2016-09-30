@@ -430,13 +430,14 @@ See the OpenCL 1.1 Specification for details. GPUOperators support the
 following vector component methods:
 
 >>**x y z w**
+
 >>**xx xy xz xw yx yy yz yw zx zy zz zw wx wy wz ww**
 
-**xxx xxy xxz xxw yxx yxy yxz yxw zxx zxy zxz zxw wxx wxy wxz wxw**
+>>**xxx xxy xxz xxw yxx yxy yxz yxw zxx zxy zxz zxw wxx wxy wxz wxw**
 
-**xyx xyy xyz xyw yyx yyy yyz yyw zyx zyy zyz zyw wyx wyy wyz wyw**
+>>**xyx xyy xyz xyw yyx yyy yyz yyw zyx zyy zyz zyw wyx wyy wyz wyw**
 
-**xzx xzy xzz xzw yzx yzy yzz yzw zzx zzy zzz zzw wzx wzy wzz wzw**
+>>**xzx xzy xzz xzw yzx yzy yzz yzw zzx zzy zzz zzw wzx wzy wzz wzw**
 
 **xwx xwy xwz xww ywx ywy ywz yww zwx zwy zwz zww wwx wwy wwz www**
     

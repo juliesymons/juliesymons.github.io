@@ -67,7 +67,7 @@ that operate on “small tensor” fields (fields with tensors containing no
 more than 4 elements) and those that that operate on “big tensor” fields
 (fields with tensors of more than 4 elements). The “Small tensor”
 `GPUOperator` is generally the most efficient since they can be easily
-optimized and fused with other `GPUOperator`s. Small tensor fields are the
+optimized and fused with other `GPUOperator`'s. Small tensor fields are the
 most common and include scalar fields, vector fields (with length 2, 3,
 or 4 vectors), matrix fields (2 x 2 matrices) and color fields (four
 components, RGBA, per tensor). The “Big tensor” `GPUOperator` is usually

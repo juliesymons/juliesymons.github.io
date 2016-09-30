@@ -885,13 +885,13 @@ expressions.
 |  `T _readTensor(Field, layer, row, column)` |   Read tensor at indexed location (3D fields only)
 |  `T _readTensor(Field, row, column)` |          Read tensor at indexed location (2D fields only)
 |  `T _readTensor(Field, column)` |               Read tensor at indexed location (1D fields only)
-|  `T _readTensor(Field)` |                       Read tensor at location (`_layer, _row, _column`) (3D, 2D, 1D fields only)
+|  `T _readTensor(Field)` |                       Read tensor at location `(_layer, _row, _column)` (3D, 2D, 1D fields only)
 |  `T _readTensor(Field)` |                       Read the only tensor in the field (0D fields only)
 
 The last two functions, `_readTensor(Field)`, require more explanation. A
 0D field contains only a single tensor, so that is returned by that
 function. For higher-dimensional fields, the tensor address is
-implicitly defined by the (`_layer, _row, _column`) thread-local
+implicitly defined by the `(_layer, _row, _column)` thread-local
 constants of the current thread. This makes it easy to read an input
 tensor, calculate something with it, and write the result to the
 corresponding tensor in the output field. This is much more efficient
@@ -906,7 +906,7 @@ _out9`.
 | `_writeTensor(OutField, value, layer, row, column)` |    Write tensor value to indexed location (3D fields only)                     
 | `_writeTensor(OutField, value, row, column)` |     Write tensor value to indexed location (2D fields only)
 | `_writeTensor(OutField, value, column)` |   Write tensor value to indexed location (1D fields only)
-| `_writeTensor(OutField, value)` |  Write tensor value to location (`_layer, _row, _column`) (3D, 2D, 1D fields only)
+| `_writeTensor(OutField, value)` |  Write tensor value to location `(_layer, _row, _column)` (3D, 2D, 1D fields only)
 | `_writeTensor(OutField, value)` |          Write tensor value to the only tensor in the field (0D fields only)
  
 Big tensors (tensors with more than 4 elements) cannot be read into a
@@ -918,7 +918,7 @@ the following functions is `float`.
 | `T _readTensorElement(Field, layer, row, column, element)` |     Read element at indexed location (3D fields only)
 | `T _readTensorElement(Field, row, column, element)` |   Read element at indexed location (2D fields only)
 | `T _readTensorElement(Field, column, element)` |       Read element at indexed location (1D fields only)
-| `T _readTensorElement(Field, element)` |  Read element at location (`_layer, _row, _column, element`) (3D, 2D, 1D fields only)
+| `T _readTensorElement(Field, element)` |  Read element at location `(_layer, _row, _column, element)` (3D, 2D, 1D fields only)
 | `T _readTensorElement(Field, element)` |       Read element of the only tensor in the field (0D fields only)
 
 Big tensors can only be written one element at a time using the
@@ -930,7 +930,7 @@ following functions. The `OutField` parameter in each is one of `_out0,
 | `_writeTensorElement(OutField, value, layer, row, column,  element)` | Write value to indexed location (3D fields only)
 | `_writeTensorElement(OutField, value, row, column, element)` |           Write value to indexed location (2D fields only)
 | `_writeTensorElement(OutField, value,  column, element)` |          Write value to indexed location (1D fields only)
-| `_writeTensorElement(OutField, value, element)` | Write value to location (`_layer, _row, _column, element`) (3D, 2D, 1D fields only)
+| `_writeTensorElement(OutField, value, element)` | Write value to location `(_layer, _row, _column, element)` (3D, 2D, 1D fields only)
 | `_writeTensorElement(OutField, value, element)` |   Write value to the only tensor in the field (0D fields only)
 
 A `ComplexField` can be written and read using any of the above functions,
@@ -1009,7 +1009,7 @@ field constants:
     _column
     _tensorElement
 
-The (`_layer, _row, _column`) indices are derived from the `fieldShape`
+The `(_layer, _row, _column)` indices are derived from the `fieldShape`
 parameter while the `_tensorElement` index is derived from the
 `tensorShape` parameter.
 

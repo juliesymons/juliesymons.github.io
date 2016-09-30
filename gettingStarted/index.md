@@ -286,17 +286,21 @@ The Programming Cog Applications chapter of the Programming Tutorial document ha
  
 ## Neural Network Toolkit
 
-More information about the Neural Network Toolkit 
+More information about the Neural Network Toolkit: 
 
-5 tutorial examples
+4 tutorial examples
+
+All use MNIST data. You may need to download from [here](http://yann.lecun.com/exdb/mnist/)  and put <there>  ../data/MNIST (check if names are correct for all 4 examples)
 
 1. MNISTdata.scala - ?? what does it do instructions where to down load and where to put
-2. logicstic regression (simple network to train mnist - fully connected layer)
-3. dual port regression (extended to train and validate mnist)
-4. conv net (trains mnist with convolutional neural network, with convolution, bias, max pooling relu, tanh
-5. twolayernet - is this redudnant to dual port? it has two layers (dual port has one layer)
 
-* in each section point to good examples to look at 
+
+
+1. logicstic regression (simple network to train mnist - fully connected layer)
+2. dual port regression (extended to train and validate mnist)
+3. conv net (trains mnist with convolutional neural network, with convolution, bias, max pooling relu, tanh
+4. twolayernet - is this redudnant to dual port? it has two layers (dual port has one layer)
+
 
 ## Filtering Toolkit
 

@@ -294,9 +294,11 @@ All use MNIST data. You may need to download from [here](http://yann.lecun.com/e
 
 1. MNISTdata.scala - ?? what does it do instructions where to down load and where to put
 
+Talk about training each network, number of steps to reach a certain accuracy level.
 
+Examples
 
-1. logicstic regression (simple network to train mnist - fully connected layer)
+1. logistic regression (simple network to train mnist - fully connected layer)
 2. dual port regression (extended to train and validate mnist)
 3. conv net (trains mnist with convolutional neural network, with convolution, bias, max pooling relu, tanh
 4. twolayernet - is this redudnant to dual port? it has two layers (dual port has one layer)

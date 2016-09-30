@@ -13,7 +13,7 @@ great candidates for implementation on a GPU. Defining such algorithms
 should be: (1) simple, not requiring any knowledge of Cog internals; (2)
 independent of intermediate GPU languages (such as OpenCL or CUDA); and
 (3) cleanly integrated with the rest of a Cog application. This document
-describes *GPUOperators*, which provide that functionality.
+describes `GPUOperator`, which provides that functionality.
 
 ## Table Of Contents
 
@@ -54,19 +54,19 @@ describes *GPUOperators*, which provide that functionality.
     
 ## Overview
 
-GPUOperators provide a high-level, domain-specific language (DSL) for
+`GPUOperator` provides a high-level, domain-specific language (DSL) for
 writing GPU kernels. The DSL provides most of the expressiveness of both
 OpenCL and CUDA, but is constrained to operate on tensor fields.
-User-designed GPUOperators execute on the GPU, are potentially
+A user-designed `GPUOperator` executes on the GPU, are potentially
 optimizable (meaning that they can be merged with other GPU kernels to
 minimize GPU bandwidth), and interact efficiently with other Cog code.
 
 Because of limited registers on GPUs and limitations in the OpenCL and
-CUDA languages, there are two different styles of GPUOperators: those
+CUDA languages, there are two different styles of `GPUOperator`: those
 that operate on “small tensor” fields (fields with tensors containing no
 more than 4 elements) and those that that operate on “big tensor” fields
-(fields with tensors of more than 4 elements). “Small tensor”
-GPUOperators are generally the most efficient since they can be easily
+(fields with tensors of more than 4 elements). The “Small tensor”
+`GPUOperator` are generally the most efficient since they can be easily
 optimized and fused with other GPUOperators. Small tensor fields are the
 most common and include scalar fields, vector fields (with length 2, 3,
 or 4 vectors), matrix fields (2 x 2 matrices) and color fields (four
@@ -426,7 +426,7 @@ components. They all have the form:
 
 where componentExpression is something like x or xy. Some examples:
 
-See the OpenCL 1.1 Specification for details. GPUOperators support the
+See the OpenCL 1.1 Specification for details. Find it [here](https://www.khronos.org/opencl/). GPUOperators support the
 following vector component methods:
 
 >**x y z w**

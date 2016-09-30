@@ -289,6 +289,7 @@ The Programming Cog Applications chapter of the Programming Tutorial document ha
 More information about the Neural Network Toolkit 
 
 5 tutorial examples
+
 1. MNISTdata.scala - ?? what does it do instructions where to down load and where to put
 2. logicstic regression (simple network to train mnist - fully connected layer)
 3. dual port regression (extended to train and validate mnist)

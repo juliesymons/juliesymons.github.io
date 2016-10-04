@@ -316,7 +316,7 @@ The [Programming Cog Applications](../programmingGuide/#programming-cog-applicat
 
 There are several examples in the **cct-tutorial** that use the Neural Network Toolkit (cct-nn). 
 
-All 4 examples use the MNIST data set, which can be downloaded from [yann.lecun.com](http://yann.lecun.com/exdb/mnist/). The data set includes all 4 files, uncompressed. The tutorial examples will look for the data in one of two locations:  `../data/MNIST` (relative to the root directory on the cct-tutorial project) or `~/cog/data/MNIST`. To override these locations, you can update [MNISTdata.scala](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/MNISTdata.scala).
+All 4 examples use the MNIST data set, which can be downloaded from [yann.lecun.com](http://yann.lecun.com/exdb/mnist/). The data set includes all 4 files, uncompressed. The tutorial examples will look for the data in one of two locations:  `../data/MNIST` (relative to the root directory of the **cct-tutorial** project) or `~/cog/data/MNIST`. To override these locations, you can update [MNISTdata.scala](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/MNISTdata.scala).
 
 The simplest example is [LogisticRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/LogisticRegression.scala). This examples trains a network using `FullyConnectedLayer`. The loss is calculated using Stochastic Gradient Descent.  The training accuracy using this model plateaus at about 92% after 12000 cycles using the default settings.
 

@@ -150,12 +150,12 @@ A *tensor field* is a multidimensional array of multidimensional arrays of numbe
 
 Types of fields:
 
-* ScalarField
-* VectorField
-* MatrixField
-* ComplexField       (a scalar field with complex elements)
-* ComplexVectorField (a vector field with complex elements)
-* ColorField         (a field where each order-1 tensor is a pixel)
+* `ScalarField`
+* `VectorField`
+* `MatrixField`
+* `ComplexField`       (a scalar field with complex elements)
+* `ComplexVectorField` (a vector field with complex elements)
+* `ColorField`         (a field where each order-1 tensor is a pixel)
 
 Each field has a `fieldShape`, a `tensorShape`, and an `elementType`. The field shape has a dimension. The tensor shape also has a dimension, called an order or `tensorOrder`.  CCT supports up to 3 dimensions and up to 3rd-order tensors. Shapes are defined by layers, rows, and columns. A field with 3 dimensions has layers, rows, and columns. A field with 2 dimensions has rows and columns. For tensors, an order-0 tensor is called a scalar and contains a single number. An order-1 tensor is called a vector and contains one or more numbers. An order-2 tensor is called a matrix. The 3rd-order tensor is just called `Tensor3` in CCT. Tensors hold elements, which are defined by the `ElementType`, e.g. `Float32`. The complex fields have real and imaginary components, which are both floats. 
 

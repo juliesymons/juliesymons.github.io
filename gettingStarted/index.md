@@ -22,6 +22,7 @@ The HPE Cognitive Computing Toolkit (CCT) is a GPU-accelerated platform for deep
       * [User-defined CPU Operators](#user-defined-cpu-operators)  
 *   [Compute Graphs](#compute-graphs)
 *   [Neural Network Toolkit](#neural-network-toolkit)
+*   [Other Tidbits](#other-tidbits)
 
 
 ## Intro
@@ -279,14 +280,16 @@ External data is fed into the compute graph via sensors and output to external s
 
 Several examples in this tutorial demonstrate some of the basic uses of the *compute graph*. In the Counter example, a simple compute graph is wrapped by the CogDebugger. The ScalarSensorActuatorExample, defines a simple compute graph then shows some code that steps through the compute graph. This example also has a detailed description in the comments about what happens in the first call to `step` of a compute graph.  The ActuatorExample shows yet another way to invoke the use of a compute graph.
 
-The most common methods of a compute graph are step, reset, and release. Save, too.  
+*add some snippets*
+
+The most common methods of a compute graph are *step*, *reset*, and *release*. You can also use *save* to save a compute graph and its state.  
 
 The Programming Cog Applications chapter of the Programming Tutorial document has a lot of detail about the internals of  compute graph For more details about the tick two steps reset
  
  
 ## Neural Network Toolkit
 
-More information about the Neural Network Toolkit: 
+There are several examples in the cct-tutorial that use the Neural Network Toolkit (cct-nn). 
 
 4 tutorial examples
 

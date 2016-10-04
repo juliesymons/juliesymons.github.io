@@ -284,13 +284,32 @@ Persistent state, for learning and adaptation, is handled using feedback. The st
 
 External data is fed into the compute graph via sensors and output to external sources using actuators. 
 
-Several examples in this tutorial demonstrate some of the basic uses of the *compute graph*. In the Counter example, a simple compute graph is wrapped by the CogDebugger. The ScalarSensorActuatorExample, defines a simple compute graph then shows some code that steps through the compute graph. This example also has a detailed description in the comments about what happens in the first call to `step` of a compute graph.  The ActuatorExample shows yet another way to invoke the use of a compute graph.
+Several examples in this tutorial demonstrate some of the basic uses of the *compute graph*. In the Counter example, a simple compute graph is wrapped by the CogDebugger. The ScalarSensorActuatorExample, defines a simple compute graph then shows some code that steps through the compute graph. This example also has a detailed description in the comments about what happens in the first call to `step` of a compute graph.  The ActuatorExample shows yet another way to invoke the use of a compute graph. 
 
-*add some snippets*
+Here are some code snippets from [ScalarSensorActuatorExample](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/libcog/sensors/ScalarSensorActuatorExample.scala):
 
-The most common methods of a compute graph are *step*, *reset*, and *release*. You can also use *save* to save a compute graph and its state.  
+    val cg = new ComputeGraph {
+      val date = new Sensor(Shape(3), getTime)
+      val printer = new Actuator(date, printIterator)
+    }
+    ...
+  
+    println("First ComputeGraph step")
+    cg.step(1)
 
-The Programming Cog Applications chapter of the Programming Tutorial document has a lot of detail about the internals of  compute graph For more details about the tick two steps reset
+    for(i<-0 until 10){
+      Thread.sleep(1000)
+      println("")
+      println("Stepping ComputeGraph again.")
+      cg.step(1)
+    }
+
+    //release ComputeGraph resources. This must be done explicitly to shutdown the Actor system.
+    cg.release
+
+The most common methods of a compute graph are `step`, `reset`, and `release`. You can also use `save` to save a compute graph and its state.  
+
+The [Programming Cog Applications](../programmingGuide/#user-defined-operators/#programming-cog-applications) section of the Programming Guide has more detail about the internals of the compute graph.
  
  
 ## Neural Network Toolkit

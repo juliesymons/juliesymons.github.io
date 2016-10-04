@@ -307,10 +307,10 @@ Here are some code snippets from [ScalarSensorActuatorExample](https://github.co
     //release ComputeGraph resources. This must be done explicitly to shutdown the Actor system.
     cg.release
 
-The most common methods of a compute graph are `step`, `reset`, and `release`. You can also use `save` to save a compute graph and its state.  
+The most common methods of a compute graph are `step`, `reset`, and `release`. You can also use `save` to save a compute graph and its state.  See [Controlling The Computation](../programmingGuide/#controlling-the-computation) section of the Programming Guide for more information about stepping and resetting the `ComputeGraph`. 
 
-The [Programming Cog Applications](../programmingGuide/#programming-cog-applications) section of the Programming Guide has more detail about the internals of the compute graph.
- 
+The [Programming Cog Applications](../programmingGuide/#programming-cog-applications) section of the Programming Guide has more detail about the internals of stepping the compute graph and how the feedback operators update the tensor fields using a 2-phase clock.
+
  
 ## Neural Network Toolkit
 

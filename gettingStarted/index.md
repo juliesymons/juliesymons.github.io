@@ -149,6 +149,7 @@ In CCT, fields (or *tensor fields*) are the primary data structures used for inp
 A *tensor field* is a multidimensional array of multidimensional arrays of numbers. A *tensor* is a multidimensional array. Thus, a *tensor field* is a multidimensional array of tensors. 
 
 Types of fields:
+
 * ScalarField
 * VectorField
 * MatrixField
@@ -163,6 +164,7 @@ Additional field types may be defined by the user.
 For example #1, `counter` is a `ScalarField`. Its field shape is `Shape(200 200)`, for 200 rows and 200 columns. Its `dimensions` is 2. The `tensorOrder` is 0.  
 
 In [BackgroundSubtraction](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/cogio/BackgroundSubtraction.scala), `movie` is a `ColorField( 720 480 )( 3 )` with the following:
+
 * `movie.fieldShape = Shape(270 480)`
 * `movie.fieldShape.dimensions = 2`
 * `movie.tensorShape = Shape(3)`
@@ -184,11 +186,13 @@ In `libcog/sensors`, the [ScalarSensorActuatorExample.scala](https://github.com/
 Scala iterators and functions.
 
 Here's the constructor of a new sensor:
+
 `val date = new Sensor(Shape(3), getTime)`
 
 The `Sensor` constructor take a parameterless function, which returns an `Option[Iterator[Float]]`. In this example, the function is `getTime`.
 
 `Sensor` constructor parameters are:
+
 * `fieldShape`
 * `nextValue`  - Option Iterator, returns the next field in row-major order, can return `None`.
 * `resetHook` - function to reset to initial value, this can be empty.
@@ -213,6 +217,7 @@ Actuators are to output *tensor fields* from a *compute graph*. The *compute gra
 This tutorial has two Actuator examples. The simplest example is the [ActuatorExample](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/libcog/actuators/ActuatorExample.scala), located in `libcog/actuators`.   
 
 Here is the constructor: 
+
 `val actuator = Actuator(field, actuatorData, (column) => 4 - column)`
 
 In this actuator, the `actuatorData` array is a copy of the data in `field`. It can then be printed out at each step of the *compute graph*. The third parameter is used to define the initial state of `actuator`.
@@ -220,6 +225,7 @@ In this actuator, the `actuatorData` array is a copy of the data in `field`. It 
 The second example, [ScalarSensorActuatorExample](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/libcog/sensors/ScalarSensorActuatorExample.scala), defines an actuator function which is a unit function that takes an `Iterator[Float]`. This is a user-supplied callback function that is provided an iterator over the actuator's new data.
 
 Here is the constructor used in the second example:
+
 `val printer = new Actuator(date, printIterator)`
 
 where `date` is the `Sensor` defined above and `printIterator` is a function defined as: 

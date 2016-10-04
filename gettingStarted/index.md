@@ -309,7 +309,7 @@ Here are some code snippets from [ScalarSensorActuatorExample](https://github.co
 
 The most common methods of a compute graph are `step`, `reset`, and `release`. You can also use `save` to save a compute graph and its state.  
 
-The [Programming Cog Applications](../programmingGuide/#user-defined-operators/#programming-cog-applications) section of the Programming Guide has more detail about the internals of the compute graph.
+The [Programming Cog Applications](../programmingGuide/#programming-cog-applications) section of the Programming Guide has more detail about the internals of the compute graph.
  
  
 ## Neural Network Toolkit

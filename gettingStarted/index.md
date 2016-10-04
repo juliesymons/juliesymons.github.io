@@ -314,7 +314,9 @@ The [Programming Cog Applications](../programmingGuide/#programming-cog-applicat
  
 ## Neural Network Toolkit
 
-There are several examples in the **cct-tutorial** that use the Neural Network Toolkit (cct-nn). All 4 examples use MNIST data set, which can be downloaded from [yann.lecun.com](http://yann.lecun.com/exdb/mnist/). The tutorial examples will look for the data in one of two locations:  `../data/MNIST` (relative to the root directory on the cct-tutorial project) or `~/cog/data/MNIST`. To override these locations, you can update [MNISTdata.scala](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/MNISTdata.scala).
+There are several examples in the **cct-tutorial** that use the Neural Network Toolkit (cct-nn). 
+
+All 4 examples use the MNIST data set, which can be downloaded from [yann.lecun.com](http://yann.lecun.com/exdb/mnist/). The examples use all 4 downloads, uncompressed. The tutorial examples will look for the data in one of two locations:  `../data/MNIST` (relative to the root directory on the cct-tutorial project) or `~/cog/data/MNIST`. To override these locations, you can update [MNISTdata.scala](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/MNISTdata.scala).
 
 Talk about training each network, number of steps to reach a certain accuracy level.
 

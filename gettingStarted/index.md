@@ -320,20 +320,18 @@ All 4 examples use the MNIST data set, which can be downloaded from [yann.lecun.
 
 The simplest example is [LogisticRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/LogisticRegression.scala). This examples trains a network using `FullyConnectedLayer`. The loss is calculated using Cross Entropy (softmax), then Stochastic Gradient Descent for the back propagation.  The training accuracy using this model plateaus at about 92% after 12000 cycles using the default settings.
 
+Add descriptions of 
 
-
-- batchSize
+- batchSize (images per cycle) - this can be tuned based on the GPU model you have, especially if you get CL_OUT_OF_RESOURCES
 - learning rules (learning rate, momentum, weight decay)
 - accuracy (per step - Correct)
-- normalized accuracy (avgCorrect) 
+- normalized accuracy (avgCorrect) - low pass filter
 
+The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example adds a validation layer to the logistic regression example. It performs validation using the validation images and label using the trained weights. The training and validation accuracy are about the same as the first example, but this program demonstrates how to set up a validation network using trained weights.
 
-Talk about training each network, number of steps to reach a certain accuracy level. 
+The next example, [ConvNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/ConvNet.scala)  trains a model using Convolution. It also has layers for handling Bias, Max Pooling , ReLU (rectified linear unit) and tanh. With a batch size of 200, this model hits 100% training accuracy (AvgCorrect) after about 18,400 cycles.
 
-
-2. dual port regression (extended to train and validate mnist)
-3. conv net (trains mnist with convolutional neural network, with convolution, bias, max pooling relu, tanh
-4. twolayernet - is this redudnant to dual port? it has two layers (dual port has one layer)
+`TwoLayerNet` adds a validation layer to `ConvNet`. The validation uses the trained weights learned in the training model and does not do back propagation. With a training batch size of 120 and validation batch size of 40, this model achieves validation accuracy (measured using a normalize low pass filter) of xxx in yyy cycles. 
 
 
 ## Filtering Toolkit

@@ -318,15 +318,14 @@ There are several examples in the **cct-tutorial** that use the Neural Network T
 
 All 4 examples use the MNIST data set, which can be downloaded from [yann.lecun.com](http://yann.lecun.com/exdb/mnist/). The MNIST data set includes all 4 files, uncompressed. This data set contains 60,000 training images and 10,000 test/validation images and associated labels. The tutorial examples will look for the data in one of two locations:  `../data/MNIST` (relative to the root directory of the **cct-tutorial** project) or `~/cog/data/MNIST`. To override these locations, you can update [MNISTdata.scala](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/MNISTdata.scala).
 
-The simplest example is [LogisticRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/LogisticRegression.scala). This examples trains a network using `FullyConnectedLayer`. The loss is calculated using Cross Entropy (softmax), then Stochastic Gradient Descent for the back propagation.  The training accuracy using this model plateaus at about 92% after 12000 cycles (with a batch size of 120, that is 1.44M training images) using the default settings. Since there are 60,000 training images, this means the model passes through the entire training set 24 times (epochs). 
+The simplest example is [LogisticRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/LogisticRegression.scala). This examples trains a network using `FullyConnectedLayer`. The `loss` is calculated using Cross Entropy (`CrossEntropySoftmax`), then Stochastic Gradient Descent for the back propagation(`normLoss.activateSGD`). The training accuracy using this model plateaus at about 92% after 12000 cycles (with a batch size of 120, that is 1.44M training images) using the default settings. Since there are 60,000 training images, this means the model passes through the entire training set 24 times (epochs). 
 
-Add descriptions of 
+All of these examples use the following: 
 
-- batchSize (images per cycle) - this can be tuned based on the GPU model you have, especially if you get CL_OUT_OF_RESOURCES
-- learning rules (learning rate, momentum, weight decay)
-- accuracy (per step - Correct)
-- normalized accuracy (avgCorrect) - low pass filter
-- byte data source and byte label source
+- `batchSize` (images per cycle) - this can be tuned based on the GPU model you have, especially if you get CL_OUT_OF_RESOURCES
+- `StandardLearningRule(learningRate, momentum, weightDecay)` - learning rules used for adjusting the weights when training 
+- accuracy (`avgCorrect`) is calculated using `LowPass` or `NormalizedLowPass`, which recalculates accuracy by adds the number of correct for each cycle in a weighted fashion.
+- `ByteDataSource` and `ByteLabelSource` are the `Sensors` into the `ComputeGraph` feeding images and labels from files.
 
 The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example shows how to add a validation layer. It trains using the same model as the logistic regression example. Validation is done using a separate data set, using weights from the training and does not back propagation. The accuracy numbers are about the same as the first example, which is about 92% after 1.44M images). Note the layer names change, for example, `FullyConnectedLayer` is used for training while `FullyConnected` is used for validation.
 

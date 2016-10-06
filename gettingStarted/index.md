@@ -327,7 +327,7 @@ Add descriptions of
 - accuracy (per step - Correct)
 - normalized accuracy (avgCorrect) - low pass filter
 
-The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example adds a validation layer to the logistic regression example. It performs validation using the validation images and label using the trained weights. The training and validation accuracy are about the same as the first example (~92% after 1.44M images are trained). This example demonstrates how to set up a validation network using trained weights.
+The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example adds a validation layer to the logistic regression example. It performs validation using the validation images and label using the trained weights. The training and validation accuracy are about the same as the first example (~92% after 1.44M images are trained). This example demonstrates how to set up a validation network using trained weights. Note the layer names change, for example, `FullyConnectedLayer` is used for training while `FullyConnected` is used for validation.
 
 In [TwoLayerNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/TwoLayerNet.scala), a second logistic regression layer is added. The validation layer uses weights learned in the training model and does not do back propagation. With a training batch size of 120 and validation batch size of 40, this model achieves a training accuracy over 93% and validation accuracy of 97% in 40,000 cycles (with a batch size of 120, that is 4.8M images).
 

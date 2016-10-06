@@ -324,7 +324,7 @@ All of these examples use the following:
 
 - `batchSize` (images per cycle) - this can be tuned based on the GPU model you have, especially if you get CL_OUT_OF_RESOURCES
 - `StandardLearningRule(learningRate, momentum, weightDecay)` - learning rules used for adjusting the weights when training 
-- accuracy (`avgCorrect`) is calculated using `LowPass` or `NormalizedLowPass`, which recalculates accuracy by adds the number of correct for each cycle in a weighted fashion.
+- accuracy (`avgCorrect`) is calculated using `LowPass` or `NormalizedLowPass`, which recalculates accuracy by adding the number of correct predictions for each cycle in a weighted fashion.
 - `ByteDataSource` and `ByteLabelSource` are the `Sensors` into the `ComputeGraph` feeding images and labels from files.
 
 The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example shows how to add a validation layer. It trains using the same model as the logistic regression example. Validation is done using a separate data set, using weights from the training and does not back propagation. The accuracy numbers are about the same as the first example, which is about 92% after 1.44M images). Note the layer names change, for example, `FullyConnectedLayer` is used for training while `FullyConnected` is used for validation.

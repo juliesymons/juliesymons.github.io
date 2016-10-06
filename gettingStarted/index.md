@@ -316,9 +316,9 @@ The [Programming Cog Applications](../programmingGuide/#programming-cog-applicat
 
 There are several examples in the **cct-tutorial** that use the Neural Network Toolkit (cct-nn). 
 
-All 4 examples use the MNIST data set, which can be downloaded from [yann.lecun.com](http://yann.lecun.com/exdb/mnist/). The data set includes all 4 files, uncompressed. The tutorial examples will look for the data in one of two locations:  `../data/MNIST` (relative to the root directory of the **cct-tutorial** project) or `~/cog/data/MNIST`. To override these locations, you can update [MNISTdata.scala](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/MNISTdata.scala).
+All 4 examples use the MNIST data set, which can be downloaded from [yann.lecun.com](http://yann.lecun.com/exdb/mnist/). The MNIST data set includes all 4 files, uncompressed. This data set contains 60,000 training images and 10,000 test/validation images. The tutorial examples will look for the data in one of two locations:  `../data/MNIST` (relative to the root directory of the **cct-tutorial** project) or `~/cog/data/MNIST`. To override these locations, you can update [MNISTdata.scala](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/MNISTdata.scala).
 
-The simplest example is [LogisticRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/LogisticRegression.scala). This examples trains a network using `FullyConnectedLayer`. The loss is calculated using Cross Entropy (softmax), then Stochastic Gradient Descent for the back propagation.  The training accuracy using this model plateaus at about 92% after 12000 cycles (with a batch size of 120, that is 1.44M training images) using the default settings.
+The simplest example is [LogisticRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/LogisticRegression.scala). This examples trains a network using `FullyConnectedLayer`. The loss is calculated using Cross Entropy (softmax), then Stochastic Gradient Descent for the back propagation.  The training accuracy using this model plateaus at about 92% after 12000 cycles (with a batch size of 120, that is 1.44M training images) using the default settings. Since there are 60,000 training images, this means the model passes through the entire training set 24 times (epochs). 
 
 Add descriptions of 
 
@@ -326,12 +326,13 @@ Add descriptions of
 - learning rules (learning rate, momentum, weight decay)
 - accuracy (per step - Correct)
 - normalized accuracy (avgCorrect) - low pass filter
+- byte data source and byte label source
 
-The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example adds a validation layer to the logistic regression example. It performs validation using the validation images and label using the trained weights. The training and validation accuracy are about the same as the first example (~92% after 1.44M images are trained). This example demonstrates how to set up a validation network using trained weights. Note the layer names change, for example, `FullyConnectedLayer` is used for training while `FullyConnected` is used for validation.
+The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example shows how to add a validation layer. It trains using the same model as the logistic regression example. Validation is done using a separate data set, using weights from the training and does not back propagation. The accuracy numbers are about the same as the first example, which is about 92% after 1.44M images). Note the layer names change, for example, `FullyConnectedLayer` is used for training while `FullyConnected` is used for validation.
 
-In [TwoLayerNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/TwoLayerNet.scala), a second logistic regression layer is added. The validation layer uses weights learned in the training model and does not do back propagation. With a training batch size of 120 and validation batch size of 40, this model achieves a training accuracy over 93% and validation accuracy of 97% in 40,000 cycles (with a batch size of 120, that is 4.8M images).
+[TwoLayerNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/TwoLayerNet.scala) is similar to `DualPortRegression`, but it includes a second logistic regression layer (`FullyConnectedLayer`). The accuracy from this two layer model jumps to 97%, after 40,000 cycles with a batch size of 120, compared to the 92% with just one layer. 
 
-In the last example, [ConvNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/ConvNet.scala)  trains a model using Convolution. It also has layers for handling Bias, Max Pooling , ReLU (rectified linear unit) and tanh. With a modified batch size of 200, this model hits 100% training accuracy (AvgCorrect) after about 18,400 cycles (with a batch size of 200, that is 3.68M images). 
+In the last example, [ConvNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/ConvNet.scala)  trains a model using Convolution. It also has 2 convolution layers that also use functions for Bias, Max Pooling , ReLU (rectified linear unit) and tanh. This model trains to 100% accuracy (using `AvgCorrect`) on a server running with a modified batch size of 200 for about 18,400 cycles (3.68M images). 
 
 
 ## Filtering Toolkit

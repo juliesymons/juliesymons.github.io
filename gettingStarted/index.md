@@ -329,9 +329,9 @@ Add descriptions of
 
 The [DualPortRegression](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/DualPortRegression.scala) example adds a validation layer to the logistic regression example. It performs validation using the validation images and label using the trained weights. The training and validation accuracy are about the same as the first example, but this program demonstrates how to set up a validation network using trained weights.
 
-The next example, [ConvNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/ConvNet.scala)  trains a model using Convolution. It also has layers for handling Bias, Max Pooling , ReLU (rectified linear unit) and tanh. With a batch size of 200, this model hits 100% training accuracy (AvgCorrect) after about 18,400 cycles.
+The next example, [ConvNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/ConvNet.scala)  trains a model using Convolution. It also has layers for handling Bias, Max Pooling , ReLU (rectified linear unit) and tanh. With a batch size of 200, this model hits 100% training accuracy (AvgCorrect) after about 18,400 cycles (with a batch size of 200, that is 3.68m images).
 
-`TwoLayerNet` adds a validation layer to `ConvNet`. The validation uses the trained weights learned in the training model and does not do back propagation. With a training batch size of 120 and validation batch size of 40, this model achieves validation accuracy (measured using a normalize low pass filter) of xxx in yyy cycles. 
+[TwoLayerNet](https://github.com/hpe-cct/cct-tutorial/blob/master/src/main/scala/tutorial/toolkit/neuralnetwork/TwoLayerNet.scala) adds a validation layer to `ConvNet`. The validation layer uses weights learned in the training model and does not do back propagation. With a training batch size of 120 and validation batch size of 40, this model achieves validation accuracy (measured using a normalize low pass filter) of 97% in 40,000 cycles (with a batch size of 120, that is 4.8m images ). 
 
 
 ## Filtering Toolkit

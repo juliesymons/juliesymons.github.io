@@ -1,1 +1,3 @@
-# hpe-cct documentation pages available at [hpe-cct.github.io](http://hpe-cct.github.io)
+# hpe-cct Documentation Pages 
+
+[hpe-cct.github.io](http://hpe-cct.github.io)
